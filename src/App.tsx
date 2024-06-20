@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from "../../../../../vite.svg"
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "../../../../../vite.svg";
+import "./App.css";
 
-function App():JSX.Element {
-  const [count, setCount] = useState(0)
+function App(): JSX.Element {
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -19,7 +19,10 @@ function App():JSX.Element {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button type='submit' onClick={() => setCount((prevcount) => prevcount + 1)}>
+        <button
+          type="submit"
+          onClick={() => setCount((prevcount) => prevcount + 1)}
+        >
           count is {count}
         </button>
         <p>
@@ -30,7 +33,7 @@ function App():JSX.Element {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
