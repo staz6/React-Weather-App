@@ -1,28 +1,28 @@
 import React from "react";
 
-interface InputProps {
+interface InputProps<T> {
   type: string;
   placeholder: string;
-  city: string;
-  setCity: React.Dispatch<React.SetStateAction<string>>;
+  value: T;
+  onChange: (value: T) => void;
   className: string;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input = <T extends string | number | readonly string[] | undefined>({
   type,
   placeholder,
-  city,
-  setCity,
+  value,
+  onChange,
   className,
-}) => {
+}: InputProps<T>): JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setCity(e.target.value);
+    onChange(e.target.value as T);
   };
 
   return (
     <input
       type={type}
-      value={city}
+      value={value}
       onChange={handleChange}
       placeholder={placeholder}
       className={className}

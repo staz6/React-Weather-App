@@ -50,8 +50,8 @@ const Searchbar: React.FC = () => {
       ) : (
         <>
           <Input
-            setCity={setCity}
-            city={city}
+            onChange={setCity}
+            value={city}
             placeholder="Enter City"
             type="string"
             className={`bg-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"}  rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white  focus:outline-offset-1`}
