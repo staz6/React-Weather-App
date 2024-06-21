@@ -36,7 +36,6 @@ const Searchbar: React.FC = () => {
           <Button
             onClick={searchInput}
             icon={<BiSearch size={26} className="text-white" />}
-            className=""
           />
           <span className="text-white text-2xl w-80 capitalize ml-2">
             {city}
