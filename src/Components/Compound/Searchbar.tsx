@@ -61,6 +61,7 @@ const Searchbar: React.FC = () => {
     dispatch({ type: "SET_TIMEOUT_ID", payload: newTimeoutId });
     dispatch({ type: "SET_APPLY_ANIMATION", payload: false });
   };
+  const handleInput = (): void => (isOpen ? searchWeather() : searchInput());
 
   return (
     <div
@@ -69,36 +70,32 @@ const Searchbar: React.FC = () => {
       {!isOpen ? (
         <>
           <Button
+            description=""
+            className=""
             onClick={searchInput}
             icon={<BiSearch size={26} className="text-white" />}
           />
           <span className="text-white text-2xl w-80 capitalize ml-2">
             {city}
           </span>
-          <Button
-            onClick={searchInput}
-            icon={<BiSearch size={26} className="text-white" />}
-            className="bg-white p-2 bg-opacity-40 rounded-lg"
-          />
         </>
       ) : (
-        <>
-          <Input
-            onChange={(newValue) =>
-              dispatch({ type: "SET_CITY", payload: newValue })
-            }
-            value={city}
-            placeholder="Enter City"
-            type="string"
-            className={`bg-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
-          />
-          <Button
-            onClick={searchWeather}
-            icon={<BiSearch size={26} className="text-white" />}
-            className="bg-white p-2 bg-opacity-40 rounded-lg"
-          />
-        </>
+        <Input
+          onChange={(newValue) =>
+            dispatch({ type: "SET_CITY", payload: newValue })
+          }
+          value={city}
+          placeholder="Enter City"
+          type="string"
+          className={`bg-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+        />
       )}
+      <Button
+        description=""
+        onClick={handleInput}
+        icon={<BiSearch size={28} className="text-white" />}
+        className="bg-white p-2 bg-opacity-40 rounded-lg"
+      />
     </div>
   );
 };

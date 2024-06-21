@@ -1,11 +1,10 @@
-/* eslint-disable react/require-default-props */
 import React from "react";
 
 export interface ButtonProps {
   onClick: () => void;
-  icon: React.ReactNode;
-  className?: string;
-  description?: string;
+  icon: React.ReactNode | null;
+  className: string;
+  description: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
