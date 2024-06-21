@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
+import { useWeatherContext } from "../../Context/WeatherContext";
 
 const Searchbar: React.FC = () => {
+  const { setSearchCity } = useWeatherContext();
   const [city, setCity] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [applyAnimation, setapplyAnimation] = useState<boolean>(false);
@@ -15,6 +17,7 @@ const Searchbar: React.FC = () => {
   };
 
   const searchWeather = (): null => {
+    setSearchCity(city);
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
