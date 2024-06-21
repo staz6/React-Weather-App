@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   icon,
   className = "",
-  description = ""
+  description = "",
 }) => (
   <button type="button" className={className} onClick={onClick}>
     {description && <span className="ml-2">{description}</span>} {icon}
