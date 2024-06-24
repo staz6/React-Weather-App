@@ -4,6 +4,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 import API_KEY from "../../ApiConfig/ApiConfig";
 import { useWeatherContext } from "../../Context/WeatherContext";
+import convertKelvinToCelsius from "../../HelperFunctions/Helper";
 
 interface WeatherData {
   main: {
@@ -14,12 +15,6 @@ interface WeatherData {
     icon: string;
   }[];
 }
-
-
-
-const convertKelvinToCelsius = (
-  kelvin: number | undefined,
-): number | undefined => (kelvin !== undefined ? kelvin - 273.15 : undefined);
 
 const useCurrentTime = (): string => {
   const [currentTime, setCurrentTime] = React.useState<string>(
@@ -32,6 +27,7 @@ const useCurrentTime = (): string => {
 
   return currentTime;
 };
+export { useCurrentTime };
 
 const CurrentWeatherCard: React.FC = () => {
   const { searchCity } = useWeatherContext();
