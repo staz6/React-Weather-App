@@ -1,5 +1,5 @@
-const convertKelvinToCelsius = (
+export default function convertKelvinToCelsius(
   kelvin: number | undefined,
-): number | undefined => (kelvin !== undefined ? kelvin - 273.15 : undefined);
-
-export default convertKelvinToCelsius;
+): number | undefined {
+  return kelvin !== undefined ? kelvin - 273.15 : undefined;
+}
