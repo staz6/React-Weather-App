@@ -8,16 +8,16 @@ export default {
         linearSide: " linear-gradient(135deg, #d2c3e1, #48355b)",
       },
       inset: {
-        'custom-super': '-3rem',
-        'temp-top':'-1rem'
+        "custom-super": "-3rem",
+        "temp-top": "-1rem",
       },
       fontFamily: {
-        'sans': ['Roboto', 'sans-serif'],
+        sans: ["Roboto", "sans-serif"],
       },
       fontSize: {
-        '8xl': '6rem', 
-        '9xl': '8rem',
-        '10xl': '10rem',
+        "8xl": "6rem",
+        "9xl": "8rem",
+        "10xl": "10rem",
       },
       colors: {
         "custom-gray": "rgba(205, 205, 205, 0)",
