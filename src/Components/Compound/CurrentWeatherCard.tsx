@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 import { useWeatherContext } from "../../Context/WeatherContext";
 
 interface WeatherData {
@@ -20,6 +20,18 @@ const convertKelvinToCelsius = (
   kelvin: number | undefined,
 ): number | undefined => (kelvin !== undefined ? kelvin - 273.15 : undefined);
 
+const useCurrentTime = (): string => {
+  const [currentTime, setCurrentTime] = React.useState<string>(
+    dayjs().format("h:mm A"),
+  );
+
+  setInterval(() => {
+    setCurrentTime(dayjs().format("h:mm A"));
+  }, 60000);
+
+  return currentTime;
+};
+
 const CurrentWeatherCard: React.FC = () => {
   const { searchCity } = useWeatherContext();
 
@@ -37,7 +49,7 @@ const CurrentWeatherCard: React.FC = () => {
     },
     enabled: !!searchCity,
   });
-
+  const currentTimeAMPM = useCurrentTime();
   if (postQuery.isLoading) return <h1>Loading....</h1>;
   if (postQuery.isError) return <h1>No Such City Exist</h1>;
   if (!searchCity) {
@@ -48,9 +60,10 @@ const CurrentWeatherCard: React.FC = () => {
     // console.log(postQuery.data);
   }
   const iconUrl = `http://openweathermap.org/img/wn/${postQuery.data?.weather[0].icon}@2x.png`;
-  const formattedDate: string = dayjs().format('D MMM \'YY');
-  const currentDay: string = dayjs().format('dddd');
-  const currentTimeAMPM: string = dayjs().format('h:mm A');
+  const formattedDate: string = dayjs().format("D MMM 'YY");
+  const currentDay: string = dayjs().format("dddd");
+  // const currentTimeAMPM: string = dayjs().format("h:mm A");
+
   return (
     <div className="px-md-10 px-5 2xl:px-12 ">
       <img className="w-auto h-[180px] object-contain" src={iconUrl} alt="" />
