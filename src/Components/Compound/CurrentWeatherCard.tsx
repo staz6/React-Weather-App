@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import dayjs from "dayjs";
+import API_KEY from "../../ApiConfig/ApiConfig";
 import { useWeatherContext } from "../../Context/WeatherContext";
 
 interface WeatherData {
@@ -14,7 +15,7 @@ interface WeatherData {
   }[];
 }
 
-const API_KEY = "a611ea741ba0588548e2d0e39313050b";
+
 
 const convertKelvinToCelsius = (
   kelvin: number | undefined,
