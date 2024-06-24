@@ -27,7 +27,6 @@ const useCurrentTime = (): string => {
 
   return currentTime;
 };
-export { useCurrentTime };
 
 const CurrentWeatherCard: React.FC = () => {
   const { searchCity } = useWeatherContext();
