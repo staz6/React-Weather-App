@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import dayjs from 'dayjs';
 import { useWeatherContext } from "../../Context/WeatherContext";
 
 interface WeatherData {
@@ -47,7 +48,9 @@ const CurrentWeatherCard: React.FC = () => {
     // console.log(postQuery.data);
   }
   const iconUrl = `http://openweathermap.org/img/wn/${postQuery.data?.weather[0].icon}@2x.png`;
-
+  const formattedDate: string = dayjs().format('D MMM \'YY');
+  const currentDay: string = dayjs().format('dddd');
+  const currentTimeAMPM: string = dayjs().format('h:mm A');
   return (
     <div className="px-md-10 px-5 2xl:px-12 ">
       <img className="w-auto h-[180px] object-contain" src={iconUrl} alt="" />
@@ -60,9 +63,9 @@ const CurrentWeatherCard: React.FC = () => {
           </sup>
         </h1>
 
-        <h2 className="text-3xl font-light mb-1">17th Jun &apos;21</h2>
+        <h2 className="text-3xl font-light mb-1">{formattedDate}</h2>
         <h3 className="text-xl font-light tracking-wide">
-          Thursday <span className="mx-2">|</span> 4:52 PM
+          {currentDay} <span className="mx-2">|</span> {currentTimeAMPM}
         </h3>
       </div>
     </div>
