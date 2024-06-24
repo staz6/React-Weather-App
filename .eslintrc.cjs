@@ -39,18 +39,18 @@ module.exports = {
       },
     ],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-filename-extension": [1, { extensions: [".tsx"] }],
-    "@typescript-eslint/no-unused-vars": "error", // Add this rule to catch unused variables
-    "@typescript-eslint/no-explicit-any": "error", // Add this rule to catch usage of 'any' type
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       { allowExpressions: true },
-    ], // Add this rule to require explicit return types on functions
+    ],
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       { accessibility: "explicit" },
-    ], // Add this rule to require explicit accessibility modifiers on class properties and methods
+    ],
   },
 
   root: true,
