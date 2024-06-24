@@ -35,7 +35,7 @@ const CurrentWeatherCard: React.FC = () => {
     queryKey: ["weather", searchCity],
     queryFn: async () => {
       try {
-        const response = await axios.get<WeatherData>( // Specify the response type
+        const response = await axios.get<WeatherData>(
           `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${API_KEY}`,
         );
         return response.data;
@@ -52,13 +52,9 @@ const CurrentWeatherCard: React.FC = () => {
     return <h1>No city searched</h1>;
   }
 
-  if (postQuery.data !== undefined) {
-    // console.log(postQuery.data);
-  }
   const iconUrl = `http://openweathermap.org/img/wn/${postQuery.data?.weather[0].icon}@2x.png`;
   const formattedDate: string = dayjs().format("D MMM 'YY");
   const currentDay: string = dayjs().format("dddd");
-  // const currentTimeAMPM: string = dayjs().format("h:mm A");
 
   return (
     <div className="px-md-10 px-5 2xl:px-12 ">
