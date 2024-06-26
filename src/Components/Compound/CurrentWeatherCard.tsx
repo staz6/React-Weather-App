@@ -14,10 +14,16 @@ interface WeatherData {
   weather: {
     icon: string;
   }[];
+  sys: {
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
 }
 
 const useCurrentTime = (): string => {
-
   const [currentTime, setCurrentTime] = React.useState<string>(
     dayjs().format("h:mm A"),
   );
@@ -34,8 +40,7 @@ const useCurrentTime = (): string => {
 };
 
 const CurrentWeatherCard: React.FC = () => {
-  const { searchCity } = useWeatherContext();
-
+  const { searchCity, setCurrentWeatherData } = useWeatherContext();
   const postQuery = useQuery<WeatherData>({
     queryKey: ["weather", searchCity],
     queryFn: async () => {
@@ -51,6 +56,11 @@ const CurrentWeatherCard: React.FC = () => {
     enabled: !!searchCity,
   });
   const currentTimeAMPM = useCurrentTime();
+  useEffect(() => {
+    if (postQuery.data && postQuery.isSuccess) {
+      setCurrentWeatherData(postQuery?.data);
+    }
+  }, [postQuery.data, postQuery.isSuccess, setCurrentWeatherData]);
   if (postQuery.isLoading) return <h1>Loading....</h1>;
   if (postQuery.isError) return <h1>No Such City Exist</h1>;
   if (!searchCity) {

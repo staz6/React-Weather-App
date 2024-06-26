@@ -1,18 +1,24 @@
 import React from "react";
 import SunEvent from "../Compound/SunEvent";
 import WeatherMetricsCard from "../Compound/WeahterMetricsCard";
+import { useWeatherContext } from "../../Context/WeatherContext";
+import { suneventtimes } from "../../HelperFunctions/Helper";
 
-const DetailedWeatherCard: React.FC = () => (
-  <div>
-    <div className="flex justify-center gap-5 md:gap-10  mt-20">
-      <SunEvent id={0} />
-      <SunEvent id={1} />
-      <SunEvent id={2} />
-    </div>
+const DetailedWeatherCard: React.FC = () => {
+  const { currentWeatherData } = useWeatherContext();
+
+  return (
     <div>
-      <WeatherMetricsCard />
+      <div className="flex justify-center gap-5 md:gap-10  mt-20">
+        {currentWeatherData &&
+          suneventtimes(currentWeatherData).map((event, index) => (
+            <SunEvent event={event} key={index} id={index} />
+          ))}
+      </div>
+      <div>
+        <WeatherMetricsCard />
+      </div>
     </div>
-  </div>
-);
-
+  );
+};
 export default DetailedWeatherCard;

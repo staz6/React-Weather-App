@@ -16,6 +16,13 @@ interface WeatherData {
   weather: {
     icon: string;
   }[];
+  sys: {
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
 }
 
 interface WeatherContextProps {

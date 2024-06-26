@@ -29,6 +29,7 @@ module.exports = {
     },
   },
   rules: {
+    "react/no-array-index-key": "off",
     "react/react-in-jsx-scope": "off",
 
     "react/function-component-definition": [
