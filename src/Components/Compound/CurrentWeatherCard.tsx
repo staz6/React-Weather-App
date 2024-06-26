@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -17,13 +17,18 @@ interface WeatherData {
 }
 
 const useCurrentTime = (): string => {
+
   const [currentTime, setCurrentTime] = React.useState<string>(
     dayjs().format("h:mm A"),
   );
 
-  setInterval(() => {
-    setCurrentTime(dayjs().format("h:mm A"));
-  }, 60000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(dayjs().format("h:mm A"));
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [currentTime]);
 
   return currentTime;
 };
