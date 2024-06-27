@@ -9,7 +9,7 @@ const DetailedWeatherCard: React.FC = () => {
 
   return (
     <div>
-      <div className="flex justify-center gap-5 md:gap-10  mt-20">
+      <div className="flex justify-center gap-5 md:gap-10  mt-16 ">
         {currentWeatherData &&
           suneventtimes(currentWeatherData).map((event, index) => (
             <SunEvent event={event} key={index} id={index} />
