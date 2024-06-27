@@ -9,6 +9,7 @@ import convertKelvinToCelsius from "../../HelperFunctions/Helper";
 interface WeatherData {
   main: {
     temp: number;
+    humidity: number;
   };
   dt: number;
   weather: {
@@ -20,6 +21,9 @@ interface WeatherData {
     country: string;
     sunrise: number;
     sunset: number;
+  };
+  wind: {
+    speed: number;
   };
 }
 

@@ -11,6 +11,7 @@ import React, {
 interface WeatherData {
   main: {
     temp: number;
+    humidity: number;
   };
   dt: number;
   weather: {
@@ -22,6 +23,12 @@ interface WeatherData {
     country: string;
     sunrise: number;
     sunset: number;
+  };
+  rain?: {
+    "1h": number;
+  };
+  wind: {
+    speed: number;
   };
 }
 
