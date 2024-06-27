@@ -9,26 +9,30 @@ interface Props {
     militaryTime: string;
   };
 }
-const SunEvent: React.FC<Props> = ({ id, event }) => (
-  <div
-    className={`relative text-center font-sans  text-white ${id === 1 ? "bottom-7" : ""}`}
-  >
-    <h1 className={`${id === 1 ? "text-xl" : "text-lg"} font-light mb-8`}>
-      {event.name}
-    </h1>
+const SunEvent: React.FC<Props> = ({ id, event }) => {
+  const [time, period] = event.ampm.split(" ");
+
+  return (
     <div
-      className={`bg-linearSide ${id === 1 ? "h-56" : "h-52"} ${id !== 1 ? "px-3" : "px-0"}  rounded-[4rem] py-6`}
+      className={`relative text-center font-sans  text-white ${id === 1 ? "bottom-7" : ""}`}
     >
-      <img className="h-10 m-auto  w-16" src={clockImg} alt="" />
-      <h2 className="mt-12">
-        <span className="text-xl tracking-wider">{event.ampm} </span>
-        {/* <span className="font-thin text-xs">AM</span> */}
-      </h2>
-      <h2 className="mt-2 text-lg tracking-widest text-gray-200">
-        {event.militaryTime}
-      </h2>
+      <h1 className={`${id === 1 ? "text-xl" : "text-lg"} font-light mb-8`}>
+        {event.name}
+      </h1>
+      <div
+        className={`bg-linearSide ${id === 1 ? "h-56" : "h-52"} ${id !== 1 ? "px-3" : "px-0"}  rounded-[4rem] py-6`}
+      >
+        <img className="h-10 m-auto  w-16" src={clockImg} alt="" />
+        <h2 className={`${id === 1 ? "mt-14" : "mt-12 "}`}>
+          <span className="sm:text-xl text-lg tracking-wider">{time} </span>
+          <span className="text-sm text-gray-200 sm:text-md">{period}</span>
+        </h2>
+        <h2 className="mt-2 sm:text-lg tracking-widest text-gray-200">
+          {event.militaryTime}
+        </h2>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default SunEvent;
