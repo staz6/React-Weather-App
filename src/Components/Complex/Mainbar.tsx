@@ -1,13 +1,10 @@
 import React from "react";
-import { useWeatherContext } from "../../Context/WeatherContext";
+import DetailedWeatherCard from "./DetailedWeatherCard";
 
-const Mainbar: React.FC = () => {
-  const { searchCity } = useWeatherContext();
-  return (
-    <div className="flex  flex-col bg-linearMain  min-h-screen  w-full lg:w-2/3 p-7 lg:p-4 xl:p-7 space-y-10 overflow-x-hidden">
-      <h2>{searchCity}</h2>
-    </div>
-  );
-};
+const Mainbar: React.FC = () => (
+  <div className="flex  flex-col bg-linearMain  min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7  overflow-x-hidden">
+    <DetailedWeatherCard />
+  </div>
+);
 
 export default Mainbar;

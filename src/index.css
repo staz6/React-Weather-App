@@ -40,3 +40,9 @@ body {
 .slide-out {
   animation: slideOut 0.3s ease forwards;
 }
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 1vw;
+  }
+}

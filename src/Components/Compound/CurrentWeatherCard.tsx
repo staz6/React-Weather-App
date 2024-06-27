@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -9,11 +9,22 @@ import convertKelvinToCelsius from "../../HelperFunctions/Helper";
 interface WeatherData {
   main: {
     temp: number;
+    humidity: number;
   };
   dt: number;
   weather: {
     icon: string;
   }[];
+  sys: {
+    type: number;
+    id: number;
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
+  wind: {
+    speed: number;
+  };
 }
 
 const useCurrentTime = (): string => {
@@ -21,16 +32,19 @@ const useCurrentTime = (): string => {
     dayjs().format("h:mm A"),
   );
 
-  setInterval(() => {
-    setCurrentTime(dayjs().format("h:mm A"));
-  }, 60000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(dayjs().format("h:mm A"));
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, [currentTime]);
 
   return currentTime;
 };
 
 const CurrentWeatherCard: React.FC = () => {
-  const { searchCity } = useWeatherContext();
-
+  const { searchCity, setCurrentWeatherData } = useWeatherContext();
   const postQuery = useQuery<WeatherData>({
     queryKey: ["weather", searchCity],
     queryFn: async () => {
@@ -46,6 +60,11 @@ const CurrentWeatherCard: React.FC = () => {
     enabled: !!searchCity,
   });
   const currentTimeAMPM = useCurrentTime();
+  useEffect(() => {
+    if (postQuery.data && postQuery.isSuccess) {
+      setCurrentWeatherData(postQuery?.data);
+    }
+  }, [postQuery.data, postQuery.isSuccess, setCurrentWeatherData]);
   if (postQuery.isLoading) return <h1>Loading....</h1>;
   if (postQuery.isError) return <h1>No Such City Exist</h1>;
   if (!searchCity) {
