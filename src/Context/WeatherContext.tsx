@@ -47,6 +47,7 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [searchCity, setSearchCity] = useState<string>("");
   const [currentWeatherData, setCurrentWeatherData] =
     useState<WeatherData | null>(null);
+
   const contextValue = React.useMemo(
     () => ({
       searchCity,
