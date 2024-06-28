@@ -32,11 +32,27 @@ interface WeatherData {
   };
 }
 
+interface ForecastData {
+  dt_txt: string;
+  main: {
+    temp: number;
+  };
+  weather: [
+    {
+      icon: string;
+    },
+  ];
+}
+
 interface WeatherContextProps {
   searchCity: string;
   setSearchCity: (searchCity: string) => void;
   currentWeatherData: WeatherData | null;
   setCurrentWeatherData: Dispatch<SetStateAction<WeatherData | null>>;
+  timeStamp: string;
+  settimeStamp: (searchCity: string) => void;
+  weatherForecastData: ForecastData[] | null;
+  setWeatherForecastData: Dispatch<SetStateAction<ForecastData[] | null>>;
 }
 
 const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -45,8 +61,12 @@ const WeatherContext = createContext<WeatherContextProps | undefined>(
 
 const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [searchCity, setSearchCity] = useState<string>("");
+  const [timeStamp, settimeStamp] = useState<string>("");
   const [currentWeatherData, setCurrentWeatherData] =
     useState<WeatherData | null>(null);
+  const [weatherForecastData, setWeatherForecastData] = useState<
+    ForecastData[] | null
+  >(null);
 
   const contextValue = React.useMemo(
     () => ({
@@ -54,8 +74,12 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setSearchCity,
       currentWeatherData,
       setCurrentWeatherData,
+      timeStamp,
+      settimeStamp,
+      weatherForecastData,
+      setWeatherForecastData,
     }),
-    [searchCity, currentWeatherData],
+    [searchCity, currentWeatherData, timeStamp, weatherForecastData],
   );
 
   return (

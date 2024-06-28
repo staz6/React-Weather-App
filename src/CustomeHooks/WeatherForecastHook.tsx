@@ -30,42 +30,56 @@ interface ForecastItem {
   temp: number;
   icon: string;
   day: string;
+  timeStamp: string;
 }
 
 const useWeatherForecast = (
   searchCity: string | undefined,
 ): {
   forecastData: ForecastItem[] | undefined;
+  filteredData: WeatherListItem[] | undefined; // Adjusted to array of items or undefined
   isLoading: boolean;
   isError: boolean;
+  isSuccess: boolean;
 } => {
-  const { data, isLoading, isError }: UseQueryResult<ForecastDataType> =
-    useQuery<ForecastDataType>({
-      queryKey: ["forecast", searchCity],
-      queryFn: async () => {
-        const response = await axios.get<ForecastDataType>(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${API_KEY}`,
-        );
-        return response.data;
-      },
-      enabled: !!searchCity,
-    });
+  const {
+    data,
+    isLoading,
+    isError,
+    isSuccess,
+  }: UseQueryResult<ForecastDataType> = useQuery<ForecastDataType>({
+    queryKey: ["forecast", searchCity],
+    queryFn: async () => {
+      const response = await axios.get<ForecastDataType>(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${API_KEY}`,
+      );
+      return response.data;
+    },
+    enabled: !!searchCity,
+  });
 
-  const forecastData = useMemo(
+  const filteredData = useMemo(
     () =>
-      data?.list
-        .filter((timeperday) => timeperday.dt_txt.includes("18:00:00"))
-        .map((weather) => ({
-          temp: parseFloat(
-            convertKelvinToCelsius(weather.main.temp)?.toFixed() ?? "0",
-          ),
-          icon: `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
-          day: getDayOfWeek(weather.dt_txt),
-        })),
+      data?.list.filter((timeperday) => timeperday.dt_txt.includes("18:00:00")), // Use .filter() to get an array
     [data],
   );
 
-  return { forecastData, isLoading, isError };
+  const forecastData = useMemo(
+    () =>
+      filteredData
+        ? filteredData.map((weather) => ({
+            temp: parseFloat(
+              convertKelvinToCelsius(weather.main.temp)?.toFixed() ?? "0",
+            ),
+            icon: `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
+            day: getDayOfWeek(weather.dt_txt),
+            timeStamp: weather.dt_txt,
+          }))
+        : undefined,
+    [filteredData],
+  );
+
+  return { forecastData, filteredData, isLoading, isError, isSuccess };
 };
 
 export default useWeatherForecast;
