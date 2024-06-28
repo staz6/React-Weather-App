@@ -7,10 +7,10 @@ const WeatherMetricsCard: React.FC = () => {
 
   const metrics = calculateWeatherMetrics(currentWeatherData);
   return (
-    <div className="flex  items-center m-auto justify-center mt-10 sm:gap-8 gap-5 text-gray-200 text-sm sm:text-md">
+    <div className="flex  items-center m-auto justify-center mt-10 sm:gap-8 gap-5  text-gray-200 text-sm sm:text-md">
       {metrics.map((Item, index) => (
-        <>
-          <div key={index} className="flex items-center sm:gap-2 gap-2">
+        <div className="flex items-center sm:gap-8 gap-5" key={index}>
+          <div key={index} className="flex items-center sm:gap-2  gap-2">
             <Item.Icon className="sm:text-4xl text-xl" color="white" />
             <h3>
               <span className="sm:mr-2 sm:text-xl">
@@ -20,7 +20,7 @@ const WeatherMetricsCard: React.FC = () => {
             </h3>
           </div>{" "}
           {index !== 2 && "|"}
-        </>
+        </div>
       ))}
     </div>
   );
