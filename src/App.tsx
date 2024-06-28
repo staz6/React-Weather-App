@@ -10,7 +10,7 @@ import "@fontsource/roboto/900.css";
 
 const App: React.FC = () => (
   <MemoizedWeatherContextProvider>
-    <Layout />;
+    <Layout />
   </MemoizedWeatherContextProvider>
 );
 
