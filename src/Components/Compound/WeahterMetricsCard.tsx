@@ -13,7 +13,9 @@ const WeatherMetricsCard: React.FC = () => {
           <div key={index} className="flex items-center sm:gap-2 gap-2">
             <Item.Icon className="sm:text-4xl text-xl" color="white" />
             <h3>
-              <span className="sm:mr-2 sm:text-xl">{Item.value}</span>{" "}
+              <span className="sm:mr-2 sm:text-xl">
+                {Item.value ? Item.value : "NA"}
+              </span>{" "}
               <span className="sm:text-xl">{Item.unit}</span>
             </h3>
           </div>{" "}
