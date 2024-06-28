@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import API_KEY from "../../ApiConfig/ApiConfig";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import convertKelvinToCelsius from "../../HelperFunctions/Helper";
+import CurrentTime from "./CurrentTime";
 
 interface WeatherData {
   main: {
@@ -27,22 +28,6 @@ interface WeatherData {
   };
 }
 
-const useCurrentTime = (): string => {
-  const [currentTime, setCurrentTime] = React.useState<string>(
-    dayjs().format("h:mm A"),
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(dayjs().format("h:mm A"));
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, [currentTime]);
-
-  return currentTime;
-};
-
 const CurrentWeatherCard: React.FC = () => {
   const { searchCity, setCurrentWeatherData } = useWeatherContext();
   const postQuery = useQuery<WeatherData>({
@@ -59,7 +44,6 @@ const CurrentWeatherCard: React.FC = () => {
     },
     enabled: !!searchCity,
   });
-  const currentTimeAMPM = useCurrentTime();
   useEffect(() => {
     if (postQuery.data && postQuery.isSuccess) {
       setCurrentWeatherData(postQuery?.data);
@@ -89,7 +73,8 @@ const CurrentWeatherCard: React.FC = () => {
 
         <h2 className="text-3xl font-light mb-1">{formattedDate}</h2>
         <h3 className="text-xl font-light tracking-wide">
-          {currentDay} <span className="mx-2">|</span> {currentTimeAMPM}
+          {currentDay} <span className="mx-2">|</span>{" "}
+          <CurrentTime className="" />
         </h3>
       </div>
     </div>
