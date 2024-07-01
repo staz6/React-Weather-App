@@ -11,7 +11,7 @@ interface SunEventtimes {
 }
 
 const suneventtimes = (
-  currentWeatherData: WeatherData | undefined
+  currentWeatherData: WeatherData | undefined,
 ): SunEventtimes[] => {
   if (!currentWeatherData) return [];
 

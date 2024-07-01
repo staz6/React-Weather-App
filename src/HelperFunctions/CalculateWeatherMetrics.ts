@@ -15,7 +15,7 @@ interface WeatherData {
 }
 
 const calculateWeatherMetrics = (
-  data: WeatherData | undefined | null
+  data: WeatherData | undefined | null,
 ): Metric[] => {
   const rainMetric = data?.rain?.["1h"];
   const windMetric = data?.wind.speed ?? 0;
