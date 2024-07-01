@@ -9,27 +9,31 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
-interface TemperatureData {
-  day: string;
-  temperature: number;
-}
-
-const temperatureData: TemperatureData[] = [
-  { day: "Day 1", temperature: 25 },
-  { day: "Day 2", temperature: 27 },
-  { day: "Day 3", temperature: 22 },
-  { day: "Day 4", temperature: 20 },
-  { day: "Day 5", temperature: 23 },
-];
+import { useWeatherContext } from "../../Context/WeatherContext";
+import convertKelvinToCelsius, {
+  getDayOfWeek,
+} from "../../HelperFunctions/Helper";
 
 const TemperatureChart: React.FC = () => {
-  const formatYAxis = (tick: number): string => `${tick}°C`;
+  const { weatherForecastData, searchCity } = useWeatherContext();
 
+  if (!weatherForecastData && !searchCity) {
+    return <h1>No city searched</h1>;
+  }
+  if (!weatherForecastData) {
+    return <h1>Loading</h1>;
+  }
+  const TemperatureData2 = weatherForecastData?.map((e) => ({
+    day: getDayOfWeek(e.dt_txt),
+    temperature: parseFloat(
+      convertKelvinToCelsius(e.main.temp)?.toFixed() ?? "0",
+    ),
+  }));
+  const formatYAxis = (tick: number): string => `${tick}°C`;
   return (
     <div className="w-96">
       <ResponsiveContainer width="90%" height={270}>
-        <BarChart data={temperatureData}>
+        <BarChart data={TemperatureData2}>
           <CartesianGrid stroke="black" strokeDasharray="3 3" />
           <XAxis dataKey="day" tick={{ fill: "black" }} />
           <YAxis tick={{ fill: "black" }} tickFormatter={formatYAxis} />
