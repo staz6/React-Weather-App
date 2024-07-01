@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SimpleSlider from "../Compound/Slider";
 import WeatherForecastItem from "../Compound/WeatherForecastItem";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import useWeatherForecast from "../../CustomeHooks/WeatherForecastHook";
 
 const WeatherForecastCard: React.FC = () => {
-  const { searchCity } = useWeatherContext();
-  const { forecastData, isLoading, isError } = useWeatherForecast(searchCity);
+  const { searchCity, setWeatherForecastData } = useWeatherContext();
+  const { forecastData, filteredData, isLoading, isError, isSuccess } =
+    useWeatherForecast(searchCity);
+
+  useEffect(() => {
+    if (isSuccess && filteredData) {
+      setWeatherForecastData(filteredData);
+    }
+  }, [filteredData, isSuccess, setWeatherForecastData]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Please Enter Correct City</div>;
