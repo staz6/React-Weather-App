@@ -29,9 +29,10 @@ const CurrentWeatherCard: React.FC = () => {
     if (weatherData) {
       if (timeStamp && weatherForecastData) {
         const selectedDayWeather = weatherForecastData.filter(
-          (weather) => weather.dt_txt === timeStamp,
+          (weather) => weather.dt_txt === timeStamp
         );
         setShowWeather(selectedDayWeather[0]);
+        setCurrentWeatherData(selectedDayWeather[0]);
       } else {
         setShowWeather(weatherData);
         setCurrentWeatherData(weatherData);

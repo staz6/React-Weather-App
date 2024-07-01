@@ -18,11 +18,12 @@ interface WeatherData {
     icon: string;
   }[];
   sys: {
-    type: number;
-    id: number;
-    country: string;
-    sunrise: number;
-    sunset: number;
+    pod?: string;
+    type?: number;
+    id?: number;
+    country?: string;
+    sunrise?: number;
+    sunset?: number;
   };
   rain?: {
     "1h": number;
@@ -33,15 +34,26 @@ interface WeatherData {
 }
 
 interface ForecastData {
+  sys: {
+    pod: string;
+  };
+  dt: number;
+  wind: {
+    speed: number;
+  };
   dt_txt: string;
   main: {
     temp: number;
+    humidity: number;
   };
   weather: [
     {
       icon: string;
     },
   ];
+  rain?: {
+    "1h": number;
+  };
 }
 
 interface WeatherContextProps {
@@ -56,7 +68,7 @@ interface WeatherContextProps {
 }
 
 const WeatherContext = createContext<WeatherContextProps | undefined>(
-  undefined,
+  undefined
 );
 
 const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -79,7 +91,7 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       weatherForecastData,
       setWeatherForecastData,
     }),
-    [searchCity, currentWeatherData, timeStamp, weatherForecastData],
+    [searchCity, currentWeatherData, timeStamp, weatherForecastData]
   );
 
   return (
@@ -90,14 +102,14 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 export const MemoizedWeatherContextProvider = React.memo(
-  WeatherContextProvider,
+  WeatherContextProvider
 );
 
 export const useWeatherContext = (): WeatherContextProps => {
   const context = useContext(WeatherContext);
   if (context === undefined) {
     throw new Error(
-      "useWeatherContext must be used within a WeatherContextProvider",
+      "useWeatherContext must be used within a WeatherContextProvider"
     );
   }
   return context;

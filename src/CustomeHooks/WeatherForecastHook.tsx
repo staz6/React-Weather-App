@@ -10,12 +10,23 @@ interface WeatherListItem {
   dt_txt: string;
   main: {
     temp: number;
+    humidity: number;
   };
   weather: [
     {
       icon: string;
     },
   ];
+  dt: number;
+  sys: {
+    pod: string;
+  };
+  wind:{
+    speed:number
+  }
+  rain?: {
+    "1h": number;
+  };
 }
 
 interface ForecastDataType {
@@ -34,7 +45,7 @@ interface ForecastItem {
 }
 
 const useWeatherForecast = (
-  searchCity: string | undefined,
+  searchCity: string | undefined
 ): {
   forecastData: ForecastItem[] | undefined;
   filteredData: WeatherListItem[] | undefined; // Adjusted to array of items or undefined
@@ -51,7 +62,7 @@ const useWeatherForecast = (
     queryKey: ["forecast", searchCity],
     queryFn: async () => {
       const response = await axios.get<ForecastDataType>(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${API_KEY}`,
+        `https://api.openweathermap.org/data/2.5/forecast?q=${searchCity}&appid=${API_KEY}`
       );
       return response.data;
     },
@@ -61,7 +72,7 @@ const useWeatherForecast = (
   const filteredData = useMemo(
     () =>
       data?.list.filter((timeperday) => timeperday.dt_txt.includes("18:00:00")), // Use .filter() to get an array
-    [data],
+    [data]
   );
 
   const forecastData = useMemo(
@@ -69,14 +80,14 @@ const useWeatherForecast = (
       filteredData
         ? filteredData.map((weather) => ({
             temp: parseFloat(
-              convertKelvinToCelsius(weather.main.temp)?.toFixed() ?? "0",
+              convertKelvinToCelsius(weather.main.temp)?.toFixed() ?? "0"
             ),
             icon: `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
             day: getDayOfWeek(weather.dt_txt),
             timeStamp: weather.dt_txt,
           }))
         : undefined,
-    [filteredData],
+    [filteredData]
   );
 
   return { forecastData, filteredData, isLoading, isError, isSuccess };

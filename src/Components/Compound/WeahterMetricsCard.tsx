@@ -1,6 +1,6 @@
 import React from "react";
 import { useWeatherContext } from "../../Context/WeatherContext";
-import { calculateWeatherMetrics } from "../../HelperFunctions/Helper";
+import calculateWeatherMetrics from "../../HelperFunctions/CalculateWeatherMetrics";
 
 const WeatherMetricsCard: React.FC = () => {
   const { currentWeatherData } = useWeatherContext();
