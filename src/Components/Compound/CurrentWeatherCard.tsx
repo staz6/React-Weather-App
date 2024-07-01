@@ -53,7 +53,7 @@ const CurrentWeatherCard: React.FC = () => {
   const currentDay: string = dayjs().format("dddd");
 
   return (
-    <div className="px-md-10 px-5 2xl:px-12 ">
+    <div className="px-md-10 px-5 2xl:px-12 relative -top-5">
       <img className="w-auto h-[180px] object-contain" src={iconUrl} alt="" />
 
       <div className="text-white pl-5 font-sans">
