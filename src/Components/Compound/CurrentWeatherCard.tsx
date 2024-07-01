@@ -23,26 +23,22 @@ const CurrentWeatherCard: React.FC = () => {
   const [showWeather, setShowWeather] = useState<ShowWeatherType | null>(null);
   const { searchCity, setCurrentWeatherData, timeStamp, weatherForecastData } =
     useWeatherContext();
-  const { weatherData, isLoading, isError, isSuccess } =
-    useCurrentWeather(searchCity);
+  const { weatherData, isLoading, isError } = useCurrentWeather(searchCity);
 
   useEffect(() => {
-    if (weatherForecastData && timeStamp) {
-      const selectedDayWeather = weatherForecastData.filter(
-        (weather) => weather.dt_txt === timeStamp,
-      );
-
-      setShowWeather(selectedDayWeather[0]);
-    } else if (weatherData && isSuccess) {
-      setShowWeather(weatherData);
+    if (weatherData) {
+      if (timeStamp && weatherForecastData) {
+        const selectedDayWeather = weatherForecastData.filter(
+          (weather) => weather.dt_txt === timeStamp,
+        );
+        setShowWeather(selectedDayWeather[0]);
+      } else {
+        setShowWeather(weatherData);
+        setCurrentWeatherData(weatherData);
+      }
     }
-  }, [weatherForecastData, timeStamp, weatherData, isSuccess]);
+  }, [timeStamp, weatherData, weatherForecastData, setCurrentWeatherData]);
 
-  useEffect(() => {
-    if (weatherData && isSuccess) {
-      setCurrentWeatherData(weatherData);
-    }
-  }, [weatherData, isSuccess, setCurrentWeatherData]);
   if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>No Such City Exist</h1>;
   if (!searchCity) {
