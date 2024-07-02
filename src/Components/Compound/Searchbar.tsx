@@ -1,27 +1,38 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { BiSearch } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
+import { useQuery } from "@tanstack/react-query";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
+import API_KEY from "../../ApiConfig/ApiConfig";
 
 interface State {
   city: string;
   isOpen: boolean;
   applyAnimation: boolean;
   timeoutId: NodeJS.Timeout | null;
+  lat: number | null;
+  lon: number | null;
+  currentLocation: boolean;
 }
 
 type Action =
   | { type: "SET_CITY"; payload: string }
   | { type: "SET_IS_OPEN"; payload: boolean }
   | { type: "SET_APPLY_ANIMATION"; payload: boolean }
-  | { type: "SET_TIMEOUT_ID"; payload: NodeJS.Timeout | null };
+  | { type: "SET_TIMEOUT_ID"; payload: NodeJS.Timeout | null }
+  | { type: "SET_COORDINATES"; payload: { lat: number; lon: number } }
+  | { type: "SET_CURRENT_LOCATION"; payload: boolean };
 
 const initialState: State = {
   city: "",
   isOpen: false,
   applyAnimation: false,
   timeoutId: null,
+  lat: null,
+  lon: null,
+  currentLocation: false,
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -34,6 +45,10 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, applyAnimation: action.payload };
     case "SET_TIMEOUT_ID":
       return { ...state, timeoutId: action.payload };
+    case "SET_COORDINATES":
+      return { ...state, lat: action.payload.lat, lon: action.payload.lon };
+    case "SET_CURRENT_LOCATION":
+      return { ...state, currentLocation: action.payload };
     default:
       return state;
   }
@@ -42,11 +57,62 @@ const reducer = (state: State, action: Action): State => {
 const Searchbar: React.FC = () => {
   const { setSearchCity } = useWeatherContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { city, isOpen, applyAnimation, timeoutId } = state;
+  const { city, isOpen, applyAnimation, timeoutId, lat, lon, currentLocation } =
+    state;
 
   const searchInput = (): void => {
     dispatch({ type: "SET_IS_OPEN", payload: true });
     dispatch({ type: "SET_APPLY_ANIMATION", payload: true });
+    dispatch({ type: "SET_CURRENT_LOCATION", payload: false });
+  };
+
+  const onSuccess = (position: GeolocationPosition): void => {
+    const { latitude, longitude } = position.coords;
+    dispatch({
+      type: "SET_COORDINATES",
+      payload: { lat: latitude, lon: longitude },
+    });
+  };
+
+  const onError = (error: GeolocationPositionError): void => {
+    if (error.code === error.PERMISSION_DENIED) {
+      // eslint-disable-next-line no-alert
+      alert(
+        "You have denied access to your location. Please enable it to use this feature.",
+      );
+    } else {
+      // eslint-disable-next-line no-alert
+      alert("Geolocation is not enabled or not supported by this browser.");
+    }
+  };
+
+  const options: PositionOptions = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  const { data } = useQuery<{ name: string }>({
+    queryKey: ["location"],
+    queryFn: () =>
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
+      ).then((res) => res.json()),
+    enabled: !!lat && !!lon,
+  });
+
+  useEffect(() => {
+    if (currentLocation && data) {
+      setSearchCity(data.name);
+      dispatch({ type: "SET_CITY", payload: data.name });
+    }
+  }, [currentLocation, data, setSearchCity]);
+
+  const handleLocation = (): void => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+      dispatch({ type: "SET_CURRENT_LOCATION", payload: true });
+    }
   };
 
   const searchWeather = (): void => {
@@ -61,6 +127,7 @@ const Searchbar: React.FC = () => {
     dispatch({ type: "SET_TIMEOUT_ID", payload: newTimeoutId });
     dispatch({ type: "SET_APPLY_ANIMATION", payload: false });
   };
+
   const handleInput = (): void => (isOpen ? searchWeather() : searchInput());
 
   return (
@@ -72,8 +139,8 @@ const Searchbar: React.FC = () => {
           <Button
             description=""
             className=""
-            onClick={searchInput}
-            icon={<BiSearch size={26} className="text-white" />}
+            onClick={handleLocation}
+            icon={<CiLocationOn size={26} className="text-white" />}
           />
           <span className="text-white text-2xl w-80 capitalize ml-2">
             {city}
