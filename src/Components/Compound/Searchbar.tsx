@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from "react";
 import { BiSearch } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
+import { useQuery } from "@tanstack/react-query";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
-import useCityNameFetch from "../../CustomeHooks/CurrentLocationHook";
+import API_KEY from "../../ApiConfig/ApiConfig";
 
 interface State {
   city: string;
@@ -90,13 +91,22 @@ const Searchbar: React.FC = () => {
     timeout: 5000,
     maximumAge: 0,
   };
-  const { cityName } = useCityNameFetch({ lat, lon });
+
+  const { data } = useQuery<{ name: string }>({
+    queryKey: ["location"],
+    queryFn: () =>
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`,
+      ).then((res) => res.json()),
+    enabled: !!lat && !!lon,
+  });
+
   useEffect(() => {
-    if (currentLocation && cityName) {
-      setSearchCity(cityName);
-      dispatch({ type: "SET_CITY", payload: cityName });
+    if (currentLocation && data) {
+      setSearchCity(data.name);
+      dispatch({ type: "SET_CITY", payload: data.name });
     }
-  }, [currentLocation, cityName, setSearchCity]);
+  }, [currentLocation, data, setSearchCity]);
 
   const handleLocation = (): void => {
     if (navigator.geolocation) {
