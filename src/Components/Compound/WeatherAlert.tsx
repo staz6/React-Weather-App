@@ -40,6 +40,7 @@ const WeatherAlert: React.FC = () => {
           ),
           {
             duration: 5000,
+            id: alert.desc,
           },
         );
       });
@@ -56,6 +57,7 @@ const WeatherAlert: React.FC = () => {
     if (alerts.length === 0) {
       toast.error("No notifications", {
         duration: 4000,
+        id: "No_Notification",
       });
     } else {
       toast(
@@ -87,7 +89,7 @@ const WeatherAlert: React.FC = () => {
             ))}
           </div>
         ),
-        { duration: Infinity },
+        { duration: Infinity, id: "Notification" },
       );
     }
   };
