@@ -1,35 +1,15 @@
 import React, { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { BiBell } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 import toast, { Toaster } from "react-hot-toast";
-import { ALERT_API_KEY } from "../../ApiConfig/ApiConfig";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import Button from "../Shared/Button";
-
-interface Alert {
-  category: string;
-  headline: string;
-  desc: string;
-}
-
-interface WeatherApiResponse {
-  alerts: {
-    alert: Alert[];
-  };
-}
+import WeatherAlertHook from "../../CustomeHooks/WeatherAlertHook";
 
 const WeatherAlert: React.FC = () => {
   const { searchCity } = useWeatherContext();
-  const { isLoading, error, data } = useQuery<WeatherApiResponse>({
-    queryKey: ["WeatherAlerts", searchCity],
-    queryFn: () =>
-      fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${ALERT_API_KEY}&q=${searchCity}&alerts=yes`,
-      ).then((res) => res.json()),
-    enabled: !!searchCity,
-  });
 
+  const { isError, data } = WeatherAlertHook({ searchCity });
   useEffect(() => {
     if (data && data.alerts && data.alerts.alert.length > 0) {
       data.alerts.alert.forEach((alert) => {
@@ -66,12 +46,8 @@ const WeatherAlert: React.FC = () => {
     }
   }, [data]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
+  if (isError) {
+    return <div>Error: {isError}</div>;
   }
 
   const alerts = data?.alerts?.alert || [];
