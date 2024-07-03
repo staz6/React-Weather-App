@@ -5,6 +5,7 @@ import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import useCityNameFetch from "../../CustomeHooks/CurrentLocationHook";
+import WeatherAlert from "./WeatherAlert";
 
 interface State {
   city: string;
@@ -147,12 +148,15 @@ const Searchbar: React.FC = () => {
           className={`bg-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
         />
       )}
-      <Button
-        description=""
-        onClick={handleInput}
-        icon={<BiSearch size={28} className="text-white" />}
-        className="bg-white p-2 bg-opacity-40 rounded-lg"
-      />
+      <div className="flex items-center gap-4">
+        <Button
+          description=""
+          onClick={handleInput}
+          icon={<BiSearch size={28} className="text-white" />}
+          className="bg-white p-2 bg-opacity-40 rounded-lg"
+        />
+        <WeatherAlert />
+      </div>
     </div>
   );
 };
