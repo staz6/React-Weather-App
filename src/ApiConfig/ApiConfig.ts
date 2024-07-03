@@ -1,2 +1,4 @@
 const API_KEY = "a611ea741ba0588548e2d0e39313050b";
 export default API_KEY;
+const ALERT_API_KEY = "308f25d7a38a4a9d8e1222510240207";
+export { ALERT_API_KEY };
