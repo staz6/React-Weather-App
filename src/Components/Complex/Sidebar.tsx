@@ -3,6 +3,13 @@ import { ErrorBoundary } from "react-error-boundary";
 import Searchbar from "../Compound/Searchbar";
 import { useWeatherContext } from "../../Context/WeatherContext";
 
+const LazyCurrentWeatherCard = lazy(
+  () => import("../lazyloaded/LazyCurrentWeatherCard"),
+);
+const LazyTemperatureChart = lazy(
+  () => import("../lazyloaded/LazyTemperatureChart"),
+);
+
 const TemperatureChart = lazy(() => import("../Compound/TemperatureChart"));
 const CurrentWeatherInfo = lazy(() => import("../Compound/CurrentWeatherCard"));
 
@@ -28,16 +35,8 @@ const Sidebar: React.FC = () => {
           <Suspense
             fallback={
               <div className="flex justify-center gap-10 flex-col sm:flex-row items-center lg:flex-col ">
-                <div className="xl:w-[22rem] lg:w-[19rem] md:w-[22rem] w-full  flex justify-center mt-6 items-center h-96  bg-gray-300 rounded-lg shadow-lg">
-                  <h1 className="text-center text-white text-2xl  ">
-                    Loading CurrentWeather
-                  </h1>
-                </div>
-                <div className="xl:w-[22rem] lg:w-[19rem] md:w-[22rem] w-full  flex justify-center  items-center h-48  bg-gray-300  rounded-lg shadow-lg">
-                  <h1 className="text-center text-white text-2xl  ">
-                    Loading Temperature Chart
-                  </h1>
-                </div>
+                <LazyCurrentWeatherCard />
+                <LazyTemperatureChart />
               </div>
             }
           >
