@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useMemo } from "react";
 import API_KEY from "../ApiConfig/ApiConfig";
@@ -32,16 +32,17 @@ const useCurrentWeather = (
   isError: boolean;
   isSuccess: boolean;
 } => {
-  const { data, isLoading, isError, isSuccess } = useQuery<WeatherData>({
-    queryKey: ["weather", searchCity],
-    queryFn: async () => {
-      const response = await axios.get<WeatherData>(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${API_KEY}`,
-      );
-      return response.data;
+  const { data, isLoading, isError, isSuccess } = useSuspenseQuery<WeatherData>(
+    {
+      queryKey: ["weather", searchCity],
+      queryFn: async () => {
+        const response = await axios.get<WeatherData>(
+          `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${API_KEY}`,
+        );
+        return response.data;
+      },
     },
-    enabled: !!searchCity,
-  });
+  );
 
   const weatherData = useMemo(() => data, [data]);
 

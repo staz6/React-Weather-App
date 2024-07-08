@@ -15,14 +15,8 @@ import convertKelvinToCelsius, {
 } from "../../HelperFunctions/Helper";
 
 const TemperatureChart: React.FC = () => {
-  const { weatherForecastData, searchCity } = useWeatherContext();
+  const { weatherForecastData } = useWeatherContext();
 
-  if (!weatherForecastData && !searchCity) {
-    return <h1>No city searched</h1>;
-  }
-  if (!weatherForecastData) {
-    return <h1>Loading</h1>;
-  }
   const TemperatureData2 = weatherForecastData?.map((e) => ({
     day: getDayOfWeek(e.dt_txt),
     temperature: parseFloat(
