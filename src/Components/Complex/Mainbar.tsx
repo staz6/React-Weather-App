@@ -1,14 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useWeatherContext } from "../../Context/WeatherContext";
-
-const LazySuneventCard = lazy(() => import("../lazyloaded/LazySuneventCard"));
-const LazyWeatherMetrics = lazy(
-  () => import("../lazyloaded/LazyWeatherMetrics"),
-);
-const LazyWeatherForecastCard = lazy(
-  () => import("../lazyloaded/LazyWeatherForecastCard"),
-);
+import LazySuneventCard from "../lazyloaded/LazySuneventCard";
+import LazyWeatherMetrics from "../lazyloaded/LazyWeatherMetrics";
+import LazyWeatherForecastCard from "../lazyloaded/LazyWeatherForecastCard";
 
 const WeatherForecastCard = lazy(() => import("./WeatherForecastCard"));
 const DetailedWeatherCard = lazy(() => import("./DetailedWeatherCard"));

@@ -2,16 +2,11 @@ import React, { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import Searchbar from "../Compound/Searchbar";
 import { useWeatherContext } from "../../Context/WeatherContext";
-
-const LazyCurrentWeatherCard = lazy(
-  () => import("../lazyloaded/LazyCurrentWeatherCard"),
-);
-const LazyTemperatureChart = lazy(
-  () => import("../lazyloaded/LazyTemperatureChart"),
-);
+import LazyCurrentWeatherCard from "../lazyloaded/LazyCurrentWeatherCard";
+import LazyTemperatureChart from "../lazyloaded/LazyTemperatureChart";
 
 const TemperatureChart = lazy(() => import("../Compound/TemperatureChart"));
-const CurrentWeatherInfo = lazy(() => import("../Compound/CurrentWeatherCard"));
+const CurrentWeatherCard = lazy(() => import("../Compound/CurrentWeatherCard"));
 
 const FallbackComponent: React.FC = () => (
   <div role="alert">
@@ -42,7 +37,7 @@ const Sidebar: React.FC = () => {
           >
             {searchCity ? (
               <>
-                <CurrentWeatherInfo />
+                <CurrentWeatherCard />
                 <TemperatureChart />
               </>
             ) : (
