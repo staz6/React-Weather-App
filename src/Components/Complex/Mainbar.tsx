@@ -24,7 +24,7 @@ const Mainbar: React.FC = () => {
       >
         <Suspense
           fallback={
-            <div className="sm:w-10/12 w-44 flex justify-center items-center h-48  bg-gray-300 animate-pulse rounded-lg shadow-lg">
+            <div className="sm:w-10/12 m-auto w-44 flex justify-center items-center h-48  bg-gray-300 animate-pulse rounded-lg shadow-lg">
               <h1 className="text-center text-white text-2xl  animate-glow">
                 Loading Forecast
               </h1>
