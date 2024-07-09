@@ -4,7 +4,6 @@ import Searchbar from "../Compound/Searchbar";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import LazyCurrentWeatherCard from "../lazyloaded/LazyCurrentWeatherCard";
 import LazyTemperatureChart from "../lazyloaded/LazyTemperatureChart";
-import { useThemeContext } from "../../Context/ThemeChangerContext";
 import ThemeChanger from "../Compound/ThemeChanger";
 
 const TemperatureChart = lazy(() => import("../Compound/TemperatureChart"));
@@ -20,12 +19,9 @@ const FallbackComponent: React.FC = () => (
 
 const Sidebar: React.FC = () => {
   const { searchCity } = useWeatherContext();
-  const { Darktheme } = useThemeContext();
 
   return (
-    <div
-      className={`${Darktheme ? " bg-linearSideDark" : "bg-linearSide"}  border-r border-custom-gray flex flex-col  pb-10 lg:pb-0  w-full lg:w-1/3 p-7 lg:p-4 xl:p-7 space-y-0 overflow-x-hidden`}
-    >
+    <div className="dark:bg-linearSideDark bg-linearSide  border-r border-custom-gray flex flex-col  pb-10 lg:pb-0  w-full lg:w-1/3 p-7 lg:p-4 xl:p-7 space-y-0 overflow-x-hidden">
       <Searchbar />
       <div className="flex justify-center gap flex-col sm:flex-row items-center lg:flex-col">
         <ErrorBoundary
@@ -46,9 +42,7 @@ const Sidebar: React.FC = () => {
                 <TemperatureChart />
               </>
             ) : (
-              <h1
-                className={`text-center mt-5 ${Darktheme ? "text-white" : "text-black"}`}
-              >
+              <h1 className="text-center mt-5 dark:text-white text-black">
                 No City Searched
               </h1>
             )}

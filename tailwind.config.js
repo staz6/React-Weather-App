@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       backgroundImage: {
         linearMain: " linear-gradient(135deg, #48355b, #8c6eab)",
+        linearMainDark:
+          "linear-gradient(90deg, rgba(0,19,97,1) 0%, rgba(0,2,23,1) 100%, rgba(61,29,94,1) 100%)",
         linearSide: " linear-gradient(135deg, #d2c3e1, #48355b)",
         linearSideDark:
           "linear-gradient(90deg, rgba(27,46,126,1) 0%, rgba(13,15,41,1) 100%, rgba(61,29,94,1) 100%);",

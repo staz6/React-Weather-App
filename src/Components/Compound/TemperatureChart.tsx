@@ -13,11 +13,11 @@ import { useWeatherContext } from "../../Context/WeatherContext";
 import convertKelvinToCelsius, {
   getDayOfWeek,
 } from "../../HelperFunctions/Helper";
-import { useThemeContext } from "../../Context/ThemeChangerContext";
+import { useTheme } from "../../Context/ThemeChangerContext";
 
 const TemperatureChart: React.FC = () => {
   const { weatherForecastData } = useWeatherContext();
-  const { Darktheme } = useThemeContext();
+  const { Darktheme } = useTheme();
   const TemperatureData2 = weatherForecastData?.map((e) => ({
     day: getDayOfWeek(e.dt_txt),
     temperature: parseFloat(

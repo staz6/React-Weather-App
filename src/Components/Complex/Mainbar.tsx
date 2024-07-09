@@ -4,7 +4,6 @@ import { useWeatherContext } from "../../Context/WeatherContext";
 import LazySuneventCard from "../lazyloaded/LazySuneventCard";
 import LazyWeatherMetrics from "../lazyloaded/LazyWeatherMetrics";
 import LazyWeatherForecastCard from "../lazyloaded/LazyWeatherForecastCard";
-import { useThemeContext } from "../../Context/ThemeChangerContext";
 
 const WeatherForecastCard = lazy(() => import("./WeatherForecastCard"));
 const DetailedWeatherCard = lazy(() => import("./DetailedWeatherCard"));
@@ -19,11 +18,8 @@ const FallbackComponent: React.FC = () => (
 
 const Mainbar: React.FC = () => {
   const { searchCity } = useWeatherContext();
-  const { Darktheme } = useThemeContext();
   return (
-    <div
-      className={` ${Darktheme ? "  bg-blue-950" : "bg-linearMain"} flex  flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7  overflow-x-hidden`}
-    >
+    <div className="dark:bg-linearMainDark bg-linearMain flex flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7 overflow-x-hidden">
       <ErrorBoundary
         FallbackComponent={FallbackComponent}
         resetKeys={[searchCity]}
@@ -43,9 +39,7 @@ const Mainbar: React.FC = () => {
               <WeatherForecastCard />
             </>
           ) : (
-            <h1
-              className={`text-center mt-5 ${Darktheme ? "text-white" : "text-black"}`}
-            >
+            <h1 className="text-center mt-5 dark:text-white text-black">
               No City Searched
             </h1>
           )}

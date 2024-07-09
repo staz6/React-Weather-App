@@ -2,44 +2,56 @@ import React, {
   createContext,
   useContext,
   useState,
-  ReactNode,
+  useEffect,
   useMemo,
+  ReactNode,
 } from "react";
 
 type ThemeContextType = {
   Darktheme: boolean;
-  setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleDarkTheme: () => void;
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-interface ThemeContextProviderProps {
+interface ThemeProviderProps {
   children: ReactNode;
 }
 
-const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
-  children,
-}) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [Darktheme, setDarkTheme] = useState<boolean>(false);
-  const contextvalue = useMemo(
-    () => ({ Darktheme, setDarkTheme }),
+
+  useEffect(() => {
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      if (Darktheme) {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+    }
+  }, [Darktheme]);
+
+  const toggleDarkTheme = (): void => {
+    setDarkTheme((prev) => !prev);
+  };
+
+  const contextValue: ThemeContextType = useMemo(
+    () => ({ Darktheme, toggleDarkTheme }),
     [Darktheme],
   );
+
   return (
-    <ThemeContext.Provider value={contextvalue}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-export const useThemeContext = (): ThemeContextType => {
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
-    throw new Error(
-      "useThemeContext must be used within a ThemeContextProvider",
-    );
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 };
-
-export default ThemeContextProvider;
