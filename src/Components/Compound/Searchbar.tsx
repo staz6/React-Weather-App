@@ -133,7 +133,7 @@ const Searchbar: React.FC = () => {
             onClick={handleLocation}
             icon={<CiLocationOn size={26} className="text-white" />}
           />
-          <span className="text-white text-2xl w-80 capitalize ml-2">
+          <span className="text-white z-10 text-2xl w-80 capitalize ml-2">
             {city}
           </span>
         </>
@@ -145,7 +145,7 @@ const Searchbar: React.FC = () => {
           value={city}
           placeholder="Enter City"
           type="string"
-          className={`bg-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+          className={`bg-white z-10 text-zinc-800 dark:text-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
         />
       )}
       <div className="flex items-center gap-4">
@@ -153,7 +153,7 @@ const Searchbar: React.FC = () => {
           description=""
           onClick={handleInput}
           icon={<BiSearch size={28} className="text-white" />}
-          className="bg-white p-2 bg-opacity-40 rounded-lg"
+          className="bg-white z-10 p-2 bg-opacity-40 rounded-lg"
         />
         <WeatherAlert />
       </div>

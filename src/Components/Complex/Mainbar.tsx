@@ -19,7 +19,7 @@ const FallbackComponent: React.FC = () => (
 const Mainbar: React.FC = () => {
   const { searchCity } = useWeatherContext();
   return (
-    <div className="flex  flex-col bg-linearMain  min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7  overflow-x-hidden">
+    <div className="dark:bg-linearMainDark bg-linearMain flex flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7 overflow-x-hidden">
       <ErrorBoundary
         FallbackComponent={FallbackComponent}
         resetKeys={[searchCity]}
@@ -39,7 +39,9 @@ const Mainbar: React.FC = () => {
               <WeatherForecastCard />
             </>
           ) : (
-            <h1 className="text-center mt-5">No City Searched</h1>
+            <h1 className="text-center mt-5 dark:text-white text-black">
+              No City Searched
+            </h1>
           )}
         </Suspense>
       </ErrorBoundary>
