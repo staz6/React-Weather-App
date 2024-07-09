@@ -6,6 +6,8 @@ export default {
       backgroundImage: {
         linearMain: " linear-gradient(135deg, #48355b, #8c6eab)",
         linearSide: " linear-gradient(135deg, #d2c3e1, #48355b)",
+        linearSideDark:
+          "linear-gradient(90deg, rgba(27,46,126,1) 0%, rgba(13,15,41,1) 100%, rgba(61,29,94,1) 100%);",
       },
       inset: {
         "custom-super": "-3rem",

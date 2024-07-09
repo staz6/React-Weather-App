@@ -1,5 +1,6 @@
 import React from "react";
 import { useWeatherContext } from "../../Context/WeatherContext";
+import { useThemeContext } from "../../Context/ThemeChangerContext";
 
 interface Props {
   item: {
@@ -13,7 +14,7 @@ interface Props {
 
 const WeatherForecastItem: React.FC<Props> = ({ item, animation = true }) => {
   const { settimeStamp, timeStamp } = useWeatherContext();
-
+  const { Darktheme } = useThemeContext();
   return (
     <div
       role="button"
@@ -28,7 +29,7 @@ const WeatherForecastItem: React.FC<Props> = ({ item, animation = true }) => {
           ? settimeStamp("")
           : settimeStamp(item.timeStamp)
       }
-      className={`cursor-pointer bg-linearSide w-36 m-auto sm:m-0 sm:w-fit ${animation ? "hover:-translate-y-3 duration-200" : ""}  shadow-lg  text-center py-4 rounded-xl`}
+      className={`cursor-pointer ${Darktheme ? "bg-linearSideDark" : "bg-linearSide"} w-36 m-auto sm:m-0 sm:w-fit ${animation ? "hover:-translate-y-3 duration-200" : ""}  shadow-lg  text-center py-4 rounded-xl`}
     >
       <h1 className="text-lg">{item.temp} °C</h1>
       <img src={item.icon} className="w-24 h-24 m-auto" alt="" />

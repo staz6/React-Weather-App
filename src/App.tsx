@@ -7,11 +7,14 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
+import ThemeContextProvider from "./Context/ThemeChangerContext";
 
 const App: React.FC = () => (
-  <MemoizedWeatherContextProvider>
-    <Layout />
-  </MemoizedWeatherContextProvider>
+  <ThemeContextProvider>
+    <MemoizedWeatherContextProvider>
+      <Layout />
+    </MemoizedWeatherContextProvider>
+  </ThemeContextProvider>
 );
 
 export default App;
