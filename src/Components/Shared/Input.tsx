@@ -6,6 +6,7 @@ interface InputProps<T> {
   value: T;
   onChange: (value: T) => void;
   className: string;
+  onClick: () => void;
 }
 
 const Input = <T extends string | number | readonly string[] | undefined>({
@@ -14,6 +15,7 @@ const Input = <T extends string | number | readonly string[] | undefined>({
   value,
   onChange,
   className,
+  onClick,
 }: InputProps<T>): JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.value as T);
@@ -26,6 +28,7 @@ const Input = <T extends string | number | readonly string[] | undefined>({
       onChange={handleChange}
       placeholder={placeholder}
       className={className}
+      onClick={onClick}
     />
   );
 };

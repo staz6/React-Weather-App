@@ -6,6 +6,7 @@ import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import useCityNameFetch from "../../CustomeHooks/CurrentLocationHook";
 import WeatherAlert from "./WeatherAlert";
+import FavCities from "./FavCities";
 
 interface State {
   city: string;
@@ -15,6 +16,7 @@ interface State {
   lat: number | null;
   lon: number | null;
   currentLocation: boolean;
+  showFavCities: boolean;
 }
 
 type Action =
@@ -23,7 +25,8 @@ type Action =
   | { type: "SET_APPLY_ANIMATION"; payload: boolean }
   | { type: "SET_TIMEOUT_ID"; payload: NodeJS.Timeout | null }
   | { type: "SET_COORDINATES"; payload: { lat: number; lon: number } }
-  | { type: "SET_CURRENT_LOCATION"; payload: boolean };
+  | { type: "SET_CURRENT_LOCATION"; payload: boolean }
+  | { type: "SET_SHOWFAVORITE_CITY"; payload: boolean };
 
 const initialState: State = {
   city: "",
@@ -33,6 +36,7 @@ const initialState: State = {
   lat: null,
   lon: null,
   currentLocation: false,
+  showFavCities: false,
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -49,16 +53,26 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, lat: action.payload.lat, lon: action.payload.lon };
     case "SET_CURRENT_LOCATION":
       return { ...state, currentLocation: action.payload };
+    case "SET_SHOWFAVORITE_CITY":
+      return { ...state, showFavCities: action.payload };
     default:
       return state;
   }
 };
 
 const Searchbar: React.FC = () => {
-  const { setSearchCity } = useWeatherContext();
+  const { setSearchCity, favCity } = useWeatherContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { city, isOpen, applyAnimation, timeoutId, lat, lon, currentLocation } =
-    state;
+  const {
+    city,
+    isOpen,
+    applyAnimation,
+    timeoutId,
+    lat,
+    lon,
+    currentLocation,
+    showFavCities,
+  } = state;
 
   const searchInput = (): void => {
     dispatch({ type: "SET_IS_OPEN", payload: true });
@@ -138,17 +152,46 @@ const Searchbar: React.FC = () => {
           </span>
         </>
       ) : (
-        <Input
-          onChange={(newValue) =>
-            dispatch({ type: "SET_CITY", payload: newValue })
-          }
-          value={city}
-          placeholder="Enter City"
-          type="string"
-          className={`bg-white z-10 text-zinc-800 dark:text-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
-        />
+        <div className="flex-col relative ">
+          <Input
+            onChange={(newValue) =>
+              dispatch({ type: "SET_CITY", payload: newValue })
+            }
+            onClick={() =>
+              dispatch({ type: "SET_SHOWFAVORITE_CITY", payload: true })
+            }
+            value={city}
+            placeholder="Enter City"
+            type="string"
+            className={`bg-white z-10 text-zinc-800 dark:text-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+          />
+          {showFavCities && favCity.length !== 0 && (
+            <div
+              className={`border absolute bg-white dark:text-white bg-opacity-40 z-10 mt-1 rounded-md ${applyAnimation ? "slide-in" : "slide-out"} text-center w-full`}
+            >
+              {favCity.map((e, index) => (
+                <div
+                  role="button"
+                  tabIndex={0}
+                  className=" cursor-pointer hover:bg-white hover:bg-opacity-50  flex justify-between px-2 py-1"
+                  onClick={() => dispatch({ type: "SET_CITY", payload: e })}
+                  onKeyDown={(e_key) =>
+                    e_key.key === "Enter"
+                      ? dispatch({ type: "SET_CITY", payload: e })
+                      : " "
+                  }
+                  key={index}
+                >
+                  <h1>{index + 1}.</h1>
+                  <h1 className="w-full capitalize  "> {e}</h1>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       )}
       <div className="flex items-center gap-4">
+        <FavCities />
         <Button
           description=""
           onClick={handleInput}
