@@ -15,7 +15,7 @@ const WeatherAlert: React.FC = () => {
       data.alerts.alert.forEach((alert) => {
         toast(
           (t) => (
-            <div>
+            <div className="">
               <div className="flex justify-end">
                 <Button
                   onClick={() => toast.dismiss(t.id)}
@@ -26,7 +26,7 @@ const WeatherAlert: React.FC = () => {
               </div>
               <h2 className="text-2xl">{alert.headline}</h2>
               <h1 className="text-red-500 my-1">{alert.category} !</h1>
-              <p className="text-sm">
+              <div className="text-sm h-52 overflow-y-scroll">
                 {alert.desc
                   .trim()
                   .split("*")
@@ -35,7 +35,7 @@ const WeatherAlert: React.FC = () => {
                       {line.trim()}
                     </p>
                   ))}
-              </p>
+              </div>
             </div>
           ),
           {
@@ -71,22 +71,27 @@ const WeatherAlert: React.FC = () => {
                 description=""
               />
             </div>
-            {alerts.map((e, index) => (
-              <div key={index} className=" bg-gray-200 p-2 mt-1 rounded-md">
-                <h2 className="text-2xl">{e.headline}</h2>
-                <h1 className="text-red-500 my-1">{e.category} !</h1>
-                <p className="text-sm">
-                  {e.desc
-                    .trim()
-                    .split("*")
-                    .map((line, i) => (
-                      <p key={i} className="text-sm mb-1">
-                        {line.trim()}
-                      </p>
-                    ))}
-                </p>
-              </div>
-            ))}
+            <div className="overflow-y-scroll h-96">
+              {alerts.map((e, index) => (
+                <div
+                  key={index}
+                  className=" bg-white bg-opacity-15 p-2 mt-1 rounded-md"
+                >
+                  <h2 className="text-2xl">{e.headline}</h2>
+                  <h1 className="text-red-500 my-1">{e.category} !</h1>
+                  <div className="text-sm">
+                    {e.desc
+                      .trim()
+                      .split("*")
+                      .map((line, i) => (
+                        <p key={i} className="text-sm mb-1">
+                          {line.trim()}
+                        </p>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ),
         { duration: Infinity, id: "Notification" },
@@ -96,7 +101,12 @@ const WeatherAlert: React.FC = () => {
 
   return (
     <div>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          className:
+            "bg-white backdrop-blur-xl bg-opacity-50 text-black dark:text-white",
+        }}
+      />
       <Button
         className=""
         description=""
