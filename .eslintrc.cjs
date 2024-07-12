@@ -12,7 +12,7 @@ module.exports = {
     "plugin:react/recommended",
     "prettier",
   ],
-  ignorePatterns: ["**/*.cjs", "**/*.js", "vite.config.ts"],
+  ignorePatterns: ["**/*.cjs", "**/*.js", "vite.config.ts", "jest.config.ts"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: __dirname,
