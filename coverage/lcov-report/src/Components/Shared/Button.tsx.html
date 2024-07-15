@@ -29,9 +29,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">42.85% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">3/7</span>
+            <span class="fraction">10/10</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -104,23 +104,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable react/require-default-props */
@@ -138,9 +138,9 @@ export interface ButtonProps {
 const Button: React.FC&lt;ButtonProps&gt; = ({
   onClick,
   icon,
-  className<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  description<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  children = null<span class="branch-0 cbranch-no" title="branch not covered" >,</span>
+  className = "",
+  description = "",
+  children = null,
   testid = "",
 }) =&gt; (
   &lt;button
@@ -149,7 +149,7 @@ const Button: React.FC&lt;ButtonProps&gt; = ({
     data-testid={testid}
     onClick={onClick}
   &gt;
-    {description<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; &lt;span className="ml-2"&gt;{description}&lt;/span&gt;}</span> {icon}
+    {description &amp;&amp; &lt;span className="ml-2"&gt;{description}&lt;/span&gt;} {icon}
     {children}
   &lt;/button&gt;
 );
@@ -169,7 +169,7 @@ export default Button;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-15T17:29:18.114Z
+      at 2024-07-15T18:35:18.491Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>
