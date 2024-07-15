@@ -11,7 +11,7 @@ interface Alert {
   desc: string;
 }
 
-interface WeatherApiResponse {
+export interface WeatherApiResponse {
   alerts: {
     alert: Alert[];
   };

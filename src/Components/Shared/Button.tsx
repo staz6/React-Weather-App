@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from "react";
 
 export interface ButtonProps {
@@ -5,8 +6,8 @@ export interface ButtonProps {
   icon: React.ReactNode | null;
   className: string;
   description: string;
-  // eslint-disable-next-line react/require-default-props
   children?: React.ReactNode;
+  testid?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -15,8 +16,14 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   description = "",
   children = null,
+  testid = "",
 }) => (
-  <button type="button" className={className} onClick={onClick}>
+  <button
+    type="button"
+    className={className}
+    data-testid={testid}
+    onClick={onClick}
+  >
     {description && <span className="ml-2">{description}</span>} {icon}
     {children}
   </button>

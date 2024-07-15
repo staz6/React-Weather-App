@@ -15,7 +15,7 @@ const WeatherAlert: React.FC = () => {
       data.alerts.alert.forEach((alert) => {
         toast(
           (t) => (
-            <div className="">
+            <div data-testid="auto_notify" className="">
               <div className="flex justify-end">
                 <Button
                   onClick={() => toast.dismiss(t.id)}
@@ -48,7 +48,7 @@ const WeatherAlert: React.FC = () => {
   }, [data]);
 
   if (isError) {
-    return <div>Error: {isError}</div>;
+    return <div data-testid="weatherAlert_error">Error: {isError}</div>;
   }
 
   const alerts = data?.alerts?.alert || [];
@@ -62,7 +62,7 @@ const WeatherAlert: React.FC = () => {
     } else {
       toast(
         (t) => (
-          <div>
+          <div data-testid="manual_notify">
             <div className="flex justify-end">
               <Button
                 onClick={() => toast.dismiss(t.id)}
@@ -100,7 +100,7 @@ const WeatherAlert: React.FC = () => {
   };
 
   return (
-    <div>
+    <div data-testid="weatherAlert_component">
       <Toaster
         toastOptions={{
           className:
@@ -108,6 +108,7 @@ const WeatherAlert: React.FC = () => {
         }}
       />
       <Button
+        testid="bell_btn"
         className=""
         description=""
         onClick={handleBellClick}
