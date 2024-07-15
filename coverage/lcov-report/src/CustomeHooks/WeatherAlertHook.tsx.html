@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">56.41% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">22/39</span>
+            <span class="fraction">39/39</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/0</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/1</span>
+            <span class="fraction">2/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">56.41% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">22/39</span>
+            <span class="fraction">39/39</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line medium"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,23 +120,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useQuery } from "@tanstack/react-query";
@@ -152,30 +152,30 @@ interface Alert {
   desc: string;
 }
 &nbsp;
-interface WeatherApiResponse {
+export interface WeatherApiResponse {
   alerts: {
     alert: Alert[];
   };
 }
 &nbsp;
-const useWeatherAlert = <span class="fstat-no" title="function not covered" >({</span>
-<span class="cstat-no" title="statement not covered" >  searchCity,</span>
-<span class="cstat-no" title="statement not covered" >}: UseWeatherAlertHook): {</span>
-<span class="cstat-no" title="statement not covered" >  isLoading: boolean;</span>
-<span class="cstat-no" title="statement not covered" >  isError: boolean;</span>
-<span class="cstat-no" title="statement not covered" >  data: WeatherApiResponse | undefined;</span>
-<span class="cstat-no" title="statement not covered" >} =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  const { isLoading, isError, data } = useQuery&lt;WeatherApiResponse&gt;({</span>
-<span class="cstat-no" title="statement not covered" >    queryKey: ["WeatherAlerts", searchCity],</span>
-<span class="cstat-no" title="statement not covered" >    queryFn: () =&gt;</span>
-<span class="cstat-no" title="statement not covered" >      fetch(</span>
-<span class="cstat-no" title="statement not covered" >        `http://api.weatherapi.com/v1/forecast.json?key=${ALERT_API_KEY}&amp;q=${searchCity}&amp;alerts=yes`,</span>
-<span class="cstat-no" title="statement not covered" >      ).then((res) =&gt; res.json()),</span>
-<span class="cstat-no" title="statement not covered" >    enabled: !!searchCity,</span>
-<span class="cstat-no" title="statement not covered" >  });</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return { isLoading, isError, data };</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+const useWeatherAlert = ({
+  searchCity,
+}: UseWeatherAlertHook): {
+  isLoading: boolean;
+  isError: boolean;
+  data: WeatherApiResponse | undefined;
+} =&gt; {
+  const { isLoading, isError, data } = useQuery&lt;WeatherApiResponse&gt;({
+    queryKey: ["WeatherAlerts", searchCity],
+    queryFn: () =&gt;
+      fetch(
+        `http://api.weatherapi.com/v1/forecast.json?key=${ALERT_API_KEY}&amp;q=${searchCity}&amp;alerts=yes`,
+      ).then((res) =&gt; res.json()),
+    enabled: !!searchCity,
+  });
+&nbsp;
+  return { isLoading, isError, data };
+};
 &nbsp;
 export default useWeatherAlert;
 &nbsp;</pre></td></tr></table></pre>
@@ -192,7 +192,7 @@ export default useWeatherAlert;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-13T23:21:37.503Z
+      at 2024-07-15T14:35:11.659Z
     </div>
     <script src="../../prettify.js"></script>
     <script>
