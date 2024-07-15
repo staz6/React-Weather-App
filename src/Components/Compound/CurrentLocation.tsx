@@ -17,12 +17,7 @@ const CurrentLocation: React.FC = () => {
   };
 
   const onError = (error: GeolocationPositionError): void => {
-    if (error.code === error.PERMISSION_DENIED) {
-      // eslint-disable-next-line no-alert
-      alert(
-        "You have denied access to your location. Please enable it to use this feature.",
-      );
-    } else {
+    if (error) {
       // eslint-disable-next-line no-alert
       alert("Geolocation is not enabled or not supported by this browser.");
     }
@@ -41,6 +36,7 @@ const CurrentLocation: React.FC = () => {
 
   return (
     <Button
+      testid="location_btn"
       description=""
       className=""
       onClick={handleLocation}
