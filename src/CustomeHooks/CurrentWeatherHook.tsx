@@ -3,7 +3,7 @@ import axios from "axios";
 import { useMemo } from "react";
 import API_KEY from "../ApiConfig/ApiConfig";
 
-interface WeatherData {
+export interface WeatherData {
   main: {
     temp: number;
     humidity: number;

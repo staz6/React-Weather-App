@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent } from "@testing-library/react";
-import Button from "../Shared/Button"; // Adjust the import path as per your project structure
+import Button from "../Components/Shared/Button";
 
 describe("Button Component", () => {
   it("renders button correctly with description and icon", () => {

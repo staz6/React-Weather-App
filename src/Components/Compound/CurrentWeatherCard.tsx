@@ -23,13 +23,13 @@ const CurrentWeatherCard: React.FC = () => {
   const [showWeather, setShowWeather] = useState<ShowWeatherType | null>(null);
   const { searchCity, setCurrentWeatherData, timeStamp, weatherForecastData } =
     useWeatherContext();
-  const { weatherData, isLoading, isError } = useCurrentWeather(searchCity);
+  const { weatherData, isError } = useCurrentWeather(searchCity);
 
   useEffect(() => {
     if (weatherData) {
       if (timeStamp && weatherForecastData) {
         const selectedDayWeather = weatherForecastData.filter(
-          (weather) => weather.dt_txt === timeStamp,
+          (weather) => weather.dt_txt === timeStamp
         );
         setShowWeather(selectedDayWeather[0]);
         setCurrentWeatherData(selectedDayWeather[0]);
@@ -40,11 +40,7 @@ const CurrentWeatherCard: React.FC = () => {
     }
   }, [timeStamp, weatherData, weatherForecastData, setCurrentWeatherData]);
 
-  if (isLoading) return <h1>Loading....</h1>;
   if (isError) return <h1>No Such City Exist</h1>;
-  if (!searchCity) {
-    return <h1>No city searched</h1>;
-  }
 
   const iconUrl = showWeather?.weather?.[0]?.icon
     ? `http://openweathermap.org/img/wn/${showWeather.weather[0].icon}@2x.png`
@@ -54,10 +50,18 @@ const CurrentWeatherCard: React.FC = () => {
 
   return (
     <div className="px-md-10 px-5 2xl:px-12 relative -top-5">
-      <img className="w-auto h-[180px] object-contain" src={iconUrl} alt="" />
+      <img
+        data-testid="WeatherIcon"
+        className="w-auto h-[180px] object-contain"
+        src={iconUrl}
+        alt=""
+      />
 
       <div className="text-white pl-5 font-sans">
-        <h1 className="text-9xl leading-none relative top-temp-top font-extralight mb-3">
+        <h1
+          data-testid="temperature"
+          className="text-9xl leading-none relative top-temp-top font-extralight mb-3"
+        >
           {convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
           <sup className="text-3xl font-normal top-custom-super pl-4 align-super">
             °C

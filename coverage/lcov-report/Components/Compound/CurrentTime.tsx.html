@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>
-      Code coverage report for src/CustomeHooks/CurrentLocationHook.tsx
-    </title>
+    <title>Code coverage report for Components/Compound/CurrentTime.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -21,31 +19,31 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">src/CustomeHooks</a> CurrentLocationHook.tsx
+          <a href="index.html">Components/Compound</a> CurrentTime.tsx
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">39.13% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">31/31</span>
+            <span class="fraction">9/23</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">7/7</span>
+            <span class="fraction">0/0</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">0/1</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">39.13% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">31/31</span>
+            <span class="fraction">9/23</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line low"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -84,15 +82,7 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -100,60 +90,44 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useQuery } from "@tanstack/react-query";
-import API_KEY from "../ApiConfig/ApiConfig";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect } from "react";
+import dayjs from "dayjs";
 &nbsp;
-interface UseCityNameFetchProps {
-  lat: number | null;
-  lon: number | null;
+interface TimeProps {
+  className: string;
 }
 &nbsp;
-const useCityNameFetch = ({
-  lat,
-  lon,
-}: UseCityNameFetchProps): {
-  cityName: string;
-  isLoading: boolean;
-} =&gt; {
-  const { data, isLoading } = useQuery&lt;{ name: string }&gt;({
-    queryKey: ["location", lat, lon],
-    queryFn: () =&gt;
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&amp;lon=${lon}&amp;appid=${API_KEY}`,
-      ).then((res) =&gt; res.json()),
-    enabled: !!lat &amp;&amp; !!lon,
-  });
-&nbsp;
-  return {
-    cityName: data?.name || "",
-    isLoading,
-  };
-};
-&nbsp;
-export default useCityNameFetch;
+const CurrentTime: React.FC&lt;TimeProps&gt; = <span class="fstat-no" title="function not covered" >({ className = "" }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  const [currentTime, setCurrentTime] = React.useState&lt;string&gt;(</span>
+<span class="cstat-no" title="statement not covered" >    dayjs().format("h:mm A"),</span>
+<span class="cstat-no" title="statement not covered" >  );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const interval = setInterval(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      setCurrentTime(dayjs().format("h:mm A"));</span>
+<span class="cstat-no" title="statement not covered" >    }, 60000);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return () =&gt; clearInterval(interval);</span>
+<span class="cstat-no" title="statement not covered" >  }, [currentTime]);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return &lt;span className={className}&gt;{currentTime}&lt;/span&gt;;</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+export default CurrentTime;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -168,7 +142,7 @@ export default useCityNameFetch;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-16T16:42:11.174Z
+      at 2024-07-16T16:41:30.489Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

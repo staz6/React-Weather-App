@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor } from "@testing-library/react";
-import Input from "../Shared/Input";
+import Input from "../Components/Shared/Input";
 import "@testing-library/jest-dom";
 
 describe("Input Component", () => {
