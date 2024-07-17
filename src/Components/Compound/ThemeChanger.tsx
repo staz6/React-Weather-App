@@ -8,6 +8,7 @@ const ThemeChanger: React.FC = () => {
   const { toggleDarkTheme } = useTheme();
   return (
     <Button
+      testid="ThemeChanger"
       icon=""
       className="fixed bottom-3 flex justify-between z-50 w-20 border rounded-2xl"
       description=""
@@ -17,11 +18,13 @@ const ThemeChanger: React.FC = () => {
         className="m-auto   dark:bg-transparent bg-yellow-300 w-10 transition duration-300  rounded-2xl"
         color="white"
         size={24}
+        id="BiSun"
       />
       <FaMoon
         className="m-auto dark:bg-black bg-transparent w-10 transition duration-300  rounded-2xl"
         color="white"
         size={21}
+        id="FaMoon"
       />
     </Button>
   );

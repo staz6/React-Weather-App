@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Code coverage report for Components/Shared/Button.tsx</title>
+    <title>Code coverage report for Components/Compound/ThemeChanger.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,19 +19,19 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">Components/Shared</a> Button.tsx
+          <a href="index.html">Components/Compound</a> ThemeChanger.tsx
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">32/32</span>
+            <span class="fraction">33/33</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">16.66% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">1/6</span>
+            <span class="fraction">1/1</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -43,7 +43,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">32/32</span>
+            <span class="fraction">33/33</span>
           </div>
         </div>
         <p class="quiet">
@@ -91,70 +91,73 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable react/require-default-props */
-import React from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import { BiSun } from "react-icons/bi";
+import { FaMoon } from "react-icons/fa";
+import Button from "../Shared/Button";
+import { useTheme } from "../../Context/ThemeChangerContext";
 &nbsp;
-export interface ButtonProps {
-  onClick: () =&gt; void;
-  icon: React.ReactNode | null;
-  className: string;
-  description: string;
-  children?: React.ReactNode;
-  testid?: string;
-}
+const ThemeChanger: React.FC = () =&gt; {
+  const { toggleDarkTheme } = useTheme();
+  return (
+    &lt;Button
+    testid="ThemeChanger"
+      icon=""
+      className="fixed bottom-3 flex justify-between z-50 w-20 border rounded-2xl"
+      description=""
+      onClick={toggleDarkTheme}
+    &gt;
+      &lt;BiSun
+        className="m-auto   dark:bg-transparent bg-yellow-300 w-10 transition duration-300  rounded-2xl"
+        color="white"
+        size={24}
+        id="BiSun"
+      /&gt;
+      &lt;FaMoon
+        className="m-auto dark:bg-black bg-transparent w-10 transition duration-300  rounded-2xl"
+        color="white"
+        size={21}
+        id="FaMoon"
+      /&gt;
+    &lt;/Button&gt;
+  );
+};
 &nbsp;
-const Button: React.FC&lt;ButtonProps&gt; = ({
-  onClick,
-  icon,
-  className<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  description<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  children<span class="branch-0 cbranch-no" title="branch not covered" > = null,</span>
-  testid<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-}) =&gt; (
-  &lt;button
-    type="button"
-    className={className}
-    data-testid={testid}
-    onClick={onClick}
-  &gt;
-    {description<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; &lt;span className="ml-2"&gt;{description}&lt;/span&gt;}</span> {icon}
-    {children}
-  &lt;/button&gt;
-);
-&nbsp;
-export default Button;
+export default ThemeChanger;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
