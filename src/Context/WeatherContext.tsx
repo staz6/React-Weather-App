@@ -33,7 +33,7 @@ interface WeatherData {
   };
 }
 
-interface ForecastData {
+export interface ForecastData {
   sys: {
     pod: string;
   };
@@ -56,7 +56,7 @@ interface ForecastData {
   };
 }
 
-interface WeatherContextProps {
+export interface WeatherContextProps {
   searchCity: string;
   setSearchCity: (searchCity: string) => void;
   currentWeatherData: WeatherData | null;
@@ -69,7 +69,7 @@ interface WeatherContextProps {
   setFavCity: Dispatch<SetStateAction<string[]>>;
 }
 
-const WeatherContext = createContext<WeatherContextProps | undefined>(
+export const WeatherContext = createContext<WeatherContextProps | undefined>(
   undefined,
 );
 

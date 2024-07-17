@@ -29,9 +29,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">75% </span>
+            <span class="strong">80% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">3/4</span>
+            <span class="fraction">4/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -256,51 +256,51 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {
   createContext,
   useState,
@@ -336,7 +336,7 @@ interface WeatherData {
   };
 }
 &nbsp;
-interface ForecastData {
+export interface ForecastData {
   sys: {
     pod: string;
   };
@@ -359,7 +359,7 @@ interface ForecastData {
   };
 }
 &nbsp;
-interface WeatherContextProps {
+export interface WeatherContextProps {
   searchCity: string;
   setSearchCity: (searchCity: string) =&gt; void;
   currentWeatherData: WeatherData | null;
@@ -372,8 +372,8 @@ interface WeatherContextProps {
   setFavCity: Dispatch&lt;SetStateAction&lt;string[]&gt;&gt;;
 }
 &nbsp;
-const WeatherContext = createContext&lt;WeatherContextProps | undefined&gt;(
-  undefined,
+export const WeatherContext = createContext&lt;WeatherContextProps | undefined&gt;(
+  undefined
 );
 &nbsp;
 const WeatherContextProvider: FC&lt;{ children: ReactNode }&gt; = ({ children }) =&gt; {
@@ -399,7 +399,7 @@ const WeatherContextProvider: FC&lt;{ children: ReactNode }&gt; = ({ children })
       favCity,
       setFavCity,
     }),
-    [searchCity, currentWeatherData, timeStamp, weatherForecastData, favCity],
+    [searchCity, currentWeatherData, timeStamp, weatherForecastData, favCity]
   );
 &nbsp;
   return (
@@ -410,14 +410,14 @@ const WeatherContextProvider: FC&lt;{ children: ReactNode }&gt; = ({ children })
 };
 &nbsp;
 export const MemoizedWeatherContextProvider = React.memo(
-  WeatherContextProvider,
+  WeatherContextProvider
 );
 &nbsp;
 export const useWeatherContext = (): WeatherContextProps =&gt; {
   const context = useContext(WeatherContext);
   if (context === undefined) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-<span class="cstat-no" title="statement not covered" >      "useWeatherContext must be used within a WeatherContextProvider",</span>
+<span class="cstat-no" title="statement not covered" >      "useWeatherContext must be used within a WeatherContextProvider"</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
   return context;
@@ -436,7 +436,7 @@ export const useWeatherContext = (): WeatherContextProps =&gt; {
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-16T16:41:30.489Z
+      at 2024-07-17T13:51:40.141Z
     </div>
     <script src="../prettify.js"></script>
     <script>
