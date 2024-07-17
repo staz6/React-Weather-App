@@ -8,7 +8,7 @@ interface Metric {
   unit: string;
 }
 
-interface WeatherData {
+export interface WeatherData {
   rain?: { "1h": number };
   wind: { speed: number };
   main: { humidity: number };
