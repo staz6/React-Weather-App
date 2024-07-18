@@ -19,7 +19,7 @@ const SunEvent: React.FC<Props> = ({ id, event }) => {
         {event.name}
       </h1>
       <div
-        className={`dark:bg-linearSideDark bg-linearSide  ${id === 1 ? "h-56" : "h-52"} ${id !== 1 ? "px-3" : "px-0"}  rounded-[4rem] py-6`}
+        className={`dark:bg-linearSideDark bg-linearSide  ${id === 1 ? "h-56 px-0" : "h-52 px-3"}  rounded-[4rem] py-6`}
       >
         <img className="h-10 m-auto  w-16" src={clockImg} alt="" />
         <h2 className={`${id === 1 ? "mt-14" : "mt-12 "}`}>
