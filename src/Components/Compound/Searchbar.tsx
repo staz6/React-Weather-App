@@ -87,7 +87,7 @@ const Searchbar: React.FC = () => {
           </span>
         </>
       ) : (
-        <div className="flex-col relative ">
+        <div className="flex-col relative w-full">
           <Input
             onChange={(newValue) =>
               dispatch({ type: "SET_CITY", payload: newValue })
@@ -98,7 +98,7 @@ const Searchbar: React.FC = () => {
             value={city}
             placeholder="Enter City"
             type="string"
-            className={`bg-white z-10 text-zinc-800 dark:text-white p-2 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+            className={`bg-white z-10 text-zinc-800 dark:text-white p-1.5 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
           />
           {showFavCities && favCity.length !== 0 && (
             <div
