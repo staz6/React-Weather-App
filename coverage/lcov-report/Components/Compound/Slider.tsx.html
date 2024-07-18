@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Code coverage report for Components/Compound/CurrentTime.tsx</title>
+    <title>Code coverage report for Components/Compound/Slider.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,19 +19,19 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">Components/Compound</a> CurrentTime.tsx
+          <a href="index.html">Components/Compound</a> Slider.tsx
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">95.65% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">22/23</span>
+            <span class="fraction">32/32</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">75% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">3/4</span>
+            <span class="fraction">1/1</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">95.65% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">22/23</span>
+            <span class="fraction">32/32</span>
           </div>
         </div>
         <p class="quiet">
@@ -82,7 +82,18 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -95,39 +106,55 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect } from "react";
-import dayjs from "dayjs";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import Slider, { Settings } from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 &nbsp;
-interface TimeProps {
-  className: string;
+interface SimpleSliderProps {
+  children: React.ReactNode;
 }
 &nbsp;
-const CurrentTime: React.FC&lt;TimeProps&gt; = ({ className<span class="branch-0 cbranch-no" title="branch not covered" > = "" </span>}) =&gt; {
-  const [currentTime, setCurrentTime] = React.useState&lt;string&gt;(
-    dayjs().format("h:mm A"),
+const SimpleSlider: React.FC&lt;SimpleSliderProps&gt; = ({ children }) =&gt; {
+  const settings: Settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+&nbsp;
+  return (
+    &lt;Slider
+      dots={settings.dots}
+      infinite={settings.infinite}
+      speed={settings.speed}
+      slidesToShow={settings.slidesToShow}
+      slidesToScroll={settings.slidesToScroll}
+    &gt;
+      {children}
+    &lt;/Slider&gt;
   );
-&nbsp;
-  useEffect(() =&gt; {
-    const interval = setInterval(() =&gt; {
-<span class="cstat-no" title="statement not covered" >      setCurrentTime(dayjs().format("h:mm A"));</span>
-    }, 60000);
-&nbsp;
-    return () =&gt; clearInterval(interval);
-  }, [currentTime]);
-&nbsp;
-  return &lt;span className={className}&gt;{currentTime}&lt;/span&gt;;
 };
-export default CurrentTime;
+&nbsp;
+export default SimpleSlider;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -142,7 +169,7 @@ export default CurrentTime;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-18T18:18:47.077Z
+      at 2024-07-18T18:39:53.147Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

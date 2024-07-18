@@ -6,7 +6,7 @@ import useWeatherForecast from "../../CustomeHooks/WeatherForecastHook";
 
 const WeatherForecastCard: React.FC = () => {
   const { searchCity, setWeatherForecastData } = useWeatherContext();
-  const { forecastData, filteredData, isLoading, isError, isSuccess } =
+  const { forecastData, filteredData, isError, isSuccess } =
     useWeatherForecast(searchCity);
 
   useEffect(() => {
@@ -15,7 +15,6 @@ const WeatherForecastCard: React.FC = () => {
     }
   }, [filteredData, isSuccess, setWeatherForecastData]);
 
-  if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Please Enter Correct City</div>;
 
   return (
