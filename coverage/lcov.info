@@ -1,9 +1,9 @@
 TN:
-SF:src\Components\lazyloaded\LazyWeatherForecastCard.tsx
-FN:3,LazyWeatherForecastCard
+SF:src\Components\lazyloaded\LazyWeatherMetrics.tsx
+FN:3,LazyWeatherMetrics
 FNF:1
 FNH:1
-FNDA:1,LazyWeatherForecastCard
+FNDA:1,LazyWeatherMetrics
 DA:1,1
 DA:2,1
 DA:3,1
