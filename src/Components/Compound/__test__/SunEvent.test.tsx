@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import SunEvent from "../Components/Compound/SunEvent";
+import SunEvent from "../SunEvent";
 import "@testing-library/jest-dom";
 
-jest.mock("../assets/Group 657 (1).png", () => "mock-image-path.png");
+jest.mock("../../../assets/Group 657 (1).png", () => "mock-image-path.png");
 
 describe("SunEvent Component", () => {
   const mockEvent = {

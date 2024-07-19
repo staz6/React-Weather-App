@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import Searchbar from "../Compound/Searchbar";
+import Searchbar from "./Searchbar";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import LazyCurrentWeatherCard from "../lazyloaded/LazyCurrentWeatherCard";
 import LazyTemperatureChart from "../lazyloaded/LazyTemperatureChart";

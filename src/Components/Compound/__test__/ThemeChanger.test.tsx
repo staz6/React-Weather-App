@@ -1,6 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import ThemeChanger from "../Components/Compound/ThemeChanger";
-import { ThemeContext, ThemeProvider } from "../Context/ThemeChangerContext";
+import ThemeChanger from "../ThemeChanger";
+import {
+  ThemeContext,
+  ThemeProvider,
+} from "../../../Context/ThemeChangerContext";
 import "@testing-library/jest-dom";
 
 test("Testing rendering of UI elements", () => {

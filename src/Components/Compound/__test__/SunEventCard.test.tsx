@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import SuneventCard from "../Components/Compound/SuneventCard";
+import SuneventCard from "../SuneventCard";
 import "@testing-library/jest-dom";
 import {
   useWeatherContext,
   WeatherContextProps,
-} from "../Context/WeatherContext";
+} from "../../../Context/WeatherContext";
 
-jest.mock("../Context/WeatherContext", () => ({
+jest.mock("../../../Context/WeatherContext", () => ({
   useWeatherContext: jest.fn(),
 }));
 
-jest.mock("../HelperFunctions/suneventtimes", () => ({
+jest.mock("../../../HelperFunctions/Suneventtimes", () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => [
     { name: "Sunrise", ampm: "5:00 AM", militaryTime: "05:00" },
@@ -19,7 +19,7 @@ jest.mock("../HelperFunctions/suneventtimes", () => ({
   ]),
 }));
 
-jest.mock("../Components/Compound/SunEvent", () => ({
+jest.mock("../SunEvent", () => ({
   __esModule: true,
   default: jest
     .fn()

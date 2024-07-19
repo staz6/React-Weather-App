@@ -1,11 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import * as OriginalRecharts from "recharts";
-import { ThemeContext, ThemeProvider } from "../Context/ThemeChangerContext";
+import {
+  ThemeContext,
+  ThemeProvider,
+} from "../../../Context/ThemeChangerContext";
 import {
   MemoizedWeatherContextProvider,
   WeatherContext,
-} from "../Context/WeatherContext";
-import TemperatureChart from "../Components/Compound/TemperatureChart";
+} from "../../../Context/WeatherContext";
+import TemperatureChart from "../TemperatureChart";
 import "@testing-library/jest-dom";
 
 Object.defineProperty(window, "matchMedia", {

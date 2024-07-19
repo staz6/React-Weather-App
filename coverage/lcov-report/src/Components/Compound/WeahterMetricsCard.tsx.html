@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Code coverage report for SuneventCard.tsx</title>
+    <title>
+      Code coverage report for src/Components/Compound/WeahterMetricsCard.tsx
+    </title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="prettify.css" />
-    <link rel="stylesheet" href="base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type="text/css">
       .coverage-summary .sorter {
-        background-image: url(sort-arrow-sprite.png);
+        background-image: url(../../../sort-arrow-sprite.png);
       }
     </style>
   </head>
@@ -17,18 +19,22 @@
   <body>
     <div class="wrapper">
       <div class="pad1">
-        <h1><a href="index.html">All files</a> SuneventCard.tsx</h1>
+        <h1>
+          <a href="../../../index.html">All files</a> /
+          <a href="index.html">src/Components/Compound</a>
+          WeahterMetricsCard.tsx
+        </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">39/39</span>
+            <span class="fraction">28/28</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">90% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">9/10</span>
+            <span class="fraction">5/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -40,7 +46,7 @@
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">39/39</span>
+            <span class="fraction">28/28</span>
           </div>
         </div>
         <p class="quiet">
@@ -84,20 +90,7 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -111,22 +104,10 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -134,45 +115,37 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from "react";
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
 import { useWeatherContext } from "../../Context/WeatherContext";
-import suneventtimes from "../../HelperFunctions/Suneventtimes";
-import SunEvent from "./SunEvent";
+import calculateWeatherMetrics from "../../HelperFunctions/CalculateWeatherMetrics";
 &nbsp;
-interface SunEventData {
-  sys: {
-    sunrise: number;
-    sunset: number;
-  };
-}
-&nbsp;
-const SuneventCard: React.FC = () =&gt; {
+const WeatherMetricsCard: React.FC = () =&gt; {
   const { currentWeatherData } = useWeatherContext();
-  const [prevSunevent, setPrevsunevent] = useState&lt;SunEventData | null&gt;(null);
-  useEffect(() =&gt; {
-    if (
-      currentWeatherData?.sys.sunrise !== undefined &amp;&amp;
-      currentWeatherData<span class="branch-0 cbranch-no" title="branch not covered" >?.s</span>ys.sunset !== undefined
-    ) {
-      setPrevsunevent({
-        sys: {
-          sunrise: currentWeatherData.sys.sunrise,
-          sunset: currentWeatherData.sys.sunset,
-        },
-      });
-    }
-  }, [currentWeatherData]);
+&nbsp;
+  const metrics = calculateWeatherMetrics(currentWeatherData);
   return (
-    &lt;div className="flex justify-center gap-5 md:gap-10 mt-16"&gt;
-      {prevSunevent &amp;&amp;
-        suneventtimes(prevSunevent).map((event, index) =&gt; (
-          &lt;SunEvent event={event} key={index} id={index} /&gt;
-        ))}
+    &lt;div className="flex  items-center m-auto justify-center mt-10 sm:gap-8 gap-5  text-gray-200 text-sm sm:text-md"&gt;
+      {metrics.map((Item, index) =&gt; (
+        &lt;div className="flex items-center sm:gap-8 gap-5" key={index}&gt;
+          &lt;div key={index} className="flex items-center sm:gap-2  gap-2"&gt;
+            &lt;Item.Icon className="sm:text-4xl text-xl" color="white" /&gt;
+            &lt;h3&gt;
+              &lt;span className="sm:mr-2 sm:text-xl"&gt;
+                {Item.value ? Item.value : "NA"}
+              &lt;/span&gt;{" "}
+              &lt;span className="sm:text-xl"&gt;{Item.unit}&lt;/span&gt;
+            &lt;/h3&gt;
+          &lt;/div&gt;{" "}
+          {index !== 2 &amp;&amp; "|"}
+        &lt;/div&gt;
+      ))}
     &lt;/div&gt;
   );
 };
-&nbsp;
-export default SuneventCard;
+export default WeatherMetricsCard;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -187,15 +160,15 @@ export default SuneventCard;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2024-07-19T10:02:43.463Z
+      at 2024-07-19T10:37:49.229Z
     </div>
-    <script src="prettify.js"></script>
+    <script src="../../../prettify.js"></script>
     <script>
       window.onload = function () {
         prettyPrint();
       };
     </script>
-    <script src="sorter.js"></script>
-    <script src="block-navigation.js"></script>
+    <script src="../../../sorter.js"></script>
+    <script src="../../../block-navigation.js"></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "../Context/ThemeChangerContext";
-import CurrentLocation from "../Components/Compound/CurrentLocation";
-import { MemoizedWeatherContextProvider } from "../Context/WeatherContext";
+import { ThemeProvider } from "../../../Context/ThemeChangerContext";
+import CurrentLocation from "../CurrentLocation";
+import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext";
 
 interface MockGeolocation {
   getCurrentPosition: jest.Mock;

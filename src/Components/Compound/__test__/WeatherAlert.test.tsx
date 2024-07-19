@@ -1,13 +1,13 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import WeatherAlert from "../Components/Compound/WeatherAlert";
-import { ThemeProvider } from "../Context/ThemeChangerContext";
-import { MemoizedWeatherContextProvider } from "../Context/WeatherContext";
+import WeatherAlert from "../WeatherAlert";
+import { ThemeProvider } from "../../../Context/ThemeChangerContext";
+import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext";
 import "@testing-library/jest-dom";
-import useWeatherAlert from "../CustomeHooks/WeatherAlertHook";
+import useWeatherAlert from "../../../CustomeHooks/WeatherAlertHook";
 
 const queryClient = new QueryClient();
-jest.mock("../CustomeHooks/WeatherAlertHook");
+jest.mock("../../../CustomeHooks/WeatherAlertHook");
 
 test("Testing weather alert notification when no notification available", () => {
   (useWeatherAlert as jest.Mock).mockReturnValue({
@@ -101,7 +101,7 @@ test("Testing weather alert error ", async () => {
 });
 
 test("Testing weather alert notification when no notification available", () => {
-  jest.mock("../CustomeHooks/WeatherAlertHook");
+  jest.mock("../../../CustomeHooks/WeatherAlertHook.tsx");
   (useWeatherAlert as jest.Mock).mockReturnValue({
     isLoading: false,
     isError: false,

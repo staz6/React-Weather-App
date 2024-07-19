@@ -8,7 +8,6 @@ const WeatherForecastCard: React.FC = () => {
   const { searchCity, setWeatherForecastData } = useWeatherContext();
   const { forecastData, filteredData, isError, isSuccess } =
     useWeatherForecast(searchCity);
-
   useEffect(() => {
     if (isSuccess && filteredData) {
       setWeatherForecastData(filteredData);

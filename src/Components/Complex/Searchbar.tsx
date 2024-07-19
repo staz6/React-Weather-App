@@ -3,9 +3,9 @@ import { BiSearch } from "react-icons/bi";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
-import WeatherAlert from "./WeatherAlert";
-import FavCities from "./FavCities";
-import CurrentLocation from "./CurrentLocation";
+import WeatherAlert from "../Compound/WeatherAlert";
+import FavCities from "../Compound/FavCities";
+import CurrentLocation from "../Compound/CurrentLocation";
 
 interface State {
   city: string;

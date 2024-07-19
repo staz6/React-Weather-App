@@ -4,8 +4,8 @@ import "@testing-library/jest-dom";
 import {
   MemoizedWeatherContextProvider,
   WeatherContext,
-} from "../Context/WeatherContext";
-import WeatherForecastItem from "../Components/Compound/WeatherForecastItem";
+} from "../../../Context/WeatherContext";
+import WeatherForecastItem from "../WeatherForecastItem";
 
 const mockItem = {
   temp: 20,

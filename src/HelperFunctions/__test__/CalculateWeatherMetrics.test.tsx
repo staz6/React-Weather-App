@@ -3,7 +3,7 @@ import { WiHumidity } from "react-icons/wi";
 import { BsCloudRainHeavy } from "react-icons/bs";
 import calculateWeatherMetrics, {
   WeatherData,
-} from "../HelperFunctions/CalculateWeatherMetrics";
+} from "../CalculateWeatherMetrics";
 
 it("returns correct metrics for complete weather data", () => {
   const data: WeatherData = {

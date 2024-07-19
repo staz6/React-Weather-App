@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import WeatherMetricsCard from "../Components/Compound/WeahterMetricsCard";
+import WeatherMetricsCard from "../WeahterMetricsCard";
 import "@testing-library/jest-dom";
-import { MemoizedWeatherContextProvider } from "../Context/WeatherContext";
+import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext";
 
-jest.mock("../HelperFunctions/CalculateWeatherMetrics", () => ({
+jest.mock("../../../HelperFunctions/CalculateWeatherMetrics", () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => [
     { Icon: () => <div>Icon1</div>, value: 25, unit: "km/h" },

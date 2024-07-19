@@ -1,7 +1,7 @@
 import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import dayjs from "dayjs";
-import CurrentTime from "../Components/Compound/CurrentTime";
+import CurrentTime from "../CurrentTime";
 
 jest.useFakeTimers();
 

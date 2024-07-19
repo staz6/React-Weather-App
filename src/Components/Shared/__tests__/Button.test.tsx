@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent } from "@testing-library/react";
-import Button from "../Components/Shared/Button";
+import Button from "../Button";
 
 describe("Button Component", () => {
   it("renders button correctly with description and icon", () => {

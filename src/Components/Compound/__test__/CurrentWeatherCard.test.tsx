@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "../Context/ThemeChangerContext";
-import { MemoizedWeatherContextProvider } from "../Context/WeatherContext";
-import CurrentWeatherCard from "../Components/Compound/CurrentWeatherCard";
-import useCurrentWeather from "../CustomeHooks/CurrentWeatherHook";
+import { ThemeProvider } from "../../../Context/ThemeChangerContext";
+import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext";
+import CurrentWeatherCard from "../CurrentWeatherCard";
+import useCurrentWeather from "../../../CustomeHooks/CurrentWeatherHook";
 import "@testing-library/jest-dom";
 import convertKelvinToCelsius, {
   getDayOfWeek,
-} from "../HelperFunctions/Helper";
+} from "../../../HelperFunctions/Helper";
 
 const queryClient = new QueryClient();
 jest.mock("axios");
-jest.mock("../CustomeHooks/CurrentWeatherHook");
+jest.mock("../../../CustomeHooks/CurrentWeatherHook");
 
 test("Testing rendering of ui elements", () => {
   (useCurrentWeather as jest.Mock).mockReturnValue({

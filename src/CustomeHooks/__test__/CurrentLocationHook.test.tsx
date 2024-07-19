@@ -1,6 +1,6 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import useCityNameFetch from "../CustomeHooks/CurrentLocationHook";
+import useCityNameFetch from "../CurrentLocationHook";
 
 const queryClient = new QueryClient();
 
