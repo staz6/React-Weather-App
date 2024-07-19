@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Code coverage report for Components/Shared/Button.tsx</title>
+    <title>Code coverage report for Components/Compound/FavCities.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,31 +19,31 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">Components/Shared</a> Button.tsx
+          <a href="index.html">Components/Compound</a> FavCities.tsx
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">32/32</span>
+            <span class="fraction">30/30</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">16.66% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">1/6</span>
+            <span class="fraction">10/10</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/1</span>
+            <span class="fraction">2/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">32/32</span>
+            <span class="fraction">30/30</span>
           </div>
         </div>
         <p class="quiet">
@@ -89,16 +89,7 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -112,49 +103,52 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable react/require-default-props */
-import React from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from "react";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import Button from "../Shared/Button";
+import { useWeatherContext } from "../../Context/WeatherContext";
 &nbsp;
-export interface ButtonProps {
-  onClick: () =&gt; void;
-  icon: React.ReactNode | null;
-  className: string;
-  description: string;
-  children?: React.ReactNode;
-  testid?: string;
-}
+const FavCities: React.FC = () =&gt; {
+  const { searchCity, favCity, setFavCity } = useWeatherContext();
 &nbsp;
-const Button: React.FC&lt;ButtonProps&gt; = ({
-  onClick,
-  icon,
-  className<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  description<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-  children = null<span class="branch-0 cbranch-no" title="branch not covered" >,</span>
-  testid<span class="branch-0 cbranch-no" title="branch not covered" > = "",</span>
-}) =&gt; (
-  &lt;button
-    type="button"
-    className={className}
-    data-testid={testid}
-    onClick={onClick}
-  &gt;
-    {description<span class="branch-0 cbranch-no" title="branch not covered" > &amp;&amp; &lt;span className="ml-2"&gt;{description}&lt;/span&gt;}</span> {icon}
-    {children}
-  &lt;/button&gt;
-);
+  return (
+    &lt;Button
+      className="z-10"
+      testid="FavCity"
+      icon={
+        favCity.includes(searchCity) ? (
+          &lt;BsStarFill id="start_fill" color="yellow" size={22} /&gt;
+        ) : (
+          &lt;BsStar id="start_empty" size={22} color="white" /&gt;
+        )
+      }
+      description=""
+      onClick={() =&gt;
+        !favCity.includes(searchCity) &amp;&amp; searchCity !== ""
+          ? setFavCity((prev) =&gt; [...prev, searchCity])
+          : setFavCity((prev) =&gt; prev.filter((e) =&gt; e !== searchCity))
+      }
+    /&gt;
+  );
+};
 &nbsp;
-export default Button;
+export default FavCities;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
