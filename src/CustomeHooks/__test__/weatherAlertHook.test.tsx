@@ -16,34 +16,36 @@ const mockFetch = (
   );
 };
 
-test("useWeatherAlert hook fetches data correctly with valid city", async () => {
-  const mockResponse: WeatherApiResponse = {
-    alerts: {
-      alert: [
-        {
-          category: "Wind",
-          headline: "Strong winds",
-          desc: "Secure loose objects",
-        },
-      ],
-    },
-  };
+describe("useWeatherAlert Hook Tests", () => {
+  test("useWeatherAlert hook fetches data correctly with valid city", async () => {
+    const mockResponse: WeatherApiResponse = {
+      alerts: {
+        alert: [
+          {
+            category: "Wind",
+            headline: "Strong winds",
+            desc: "Secure loose objects",
+          },
+        ],
+      },
+    };
 
-  mockFetch(mockResponse);
+    mockFetch(mockResponse);
 
-  const { result } = renderHook(
-    () => useWeatherAlert({ searchCity: "New York" }),
-    {
-      wrapper: ({ children }) => (
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
-      ),
-    },
-  );
+    const { result } = renderHook(
+      () => useWeatherAlert({ searchCity: "New York" }),
+      {
+        wrapper: ({ children }) => (
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        ),
+      },
+    );
 
-  await waitFor(() => expect(result.current.isLoading).toBe(false));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-  expect(result.current.data).toEqual(mockResponse);
-  expect(result.current.isError).toBe(false);
+    expect(result.current.data).toEqual(mockResponse);
+    expect(result.current.isError).toBe(false);
+  });
 });
