@@ -1,8 +1,6 @@
 import { waitFor, renderHook } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import useWeatherAlert, {
-  WeatherApiResponse,
-} from "../CustomeHooks/WeatherAlertHook";
+import useWeatherAlert, { WeatherApiResponse } from "../WeatherAlertHook";
 
 const queryClient = new QueryClient();
 
