@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiLocationOn } from "react-icons/ci";
 import Button from "../Shared/Button";
 import useCityNameFetch from "../../CustomeHooks/CurrentLocationHook";
@@ -8,9 +8,12 @@ const CurrentLocation: React.FC = () => {
   const [coordinates, setCoordinates] = useState({ lat: 0, lon: 0 });
   const { setSearchCity } = useWeatherContext();
   const { cityName } = useCityNameFetch(coordinates);
-  if (cityName) {
-    setSearchCity(cityName);
-  }
+  useEffect(() => {
+    if (cityName) {
+      setSearchCity(cityName);
+    }
+  }, [cityName, setSearchCity]);
+
   const onSuccess = (position: GeolocationPosition): void => {
     const { latitude, longitude } = position.coords;
     setCoordinates({ lat: latitude, lon: longitude });
