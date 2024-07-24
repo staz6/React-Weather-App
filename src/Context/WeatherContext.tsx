@@ -8,7 +8,7 @@ import React, {
   FC,
 } from "react";
 
-interface WeatherData {
+export interface WeatherData {
   main: {
     temp: number;
     humidity: number;
@@ -69,7 +69,7 @@ interface WeatherContextProps {
   setFavCity: Dispatch<SetStateAction<string[]>>;
 }
 
-const WeatherContext = createContext<WeatherContextProps | undefined>(
+export const WeatherContext = createContext<WeatherContextProps | undefined>(
   undefined,
 );
 
