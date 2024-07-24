@@ -24,20 +24,25 @@ const TemperatureChart: React.FC = () => {
       convertKelvinToCelsius(e.main.temp)?.toFixed() ?? "0",
     ),
   }));
+
   const formatYAxis = (tick: number): string => `${tick}°C`;
+
   return (
-    <div className="w-96">
+    <div data-testid="TemperatureChart" className="w-96">
       <ResponsiveContainer width="90%" height={270}>
-        <BarChart data={TemperatureData2}>
+        <BarChart data={TemperatureData2} id="Bargraph">
           <CartesianGrid
+            id="cartesian_grid"
             stroke={`${Darktheme ? "white" : "black"}`}
             strokeDasharray="3 3"
           />
           <XAxis
+            id="Xaxis"
             dataKey="day"
             tick={{ fill: `${Darktheme ? "white" : "black"}` }}
           />
           <YAxis
+            id="Yaxis"
             tick={{ fill: `${Darktheme ? "white" : "black"}` }}
             tickFormatter={formatYAxis}
           />
