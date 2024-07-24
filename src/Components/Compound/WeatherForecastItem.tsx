@@ -15,6 +15,7 @@ const WeatherForecastItem: React.FC<Props> = ({ item, animation = true }) => {
   const { settimeStamp, timeStamp } = useWeatherContext();
   return (
     <div
+      data-testid="WeatherForecastItem"
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
