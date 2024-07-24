@@ -56,7 +56,7 @@ interface ForecastData {
   };
 }
 
-interface WeatherContextProps {
+export interface WeatherContextProps {
   searchCity: string;
   setSearchCity: (searchCity: string) => void;
   currentWeatherData: WeatherData | null;
