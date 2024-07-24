@@ -69,7 +69,7 @@ interface WeatherContextProps {
   setFavCity: Dispatch<SetStateAction<string[]>>;
 }
 
-const WeatherContext = createContext<WeatherContextProps | undefined>(
+export const WeatherContext = createContext<WeatherContextProps | undefined>(
   undefined,
 );
 
