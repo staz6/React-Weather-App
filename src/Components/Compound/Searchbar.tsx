@@ -128,6 +128,7 @@ const Searchbar: React.FC = () => {
       <div className="flex items-center gap-4">
         <FavCities />
         <Button
+          testid="searchcity_input"
           description=""
           onClick={handleInput}
           icon={<BiSearch size={28} className="text-white" />}

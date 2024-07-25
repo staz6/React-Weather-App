@@ -13,6 +13,7 @@ const SunEvent: React.FC<Props> = ({ id, event }) => {
   const [time, period] = event.ampm.split(" ");
   return (
     <div
+      data-testid="sunevent"
       className={`relative text-center font-sans  text-white ${id === 1 ? "bottom-7" : ""}`}
     >
       <h1 className={`${id === 1 ? "text-xl" : "text-lg"} font-light mb-8`}>
