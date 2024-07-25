@@ -138,44 +138,45 @@ const customTemperatureChartProvider = (): JSX.Element => (
     <TemperatureChart />
   </WeatherContext.Provider>
 );
+describe("TemperatureChart component Tests", () => {
+  test("Testing rendering of ui elements", () => {
+    render(
+      <ThemeProvider>
+        <MemoizedWeatherContextProvider>
+          <TemperatureChart />
+        </MemoizedWeatherContextProvider>
+      </ThemeProvider>,
+    );
+    const temperatureChart = screen.getByTestId("TemperatureChart");
+    expect(temperatureChart).toBeInTheDocument();
+    const xaxis = document.querySelector("#Xaxis");
+    expect(xaxis).not.toBeInTheDocument();
+    const yaxis = document.querySelector("#Yaxis");
+    expect(yaxis).not.toBeInTheDocument();
+  });
+  test("Testing UI elements when weatherForecast data is available", () => {
+    render(<ThemeProvider>{customTemperatureChartProvider()}</ThemeProvider>);
+    const temperatureChart = screen.getByTestId("TemperatureChart");
+    expect(temperatureChart).toBeInTheDocument();
+    const xaxis = document.querySelector("#Xaxis");
+    expect(xaxis).toBeInTheDocument();
+    const yaxis = document.querySelector("#Yaxis");
+    expect(yaxis).toBeInTheDocument();
+  });
 
-test("Testing rendering of ui elements", () => {
-  render(
-    <ThemeProvider>
-      <MemoizedWeatherContextProvider>
-        <TemperatureChart />
-      </MemoizedWeatherContextProvider>
-    </ThemeProvider>,
-  );
-  const temperatureChart = screen.getByTestId("TemperatureChart");
-  expect(temperatureChart).toBeInTheDocument();
-  const xaxis = document.querySelector("#Xaxis");
-  expect(xaxis).not.toBeInTheDocument();
-  const yaxis = document.querySelector("#Yaxis");
-  expect(yaxis).not.toBeInTheDocument();
-});
-test("Testing UI elements when weatherForecast data is available", () => {
-  render(<ThemeProvider>{customTemperatureChartProvider()}</ThemeProvider>);
-  const temperatureChart = screen.getByTestId("TemperatureChart");
-  expect(temperatureChart).toBeInTheDocument();
-  const xaxis = document.querySelector("#Xaxis");
-  expect(xaxis).toBeInTheDocument();
-  const yaxis = document.querySelector("#Yaxis");
-  expect(yaxis).toBeInTheDocument();
-});
-
-test("Testing Theme Changing Functionality", () => {
-  render(
-    <ThemeContext.Provider value={{ Darktheme: true, toggleDarkTheme() {} }}>
-      {customTemperatureChartProvider()}
-    </ThemeContext.Provider>,
-  );
-  const temperatureChart = screen.getByTestId("TemperatureChart");
-  expect(temperatureChart).toBeInTheDocument();
-  const xaxis = document.querySelector("#Xaxis");
-  expect(xaxis).toBeInTheDocument();
-  const yaxis = document.querySelector("#Yaxis");
-  expect(yaxis).toBeInTheDocument();
-  const cartesianGrid = document.querySelector("#cartesian_grid");
-  expect(cartesianGrid).toHaveAttribute("stroke", "white");
+  test("Testing Theme Changing Functionality", () => {
+    render(
+      <ThemeContext.Provider value={{ Darktheme: true, toggleDarkTheme() {} }}>
+        {customTemperatureChartProvider()}
+      </ThemeContext.Provider>,
+    );
+    const temperatureChart = screen.getByTestId("TemperatureChart");
+    expect(temperatureChart).toBeInTheDocument();
+    const xaxis = document.querySelector("#Xaxis");
+    expect(xaxis).toBeInTheDocument();
+    const yaxis = document.querySelector("#Yaxis");
+    expect(yaxis).toBeInTheDocument();
+    const cartesianGrid = document.querySelector("#cartesian_grid");
+    expect(cartesianGrid).toHaveAttribute("stroke", "white");
+  });
 });
