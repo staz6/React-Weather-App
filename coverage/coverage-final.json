@@ -1,6 +1,6 @@
 {
-  "C:\\Users\\fozan\\Aahda_GitHub\\React-weather-app\\src\\Components\\lazyloaded\\LazyWeatherForecastCard.tsx": {
-    "path": "C:\\Users\\fozan\\Aahda_GitHub\\React-weather-app\\src\\Components\\lazyloaded\\LazyWeatherForecastCard.tsx",
+  "C:\\Users\\fozan\\Aahda_GitHub\\React-weather-app\\src\\Components\\lazyloaded\\LazyWeatherMetrics.tsx": {
+    "path": "C:\\Users\\fozan\\Aahda_GitHub\\React-weather-app\\src\\Components\\lazyloaded\\LazyWeatherMetrics.tsx",
     "all": false,
     "statementMap": {
       "0": {
@@ -13,15 +13,15 @@
       },
       "2": {
         "start": { "line": 3, "column": 0 },
-        "end": { "line": 3, "column": 49 }
+        "end": { "line": 3, "column": 44 }
       },
       "3": {
         "start": { "line": 4, "column": 0 },
-        "end": { "line": 4, "column": 120 }
+        "end": { "line": 4, "column": 98 }
       },
       "4": {
         "start": { "line": 5, "column": 0 },
-        "end": { "line": 5, "column": 75 }
+        "end": { "line": 5, "column": 61 }
       },
       "5": {
         "start": { "line": 6, "column": 0 },
@@ -37,7 +37,7 @@
       },
       "8": {
         "start": { "line": 9, "column": 0 },
-        "end": { "line": 9, "column": 39 }
+        "end": { "line": 9, "column": 34 }
       }
     },
     "s": {
@@ -56,12 +56,12 @@
         "type": "branch",
         "line": 3,
         "loc": {
-          "start": { "line": 3, "column": 42 },
+          "start": { "line": 3, "column": 37 },
           "end": { "line": 7, "column": 2 }
         },
         "locations": [
           {
-            "start": { "line": 3, "column": 42 },
+            "start": { "line": 3, "column": 37 },
             "end": { "line": 7, "column": 2 }
           }
         ]
@@ -70,13 +70,13 @@
     "b": { "0": [1] },
     "fnMap": {
       "0": {
-        "name": "LazyWeatherForecastCard",
+        "name": "LazyWeatherMetrics",
         "decl": {
-          "start": { "line": 3, "column": 42 },
+          "start": { "line": 3, "column": 37 },
           "end": { "line": 7, "column": 2 }
         },
         "loc": {
-          "start": { "line": 3, "column": 42 },
+          "start": { "line": 3, "column": 37 },
           "end": { "line": 7, "column": 2 }
         },
         "line": 3
