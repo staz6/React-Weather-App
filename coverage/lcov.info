@@ -1,9 +1,9 @@
 TN:
-SF:src\Components\lazyloaded\LazyTemperatureChart.tsx
-FN:3,LazyTemperatureChart
+SF:src\Components\lazyloaded\LazyWeatherForecastCard.tsx
+FN:3,LazyWeatherForecastCard
 FNF:1
 FNH:1
-FNDA:1,LazyTemperatureChart
+FNDA:1,LazyWeatherForecastCard
 DA:1,1
 DA:2,1
 DA:3,1
@@ -13,10 +13,8 @@ DA:6,1
 DA:7,1
 DA:8,1
 DA:9,1
-DA:10,1
-DA:11,1
-LF:11
-LH:11
+LF:9
+LH:9
 BRDA:3,0,0,1
 BRF:1
 BRH:1
