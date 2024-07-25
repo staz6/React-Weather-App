@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721905086918" clover="3.2.0">
-  <project timestamp="1721905086918" name="All files">
-    <metrics statements="28" coveredstatements="28" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1" elements="39" coveredelements="39" complexity="0" loc="28" ncloc="28" packages="1" files="1" classes="1"/>
-    <file name="LazySuneventCard.tsx" path="C:\Users\fozan\Aahda_GitHub\React-weather-app\src\Components\lazyloaded\LazySuneventCard.tsx">
-      <metrics statements="28" coveredstatements="28" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+<coverage generated="1721905217020" clover="3.2.0">
+  <project timestamp="1721905217020" name="All files">
+    <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1" elements="13" coveredelements="13" complexity="0" loc="11" ncloc="11" packages="1" files="1" classes="1"/>
+    <file name="LazyTemperatureChart.tsx" path="C:\Users\fozan\Aahda_GitHub\React-weather-app\src\Components\lazyloaded\LazyTemperatureChart.tsx">
+      <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
-      <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-      <line num="8" count="3" type="stmt"/>
-      <line num="9" count="3" type="stmt"/>
-      <line num="10" count="3" type="cond" truecount="2" falsecount="0"/>
-      <line num="11" count="3" type="stmt"/>
-      <line num="12" count="3" type="stmt"/>
-      <line num="13" count="3" type="cond" truecount="2" falsecount="0"/>
-      <line num="14" count="3" type="stmt"/>
-      <line num="15" count="3" type="stmt"/>
-      <line num="16" count="3" type="stmt"/>
-      <line num="17" count="3" type="stmt"/>
-      <line num="18" count="3" type="cond" truecount="4" falsecount="0"/>
-      <line num="19" count="3" type="stmt"/>
-      <line num="20" count="3" type="stmt"/>
-      <line num="21" count="3" type="stmt"/>
-      <line num="22" count="3" type="stmt"/>
-      <line num="23" count="1" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="25" count="1" type="stmt"/>
-      <line num="26" count="1" type="stmt"/>
-      <line num="27" count="1" type="stmt"/>
-      <line num="28" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
