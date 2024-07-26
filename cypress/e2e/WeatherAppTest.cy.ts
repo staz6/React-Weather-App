@@ -29,7 +29,36 @@ const useAddToFav = (): void => {
     .should("exist");
   InputButton.click();
 };
+const useSelectForecastDay = (): void => {
+  cy.get('[data-testid="WeatherForecastItem"]')
+    .should("have.length.greaterThan", 1)
+    .eq(1)
+    .click()
+    .then(() => {
+      cy.get('[data-testid="forecast_temp"]')
+        .eq(1)
+        .invoke("text")
+        .then((selectedForecastTemp: string) => {
+          cy.get('[data-testid="temperature"]')
+            .invoke("text")
+            .then((currentWeatherTemp: string) => {
+              const normalizeTemp = (temp: string): string =>
+                temp.replace(/\s+/g, "");
 
+              const normalizedSelectedForecastTemp =
+                normalizeTemp(selectedForecastTemp);
+              const normalizedCurrentWeatherTemp = normalizeTemp(
+                currentWeatherTemp.trim(),
+              );
+              assert.equal(
+                normalizedSelectedForecastTemp,
+                normalizedCurrentWeatherTemp,
+                "Temperatures should match",
+              );
+            });
+        });
+    });
+};
 describe("Weather App End-2-End testing", () => {
   it("Displaying ui on initial page load", () => {
     cy.visit("http://localhost:5173/");
@@ -71,5 +100,10 @@ describe("Weather App End-2-End testing", () => {
     useAddToFav();
     cy.contains("1. California");
     useThemeChanger();
+  });
+  it("using display selected day's forecast data on selecting day ", () => {
+    searchCityUsingInput();
+    cy.scrollTo("bottom");
+    useSelectForecastDay();
   });
 });
