@@ -106,4 +106,24 @@ describe("Weather App End-2-End testing", () => {
     cy.scrollTo("bottom");
     useSelectForecastDay();
   });
+  it("Using current location and testing all features", () => {
+    cy.visit("http://localhost:5173/");
+    cy.setGeolocation(37.7749, -122.4194);
+    const CurrentLocationBtn = cy
+      .get('[data-testid="location_btn"]')
+      .should("exist");
+    CurrentLocationBtn.click();
+    cy.contains("San Francisco");
+    cy.contains("Loading CurrentWeather").should("exist");
+    cy.contains("Loading Temperature Chart").should("exist");
+    cy.contains("Loading ").should("exist");
+    cy.contains("loading weather metrics").should("exist");
+    cy.contains("Loading Forecast").should("exist");
+    cy.get('[data-testid="WeatherIcon"]').should("exist");
+    cy.get('[data-testid="temperature"]').should("exist");
+    cy.get('[data-testid="TemperatureChart"]').should("exist");
+    cy.get('[data-testid="sunevent"]').should("exist");
+    cy.get('[data-testid="WeatherMetricsCard"]').should("exist");
+    cy.get('[data-testid="WeatherForecastItem"]').should("exist");
+  });
 });
