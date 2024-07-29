@@ -18,6 +18,7 @@ const WeatherAlert: React.FC = () => {
             <div data-testid="auto_notify" className="">
               <div className="flex justify-end">
                 <Button
+                  testid="auto_notify_Btn"
                   onClick={() => toast.dismiss(t.id)}
                   className=""
                   icon={<RxCross2 size={22} />}
@@ -65,6 +66,7 @@ const WeatherAlert: React.FC = () => {
           <div data-testid="manual_notify">
             <div className="flex justify-end">
               <Button
+                testid="manual_notify_Btn"
                 onClick={() => toast.dismiss(t.id)}
                 className=""
                 icon={<RxCross2 size={24} />}
