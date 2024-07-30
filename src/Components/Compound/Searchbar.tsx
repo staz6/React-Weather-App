@@ -98,7 +98,7 @@ const Searchbar: React.FC = () => {
             value={city}
             placeholder="Enter City"
             type="string"
-            className={`bg-white z-10 text-zinc-800 dark:text-white p-1.5 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+            className={`bg-white z-10 SearchInput text-zinc-800 dark:text-white p-1.5 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
           />
           {showFavCities && favCity.length !== 0 && (
             <div
@@ -106,6 +106,7 @@ const Searchbar: React.FC = () => {
             >
               {favCity.map((e, index) => (
                 <div
+                  data-testid="favcitylist"
                   role="button"
                   tabIndex={0}
                   className=" cursor-pointer hover:bg-white hover:bg-opacity-50  flex justify-between px-2 py-1"
@@ -128,6 +129,7 @@ const Searchbar: React.FC = () => {
       <div className="flex items-center gap-4">
         <FavCities />
         <Button
+          testid="searchcity_input"
           description=""
           onClick={handleInput}
           icon={<BiSearch size={28} className="text-white" />}
