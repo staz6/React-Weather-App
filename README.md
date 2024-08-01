@@ -1,30 +1,54 @@
-# React + TypeScript + Vite
+To run this project use the following command:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1- npm run dev
 
-Currently, two official plugins are available:
+To perform unit tests use the following commands:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1- jest "filename.tsx" for running test of single file
 
-## Expanding the ESLint configuration
+2- npm run test for running all the tests all together.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To perform end-2-end testing run the following commands:
 
-- Configure the top-level `parserOptions` property like this:
+1-npx cypress open - This opens the Cypress software. Select end-to-end testing, and all
+tests will run visually.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+2-npm run cypress - Runs the tests in the command line interface.
+From the above two commands it is recommended to run the first one.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Documentation for Custom Hooks :
+
+There are total of 4 custom hooks used in the application:
+
+1-useCityNameFetch
+
+    Location:"src/CustomeHooks/CurrentLocationHook.tsx"
+
+    Description: This hook uses TanStack Query and takes latitude and longitude values as parameters. It provides the city name based on the lat and lon values. Additionally, the hook also provides a loading state. The query in the hook is disabled if lat and lon values are 0.
+    This hook uses OpenWeatherMap api fetching data.
+
+    Use Case: Used in the CurrentLocation component located at "src/Components/Compound/CurrentLocation.tsx"
+
+2-UseCurrentWeather
+
+    Location:"src/CustomeHooks/CurrentWeatherHook.tsx"
+
+    Description: This hook uses Tanstack suspense query and takes city name as parameters. It provides the current weather data based on city. Additionally it provides the loading , error and success state. This hooks uses OpenWeatherMap api and axios for fetching data.
+
+    Use Case: Used in CurrentWeatherCard component located at "src/Components/Compound/CurrentWeatherCard.tsx"
+
+3-useWeatherAlert
+
+    Location:"src/CustomeHooks/WeatherAlertHook.tsx"
+
+    Description: This hook uses Tanstack query and takes city name as parameters. It provides the weahter alerts data based on city. Additionally it provides the loading , error state. This hooks uses Weatherapi api for fetching data. It is disabled if cityname is an empty string
+
+    Use Case: Used in WeatherAlert component located at "src/Components/Compound/WeatherAlert.tsx"
+
+3-useWeatherForecast
+
+    Location:"src/CustomeHooks/WeatherForecastHook.tsx"
+
+    Description: This hook uses Tanstack suspense query and takes city name as parameters. It provides the complete forecast data and filetered data (which we are using in weatherforecastitem).Additionally it provides loading , success and error state. This hook uses axios and OpenWeatherMap api.
+
+    Use Case: Used in WeatherForecastCard component located at "src/Components/Compound/CurrentWeatherCard.tsx"
