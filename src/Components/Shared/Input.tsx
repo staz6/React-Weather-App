@@ -1,6 +1,6 @@
 import React from "react";
 
-interface InputProps<T> {
+export interface InputProps<T> {
   type: string;
   placeholder: string;
   value: T;
