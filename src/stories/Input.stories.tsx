@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react";
+import { action } from "@storybook/addon-actions";
 import Input, { InputProps } from "../Components/Shared/Input";
 
 type InputPropsAndArgs = InputProps<string>;
@@ -46,11 +47,7 @@ export const InputBar: Story = {
     className: "border border-zinc-700",
     placeholder: "Enter city name",
     value: "",
-    onChange: (value: string) => {
-      console.log("Value changed:", value);
-    },
-    onClick: () => {
-      console.log("Input clicked!");
-    },
+    onChange: action(""),
+    onClick: action("Input element Click"),
   },
 };
