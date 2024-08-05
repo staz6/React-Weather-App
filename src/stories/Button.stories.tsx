@@ -12,7 +12,6 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: {
-    // eslint-disable-next-line no-alert
     onClick: action("Button Click"),
     icon: <BsTrophyFill />,
     className: "bg-red-500  p-2 flex place-items-center gap-2",
