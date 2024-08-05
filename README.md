@@ -1,54 +1,90 @@
-To run this project use the following command:
+# Weather App
 
-1- npm run dev
+Weather App build on React and Typescript
 
-To perform unit tests use the following commands:
+## Getting Started
 
-1- jest "filename.tsx" for running test of single file
+### Prerequisite
 
-2- npm run test for running all the tests all together.
+- Node
+- npm
 
-To perform end-2-end testing run the following commands:
+### Installing
 
-1-npx cypress open - This opens the Cypress software. Select end-to-end testing, and all
-tests will run visually.
+- git clone the repository
+- cd in to repository folder and run `npm install`
 
-2-npm run cypress - Runs the tests in the command line interface.
-From the above two commands it is recommended to run the first one.
+# To Start Project
 
-Documentation for Custom Hooks :
+- run `npm start`
 
-There are total of 4 custom hooks used in the application:
+# To Run Unit Tests and End-2-End Tests
 
-1-useCityNameFetch
+- run `npm run test` (for unit tests)
+- run `npx cypress open` (for end-2-end tests)
 
-    Location:"src/CustomeHooks/CurrentLocationHook.tsx"
+## Features List
 
-    Description: This hook uses TanStack Query and takes latitude and longitude values as parameters. It provides the city name based on the lat and lon values. Additionally, the hook also provides a loading state. The query in the hook is disabled if lat and lon values are 0.
-    This hook uses OpenWeatherMap api fetching data.
+- [x] Initial design
+- [x] Current location
+- [x] Current Weather and forecast
+- [x] Weather Alerts
+- [x] Theme Changer
+- [x] Add To Favorites and Quick Search
+- [x] Lazy Loading
+- [x] End-2-End Test
+- [x] Unit Tests
+- [x] Responsive
 
-    Use Case: Used in the CurrentLocation component located at "src/Components/Compound/CurrentLocation.tsx"
+## Authors
 
-2-UseCurrentWeather
+Muhammad Aahad  
+[@Muhammad Aahad](https://www.linkedin.com/in/muhammad-aahad-568aaa179/)
 
-    Location:"src/CustomeHooks/CurrentWeatherHook.tsx"
+## Documentation for Custom Hooks
 
-    Description: This hook uses Tanstack suspense query and takes city name as parameters. It provides the current weather data based on city. Additionally it provides the loading , error and success state. This hooks uses OpenWeatherMap api and axios for fetching data.
+### Custom Hook 1: `useCityNameFetch`
 
-    Use Case: Used in CurrentWeatherCard component located at "src/Components/Compound/CurrentWeatherCard.tsx"
+- **Location:** `src/CustomeHooks/CurrentLocationHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Query** and takes latitude and longitude values as parameters.
+  - It provides the city name based on the lat and lon values.
+  - Additionally, the hook also provides a loading state.
+  - The query in the hook is disabled if lat and lon values are 0.
+  - This hook uses the **OpenWeatherMap API** for fetching data.
+- **Use Case:**
+  - Used in the **CurrentLocation** component located at `src/Components/Compound/CurrentLocation. tsx`
 
-3-useWeatherAlert
+### Custom Hook 2: `useCurrentWeather`
 
-    Location:"src/CustomeHooks/WeatherAlertHook.tsx"
+- **Location:** `src/CustomeHooks/CurrentWeatherHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Suspense Query** and takes the city name as a parameter.
+  - It provides the current weather data based on the city.
+  - Additionally, it provides the loading, error, and success states.
+  - This hook uses the **OpenWeatherMap API** and **Axios** for fetching data.
+- **Use Case:**
+  - Used in the **CurrentWeatherCard** component located at `src/Components/Compound/CurrentWeatherCard.tsx`
 
-    Description: This hook uses Tanstack query and takes city name as parameters. It provides the weahter alerts data based on city. Additionally it provides the loading , error state. This hooks uses Weatherapi api for fetching data. It is disabled if cityname is an empty string
+### Custom Hook 3: `useWeatherAlert`
 
-    Use Case: Used in WeatherAlert component located at "src/Components/Compound/WeatherAlert.tsx"
+- **Location:** `src/CustomeHooks/WeatherAlertHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Query** and takes the city name as a parameter.
+  - It provides the weather alerts data based on the city.
+  - Additionally, it provides the loading and error states.
+  - This hook uses the **WeatherAPI** for fetching data.
+  - It is disabled if the city name is an empty string.
+- **Use Case:**
+  - Used in the **WeatherAlert** component located at `src/Components/Compound/WeatherAlert.tsx`
 
-3-useWeatherForecast
+### Custom Hook 4: `useWeatherForecast`
 
-    Location:"src/CustomeHooks/WeatherForecastHook.tsx"
-
-    Description: This hook uses Tanstack suspense query and takes city name as parameters. It provides the complete forecast data and filetered data (which we are using in weatherforecastitem).Additionally it provides loading , success and error state. This hook uses axios and OpenWeatherMap api.
-
-    Use Case: Used in WeatherForecastCard component located at "src/Components/Compound/CurrentWeatherCard.tsx"
+- **Location:** `src/CustomeHooks/WeatherForecastHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Suspense Query** and takes the city name as a parameter.
+  - It provides the complete forecast data and filtered data (which is used in weather forecast items).
+  - Additionally, it provides the loading, success, and error states.
+  - This hook uses **Axios** and the **OpenWeatherMap API**.
+- **Use Case:**
+  - Used in the **WeatherForecastCard** component located at `src/Components/Compound/ WeatherForecastCard.tsx`
