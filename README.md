@@ -23,6 +23,10 @@ Weather App build on React and Typescript
 - run `npm run test` (for unit tests)
 - run `npx cypress open` (for end-2-end tests)
 
+# To Run Storybook
+
+- run `npm run storybook`
+
 ## Features List
 
 - [x] Initial design
