@@ -11,6 +11,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
     "prettier",
+    "plugin:storybook/recommended",
   ],
   ignorePatterns: [
     "**/*.cjs",

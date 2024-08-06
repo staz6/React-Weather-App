@@ -1,4 +1,5 @@
 import React from "react";
+import { action } from "@storybook/addon-actions";
 import { useWeatherContext } from "../../Context/WeatherContext";
 
 interface Props {
@@ -25,8 +26,8 @@ const WeatherForecastItem: React.FC<Props> = ({ item, animation = true }) => {
       }}
       onClick={() =>
         timeStamp === item.timeStamp
-          ? settimeStamp("")
-          : settimeStamp(item.timeStamp)
+          ? (settimeStamp(""), action("removed timestamp")())
+          : (settimeStamp(item.timeStamp), action("added timestamp")())
       }
       className={`cursor-pointer  dark:bg-linearSideDark  bg-linearSide w-36 m-auto sm:m-0 sm:w-fit ${animation ? "hover:-translate-y-3 duration-200" : ""}  shadow-lg  text-center py-4 rounded-xl`}
     >

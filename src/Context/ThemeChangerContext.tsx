@@ -6,6 +6,7 @@ import React, {
   useMemo,
   ReactNode,
 } from "react";
+import { action } from "@storybook/addon-actions";
 
 type ThemeContextType = {
   Darktheme: boolean;
@@ -35,6 +36,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [Darktheme]);
 
   const toggleDarkTheme = (): void => {
+    action("theme-changer-click")();
     setDarkTheme((prev) => !prev);
   };
 
