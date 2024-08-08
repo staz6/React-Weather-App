@@ -25,4 +25,8 @@ dist-ssr
 
 # ESLint cache
 .eslintcache
+
+# Jest Coverage 
+coverage/
+
 *storybook.log
