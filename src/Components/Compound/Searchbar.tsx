@@ -1,11 +1,12 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useCallback, useEffect, useMemo, useReducer } from "react";
 import { BiSearch } from "react-icons/bi";
+import { CiLocationOn } from "react-icons/ci";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
+import useCityNameFetch from "../../CustomeHooks/CurrentLocationHook";
 import WeatherAlert from "./WeatherAlert";
 import FavCities from "./FavCities";
-import CurrentLocation from "./CurrentLocation";
 
 interface State {
   city: string;
@@ -13,6 +14,8 @@ interface State {
   applyAnimation: boolean;
   timeoutId: NodeJS.Timeout | null;
   showFavCities: boolean;
+  lat: number;
+  lon: number;
 }
 
 type Action =
@@ -20,7 +23,8 @@ type Action =
   | { type: "SET_IS_OPEN"; payload: boolean }
   | { type: "SET_APPLY_ANIMATION"; payload: boolean }
   | { type: "SET_TIMEOUT_ID"; payload: NodeJS.Timeout | null }
-  | { type: "SET_SHOWFAVORITE_CITY"; payload: boolean };
+  | { type: "SET_SHOWFAVORITE_CITY"; payload: boolean }
+  | { type: "GET_COORDINATES"; payload: { lat: number; lon: number } };
 
 const initialState: State = {
   city: "",
@@ -28,6 +32,8 @@ const initialState: State = {
   applyAnimation: false,
   timeoutId: null,
   showFavCities: false,
+  lat: 0,
+  lon: 0,
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -42,6 +48,8 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, timeoutId: action.payload };
     case "SET_SHOWFAVORITE_CITY":
       return { ...state, showFavCities: action.payload };
+    case "GET_COORDINATES":
+      return { ...state, lat: action.payload.lat, lon: action.payload.lon };
     default:
       return state;
   }
@@ -50,16 +58,14 @@ const reducer = (state: State, action: Action): State => {
 const Searchbar: React.FC = () => {
   const { setSearchCity, favCity, searchCity } = useWeatherContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { city, isOpen, applyAnimation, timeoutId, showFavCities } = state;
+  const { city, isOpen, applyAnimation, timeoutId, showFavCities, lat, lon } =
+    state;
 
   const searchInput = (): void => {
     dispatch({ type: "SET_IS_OPEN", payload: true });
     dispatch({ type: "SET_APPLY_ANIMATION", payload: true });
   };
 
-  useEffect(() => {
-    dispatch({ type: "SET_CITY", payload: searchCity });
-  }, [searchCity]);
   const searchWeather = (): void => {
     setSearchCity(city);
     if (timeoutId) {
@@ -75,13 +81,63 @@ const Searchbar: React.FC = () => {
 
   const handleInput = (): void => (isOpen ? searchWeather() : searchInput());
 
+  const options = useMemo<PositionOptions>(
+    () => ({
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    }),
+    [],
+  );
+
+  const onSuccess = useCallback((position: GeolocationPosition): void => {
+    const { latitude, longitude } = position.coords;
+    dispatch({
+      type: "GET_COORDINATES",
+      payload: { lat: latitude, lon: longitude },
+    });
+  }, []);
+
+  const onError = useCallback((error: GeolocationPositionError): void => {
+    if (error.code === error.PERMISSION_DENIED) {
+      // eslint-disable-next-line no-alert
+      alert("Geolocation is not enabled or not supported by this browser.");
+    }
+  }, []);
+
+  const handleLocation = useCallback((): void => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+    }
+  }, [onSuccess, onError, options]);
+
+  const { cityName } = useCityNameFetch({ lat, lon });
+  useEffect(() => {
+    if (cityName) {
+      setSearchCity(cityName);
+    }
+  }, [cityName, setSearchCity]);
+
+  useEffect(() => {
+    handleLocation();
+  }, [handleLocation]);
+  useEffect(() => {
+    dispatch({ type: "SET_CITY", payload: searchCity });
+  }, [searchCity]);
+
   return (
     <div
       className={`flex flex-row justify-between ${isOpen ? "gap-10 " : ""} items-center`}
     >
       {!isOpen ? (
         <>
-          <CurrentLocation />
+          <Button
+            testid="location_btn"
+            description=""
+            className=""
+            onClick={handleLocation}
+            icon={<CiLocationOn size={26} className="text-white" />}
+          />
           <span className="text-white z-10 text-2xl w-80 capitalize ml-2">
             {city}
           </span>
