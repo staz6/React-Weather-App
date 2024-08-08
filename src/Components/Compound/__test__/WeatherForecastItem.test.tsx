@@ -63,6 +63,8 @@ describe("WeatherForecastItem component Tests", () => {
           currentWeatherData: mockCurrentWeatherData,
           setCurrentWeatherData() {},
           setWeatherForecastData() {},
+          prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
+          setPrevsunevent() {},
         }),
         [timeStamp],
       );

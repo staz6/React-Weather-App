@@ -56,6 +56,13 @@ interface ForecastData {
   };
 }
 
+interface SunEventData {
+  sys: {
+    sunrise: number;
+    sunset: number;
+  };
+}
+
 export interface WeatherContextProps {
   searchCity: string;
   setSearchCity: (searchCity: string) => void;
@@ -67,6 +74,8 @@ export interface WeatherContextProps {
   setWeatherForecastData: Dispatch<SetStateAction<ForecastData[] | null>>;
   favCity: string[];
   setFavCity: Dispatch<SetStateAction<string[]>>;
+  prevSunevent: SunEventData | null;
+  setPrevsunevent: Dispatch<SetStateAction<SunEventData | null>>;
 }
 
 export const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -82,6 +91,7 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     ForecastData[] | null
   >(null);
   const [favCity, setFavCity] = useState<string[]>([]);
+  const [prevSunevent, setPrevsunevent] = useState<SunEventData | null>(null);
 
   const contextValue = React.useMemo(
     () => ({
@@ -95,8 +105,17 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setWeatherForecastData,
       favCity,
       setFavCity,
+      prevSunevent,
+      setPrevsunevent,
     }),
-    [searchCity, currentWeatherData, timeStamp, weatherForecastData, favCity],
+    [
+      searchCity,
+      currentWeatherData,
+      timeStamp,
+      weatherForecastData,
+      favCity,
+      prevSunevent,
+    ],
   );
 
   return (

@@ -55,6 +55,8 @@ const CustomWeatherContextProvider = ({
       timeStamp: "",
       settimeStamp() {},
       setWeatherForecastData() {},
+      prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
+      setPrevsunevent() {},
     }),
     [searchCity, favCity],
   );

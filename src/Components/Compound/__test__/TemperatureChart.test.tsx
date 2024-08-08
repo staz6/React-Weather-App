@@ -133,6 +133,8 @@ const customTemperatureChartProvider = (): JSX.Element => (
       setWeatherForecastData() {},
       setFavCity() {},
       favCity: [],
+      prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
+      setPrevsunevent() {},
     }}
   >
     <TemperatureChart />

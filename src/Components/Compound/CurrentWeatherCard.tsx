@@ -21,8 +21,13 @@ interface ShowWeatherType {
 
 const CurrentWeatherCard: React.FC = () => {
   const [showWeather, setShowWeather] = useState<ShowWeatherType | null>(null);
-  const { searchCity, setCurrentWeatherData, timeStamp, weatherForecastData } =
-    useWeatherContext();
+  const {
+    searchCity,
+    setCurrentWeatherData,
+    timeStamp,
+    weatherForecastData,
+    setPrevsunevent,
+  } = useWeatherContext();
   const { weatherData, isError } = useCurrentWeather(searchCity);
 
   useEffect(() => {
@@ -38,7 +43,25 @@ const CurrentWeatherCard: React.FC = () => {
         setCurrentWeatherData(weatherData);
       }
     }
-  }, [timeStamp, weatherData, weatherForecastData, setCurrentWeatherData]);
+
+    if (
+      weatherData?.sys.sunrise !== undefined &&
+      weatherData?.sys.sunset !== undefined
+    ) {
+      setPrevsunevent({
+        sys: {
+          sunrise: weatherData.sys.sunrise,
+          sunset: weatherData.sys.sunset,
+        },
+      });
+    }
+  }, [
+    timeStamp,
+    weatherData,
+    weatherForecastData,
+    setCurrentWeatherData,
+    setPrevsunevent,
+  ]);
 
   if (isError) return <h1>No Such City Exist</h1>;
 
