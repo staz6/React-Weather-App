@@ -7,7 +7,7 @@ const SuneventCard: React.FC = () => {
   const { prevSunevent } = useWeatherContext();
 
   return (
-    <div className="flex justify-center gap-5 md:gap-10 mt-16">
+    <div className="flex justify-center gap-5 md:gap-10 mt-11">
       {prevSunevent &&
         suneventtimes(prevSunevent).map((event, index) => (
           <SunEvent event={event} key={index} id={index} />

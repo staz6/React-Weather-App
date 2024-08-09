@@ -4,6 +4,7 @@ import { useWeatherContext } from "../../Context/WeatherContext";
 import LazySuneventCard from "../lazyloaded/LazySuneventCard";
 import LazyWeatherMetrics from "../lazyloaded/LazyWeatherMetrics";
 import LazyWeatherForecastCard from "../lazyloaded/LazyWeatherForecastCard";
+import KelvinCelciusConverter from "../Compound/KelvinCelciusConverter";
 
 const WeatherForecastCard = lazy(() => import("./WeatherForecastCard"));
 const DetailedWeatherCard = lazy(() => import("./DetailedWeatherCard"));
@@ -20,6 +21,9 @@ const Mainbar: React.FC = () => {
   const { searchCity } = useWeatherContext();
   return (
     <div className="dark:bg-linearMainDark bg-linearMain flex flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7 overflow-x-hidden">
+      <div className="flex justify-end mr-5 mt-2">
+        <KelvinCelciusConverter />
+      </div>
       <ErrorBoundary
         FallbackComponent={FallbackComponent}
         resetKeys={[searchCity]}
