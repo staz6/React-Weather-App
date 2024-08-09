@@ -135,6 +135,8 @@ const customTemperatureChartProvider = (): JSX.Element => (
       favCity: [],
       prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
       setPrevsunevent() {},
+      isKelvin: false,
+      setIsKelvin() {},
     }}
   >
     <TemperatureChart />

@@ -1,8 +1,8 @@
-import { useState } from "react";
 import Button from "../Shared/Button";
+import { useWeatherContext } from "../../Context/WeatherContext";
 
 const KelvinCelciusConverter: React.FC = () => {
-  const [isKelvin, setIsKelvin] = useState(false);
+  const { isKelvin, setIsKelvin } = useWeatherContext();
   return (
     <Button
       testid="TempConverter"

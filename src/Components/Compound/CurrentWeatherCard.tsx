@@ -27,6 +27,7 @@ const CurrentWeatherCard: React.FC = () => {
     timeStamp,
     weatherForecastData,
     setPrevsunevent,
+    isKelvin,
   } = useWeatherContext();
   const { weatherData, isError } = useCurrentWeather(searchCity);
 
@@ -44,10 +45,7 @@ const CurrentWeatherCard: React.FC = () => {
       }
     }
 
-    if (
-      weatherData?.sys.sunrise !== undefined &&
-      weatherData?.sys.sunset !== undefined
-    ) {
+    if (weatherData?.sys?.sunrise && weatherData?.sys?.sunset) {
       setPrevsunevent({
         sys: {
           sunrise: weatherData.sys.sunrise,
@@ -83,11 +81,13 @@ const CurrentWeatherCard: React.FC = () => {
       <div className="text-white pl-5 font-sans">
         <h1
           data-testid="temperature"
-          className="text-9xl leading-none relative top-temp-top font-extralight mb-3"
+          className={`${isKelvin ? "text-9xl" : "text-9xl"} mb-3 leading-none relative top-temp-top font-extralight`}
         >
-          {convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
+          {isKelvin
+            ? showWeather?.main.temp.toFixed()
+            : convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
           <sup className="text-3xl font-normal top-custom-super pl-4 align-super">
-            °C
+            {isKelvin ? "°F" : "°C"}
           </sup>
         </h1>
 
