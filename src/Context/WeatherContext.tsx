@@ -76,8 +76,8 @@ export interface WeatherContextProps {
   setFavCity: Dispatch<SetStateAction<string[]>>;
   prevSunevent: SunEventData | null;
   setPrevsunevent: Dispatch<SetStateAction<SunEventData | null>>;
-  isKelvin: boolean;
-  setIsKelvin: Dispatch<SetStateAction<boolean>>;
+  isFarenheit: boolean;
+  setIsFarenheit: Dispatch<SetStateAction<boolean>>;
 }
 
 export const WeatherContext = createContext<WeatherContextProps | undefined>(
@@ -94,7 +94,7 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   >(null);
   const [favCity, setFavCity] = useState<string[]>([]);
   const [prevSunevent, setPrevsunevent] = useState<SunEventData | null>(null);
-  const [isKelvin, setIsKelvin] = useState<boolean>(false);
+  const [isFarenheit, setIsFarenheit] = useState<boolean>(false);
 
   const contextValue = React.useMemo(
     () => ({
@@ -110,8 +110,8 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       setFavCity,
       prevSunevent,
       setPrevsunevent,
-      isKelvin,
-      setIsKelvin,
+      isFarenheit,
+      setIsFarenheit,
     }),
     [
       searchCity,
@@ -120,7 +120,7 @@ const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
       weatherForecastData,
       favCity,
       prevSunevent,
-      isKelvin,
+      isFarenheit,
     ],
   );
 

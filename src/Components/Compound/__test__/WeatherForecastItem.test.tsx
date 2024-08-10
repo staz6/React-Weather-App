@@ -65,8 +65,8 @@ describe("WeatherForecastItem component Tests", () => {
           setWeatherForecastData() {},
           prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
           setPrevsunevent() {},
-          isKelvin: false,
-          setIsKelvin() {},
+          isFarenheit: false,
+          setIsFarenheit() {},
         }),
         [timeStamp],
       );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import convertKelvinToCelsius, {
+  convertKelvinToFahrenheit,
   getDayOfWeek,
 } from "../../HelperFunctions/Helper";
 import CurrentTime from "./CurrentTime";
@@ -27,7 +28,7 @@ const CurrentWeatherCard: React.FC = () => {
     timeStamp,
     weatherForecastData,
     setPrevsunevent,
-    isKelvin,
+    isFarenheit,
   } = useWeatherContext();
   const { weatherData, isError } = useCurrentWeather(searchCity);
 
@@ -81,13 +82,13 @@ const CurrentWeatherCard: React.FC = () => {
       <div className="text-white pl-5 font-sans">
         <h1
           data-testid="temperature"
-          className={`${isKelvin ? "text-9xl" : "text-9xl"} mb-3 leading-none relative top-temp-top font-extralight`}
+          className="text-9xl mb-3 leading-none relative top-temp-top font-extralight"
         >
-          {isKelvin
-            ? showWeather?.main.temp.toFixed()
+          {isFarenheit
+            ? convertKelvinToFahrenheit(showWeather?.main.temp)?.toFixed()
             : convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
           <sup className="text-3xl font-normal top-custom-super pl-4 align-super">
-            {isKelvin ? "°F" : "°C"}
+            {isFarenheit ? "°F" : "°C"}
           </sup>
         </h1>
 
