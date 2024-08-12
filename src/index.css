@@ -58,13 +58,3 @@ body {
   );
   border-image-slice: 1;
 }
-
-.Searchbar_gradient_border {
-  border-width: 1px;
-  border-image: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.1) 100%
-  );
-  border-image-slice: 1;
-}
