@@ -19,6 +19,7 @@ body {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -28,6 +29,7 @@ body {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-120%);
   }
@@ -45,4 +47,14 @@ body {
   html {
     font-size: 1vw;
   }
+}
+
+.Sidebar_gradient_border {
+  border-width: 2px;
+  border-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(238, 237, 237, 0.1) 100%
+  );
+  border-image-slice: 1;
 }

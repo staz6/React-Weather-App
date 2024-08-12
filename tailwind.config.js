@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        linearMain: " linear-gradient(135deg, #48355b, #8c6eab)",
-        linearMainDark:
-          "linear-gradient(90deg, rgba(0,19,97,1) 0%, rgba(0,2,23,1) 100%, rgba(61,29,94,1) 100%)",
-        linearSide: " linear-gradient(135deg, #d2c3e1, #48355b)",
-        linearSideDark:
-          "linear-gradient(90deg, rgba(27,46,126,1) 0%, rgba(13,15,41,1) 100%, rgba(61,29,94,1) 100%);",
+        RadialSide:
+          "radial-gradient(circle at top left, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%)",
+        linearBg:
+          "linear-gradient(45deg, rgba(240,181,206,1) 0%, rgba(140,107,174,1) 100%)",
+        DarklinearBg:
+          "linear-gradient(45deg, rgba(72,53,91,1) 100%, rgba(145,190,243,1) 0%)",
       },
       inset: {
         "custom-super": "-3rem",
