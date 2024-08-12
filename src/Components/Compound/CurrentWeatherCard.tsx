@@ -79,10 +79,10 @@ const CurrentWeatherCard: React.FC = () => {
         alt=""
       />
 
-      <div className="text-white pl-5 font-sans">
+      <div className="text-white pl-5 ">
         <h1
           data-testid="temperature"
-          className="text-9xl mb-3 leading-none relative top-temp-top font-extralight"
+          className="text-9xl text-shadow-TemperaturShadow font-sans mb-3 leading-none relative top-temp-top font-extralight"
         >
           {isFarenheit
             ? convertKelvinToFahrenheit(showWeather?.main.temp)?.toFixed()
@@ -92,8 +92,10 @@ const CurrentWeatherCard: React.FC = () => {
           </sup>
         </h1>
 
-        <h2 className="text-3xl font-light mb-1">{formattedDate}</h2>
-        <h3 className="text-xl font-light tracking-wide">
+        <h2 className="text-3xl text-shadow-CustomShadow font-light mb-1">
+          {formattedDate}
+        </h2>
+        <h3 className="text-xl font-light text-shadow-CustomShadow tracking-wide">
           {showWeather?.dt_txt ? getDayOfWeek(showWeather.dt_txt) : currentDay}{" "}
           <span className="mx-2">|</span> <CurrentTime className="" />
         </h3>

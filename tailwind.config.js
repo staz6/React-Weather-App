@@ -18,6 +18,7 @@ export default {
       },
       fontFamily: {
         sans: ["Roboto", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
       },
       fontSize: {
         "8xl": "6rem",
@@ -26,6 +27,10 @@ export default {
       },
       colors: {
         "custom-gray": "rgba(205, 205, 205, 0)",
+      },
+      textShadow: {
+        TemperaturShadow: "4.51px 2.26px 0.75px rgba(0, 0, 0, 0.15)",
+        CustomShadow: "-1.51px 2.26px 0.75px rgba(0, 0, 0, 0.10)",
       },
       keyframes: {
         glow: {
@@ -44,5 +49,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-textshadow")],
 };

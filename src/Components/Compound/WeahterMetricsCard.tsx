@@ -9,7 +9,7 @@ const WeatherMetricsCard: React.FC = () => {
   return (
     <div
       data-testid="WeatherMetricsCard"
-      className="flex  items-center m-auto justify-center mt-10 sm:gap-8 gap-5  text-gray-200 text-sm sm:text-md"
+      className="flex text-shadow-CustomShadow  items-center m-auto justify-center mt-10 sm:gap-8 gap-5  text-gray-200 text-sm sm:text-md"
     >
       {metrics.map((Item, index) => (
         <div className="flex items-center sm:gap-8 gap-5" key={index}>
