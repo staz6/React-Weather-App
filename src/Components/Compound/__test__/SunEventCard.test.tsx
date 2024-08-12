@@ -47,18 +47,11 @@ describe("SuneventCard component Tests", () => {
     >;
 
     const mockWeatherData: Partial<WeatherContextProps> = {
-      currentWeatherData: {
+      prevSunevent: {
         sys: {
           sunrise: 1623315600,
           sunset: 1623362400,
         },
-        main: {
-          temp: 0,
-          humidity: 0,
-        },
-        dt: 0,
-        weather: [],
-        wind: { speed: 0 },
       },
     };
 
@@ -89,7 +82,7 @@ describe("SuneventCard component Tests", () => {
     >;
 
     mockUseWeatherContext.mockReturnValue({
-      currentWeatherData: null,
+      prevSunevent: null,
     } as WeatherContextProps);
 
     render(<SuneventCard />);

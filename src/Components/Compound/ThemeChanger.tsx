@@ -10,7 +10,7 @@ const ThemeChanger: React.FC = () => {
     <Button
       testid="ThemeChanger"
       icon=""
-      className="fixed bottom-3 flex justify-between z-50 w-20 border rounded-2xl"
+      className="fixed bottom-3 flex c z-50 w-20 border rounded-2xl"
       description=""
       onClick={toggleDarkTheme}
     >

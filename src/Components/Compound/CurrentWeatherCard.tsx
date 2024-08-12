@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import convertKelvinToCelsius, {
+  convertKelvinToFahrenheit,
   getDayOfWeek,
 } from "../../HelperFunctions/Helper";
 import CurrentTime from "./CurrentTime";
@@ -27,6 +28,7 @@ const CurrentWeatherCard: React.FC = () => {
     timeStamp,
     weatherForecastData,
     setPrevsunevent,
+    isFarenheit,
   } = useWeatherContext();
   const { weatherData, isError } = useCurrentWeather(searchCity);
 
@@ -44,10 +46,7 @@ const CurrentWeatherCard: React.FC = () => {
       }
     }
 
-    if (
-      weatherData?.sys.sunrise !== undefined &&
-      weatherData?.sys.sunset !== undefined
-    ) {
+    if (weatherData?.sys?.sunrise && weatherData?.sys?.sunset) {
       setPrevsunevent({
         sys: {
           sunrise: weatherData.sys.sunrise,
@@ -83,11 +82,13 @@ const CurrentWeatherCard: React.FC = () => {
       <div className="text-white pl-5 font-sans">
         <h1
           data-testid="temperature"
-          className="text-9xl leading-none relative top-temp-top font-extralight mb-3"
+          className="text-9xl mb-3 leading-none relative top-temp-top font-extralight"
         >
-          {convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
+          {isFarenheit
+            ? convertKelvinToFahrenheit(showWeather?.main.temp)?.toFixed()
+            : convertKelvinToCelsius(showWeather?.main.temp)?.toFixed()}
           <sup className="text-3xl font-normal top-custom-super pl-4 align-super">
-            °C
+            {isFarenheit ? "°F" : "°C"}
           </sup>
         </h1>
 

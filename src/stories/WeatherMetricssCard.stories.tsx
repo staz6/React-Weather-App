@@ -48,6 +48,8 @@ const CustomWeatherContextProvider = ({
       setWeatherForecastData() {},
       prevSunevent: { sys: { sunrise: 0, sunset: 0 } },
       setPrevsunevent() {},
+      isFarenheit: false,
+      setIsFarenheit() {},
     }),
     [],
   );
