@@ -147,12 +147,12 @@ const Searchbar: React.FC = () => {
             }}
             icon={<GoLocation size={26} className="text-white" />}
           />
-          <span className="text-white z-10 text-2xl w-80 capitalize ml-2">
+          <span className="text-white z-10 text-2xl w-80 capitalize ml-6">
             {city}
           </span>
         </>
       ) : (
-        <div className="flex-col relative w-full">
+        <div className="flex-col z-50 relative w-full">
           <Input
             onChange={(newValue) =>
               dispatch({ type: "SET_CITY", payload: newValue })
@@ -163,7 +163,7 @@ const Searchbar: React.FC = () => {
             value={city}
             placeholder="Enter City"
             type="string"
-            className={`bg-white z-10 SearchInput text-zinc-800 dark:text-white p-1.5 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
+            className={`bg-white SearchInput text-zinc-800 dark:text-white p-1.5 w-full text-xl ${applyAnimation ? "slide-in" : "slide-out"} rounded-md capitalize pl-5 bg-opacity-40 focus:outline-white focus:outline-offset-1`}
           />
           {showFavCities && favCity.length !== 0 && (
             <div

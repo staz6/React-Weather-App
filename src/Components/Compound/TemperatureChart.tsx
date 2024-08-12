@@ -13,11 +13,9 @@ import { useWeatherContext } from "../../Context/WeatherContext";
 import convertKelvinToCelsius, {
   getDayOfWeek,
 } from "../../HelperFunctions/Helper";
-import { useTheme } from "../../Context/ThemeChangerContext";
 
 const TemperatureChart: React.FC = () => {
   const { weatherForecastData } = useWeatherContext();
-  const { Darktheme } = useTheme();
   const TemperatureData2 = weatherForecastData?.map((e) => ({
     day: getDayOfWeek(e.dt_txt),
     temperature: parseFloat(
@@ -33,25 +31,29 @@ const TemperatureChart: React.FC = () => {
         <BarChart data={TemperatureData2} id="Bargraph">
           <CartesianGrid
             id="cartesian_grid"
-            stroke={`${Darktheme ? "white" : "black"}`}
+            stroke="rgba(255, 255, 255, 0)"
             strokeDasharray="3 3"
           />
+
           <XAxis
             id="Xaxis"
+            stroke="white"
             dataKey="day"
-            tick={{ fill: `${Darktheme ? "white" : "black"}` }}
+            tick={{ fill: "white" }}
           />
           <YAxis
             id="Yaxis"
-            tick={{ fill: `${Darktheme ? "white" : "black"}` }}
+            tick={{ fill: "white" }}
             tickFormatter={formatYAxis}
+            stroke="white"
           />
-          <Tooltip cursor={{ fill: "none", stroke: "red" }} />
+          <Tooltip
+            labelStyle={{ fill: "red", color: "black" }}
+            itemStyle={{ fill: "red", color: "black" }}
+            cursor={{ fill: "none", stroke: "rgba(255, 255, 255, 0.4)" }}
+          />
           <Legend />
-          <Bar
-            dataKey="temperature"
-            fill={`${Darktheme ? "#001e99" : "#3d1d5e"}`}
-          />
+          <Bar dataKey="temperature" fill="rgba(255, 255, 255, 0.5)" />
         </BarChart>
       </ResponsiveContainer>
     </div>
