@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useMemo, useReducer } from "react";
-import { BiSearch } from "react-icons/bi";
-import { CiLocationOn } from "react-icons/ci";
+import React, { useEffect, useReducer } from "react";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+import { GoLocation } from "react-icons/go";
 import Input from "../Shared/Input";
 import Button from "../Shared/Button";
 import { useWeatherContext } from "../../Context/WeatherContext";
@@ -16,6 +16,7 @@ interface State {
   showFavCities: boolean;
   lat: number;
   lon: number;
+  isCurrentLocation: boolean;
 }
 
 type Action =
@@ -24,7 +25,8 @@ type Action =
   | { type: "SET_APPLY_ANIMATION"; payload: boolean }
   | { type: "SET_TIMEOUT_ID"; payload: NodeJS.Timeout | null }
   | { type: "SET_SHOWFAVORITE_CITY"; payload: boolean }
-  | { type: "GET_COORDINATES"; payload: { lat: number; lon: number } };
+  | { type: "GET_COORDINATES"; payload: { lat: number; lon: number } }
+  | { type: "USE_CURRENTLOCATION"; payload: boolean };
 
 const initialState: State = {
   city: "",
@@ -34,6 +36,7 @@ const initialState: State = {
   showFavCities: false,
   lat: 0,
   lon: 0,
+  isCurrentLocation: true,
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -50,6 +53,8 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, showFavCities: action.payload };
     case "GET_COORDINATES":
       return { ...state, lat: action.payload.lat, lon: action.payload.lon };
+    case "USE_CURRENTLOCATION":
+      return { ...state, isCurrentLocation: action.payload };
     default:
       return state;
   }
@@ -58,8 +63,16 @@ const reducer = (state: State, action: Action): State => {
 const Searchbar: React.FC = () => {
   const { setSearchCity, favCity, searchCity } = useWeatherContext();
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { city, isOpen, applyAnimation, timeoutId, showFavCities, lat, lon } =
-    state;
+  const {
+    city,
+    isOpen,
+    applyAnimation,
+    timeoutId,
+    showFavCities,
+    lat,
+    lon,
+    isCurrentLocation,
+  } = state;
 
   const searchInput = (): void => {
     dispatch({ type: "SET_IS_OPEN", payload: true });
@@ -67,6 +80,7 @@ const Searchbar: React.FC = () => {
   };
 
   const searchWeather = (): void => {
+    dispatch({ type: "USE_CURRENTLOCATION", payload: false });
     setSearchCity(city);
     if (timeoutId) {
       clearTimeout(timeoutId);
@@ -81,49 +95,41 @@ const Searchbar: React.FC = () => {
 
   const handleInput = (): void => (isOpen ? searchWeather() : searchInput());
 
-  const options = useMemo<PositionOptions>(
-    () => ({
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    }),
-    [],
-  );
-
-  const onSuccess = useCallback((position: GeolocationPosition): void => {
-    const { latitude, longitude } = position.coords;
-    dispatch({
-      type: "GET_COORDINATES",
-      payload: { lat: latitude, lon: longitude },
-    });
-  }, []);
-
-  const onError = useCallback((error: GeolocationPositionError): void => {
-    if (error.code === error.PERMISSION_DENIED) {
-      // eslint-disable-next-line no-alert
-      alert("Geolocation is not enabled or not supported by this browser.");
-    }
-  }, []);
-
-  const handleLocation = useCallback((): void => {
+  const handlelocation = (): void => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const { latitude, longitude } = pos.coords;
+          dispatch({
+            type: "GET_COORDINATES",
+            payload: { lat: latitude, lon: longitude },
+          });
+        },
+        (err) => {
+          if (err.code === err.PERMISSION_DENIED) {
+            // eslint-disable-next-line no-alert
+            alert(
+              "Geolocation is not enabled or not supported by this browser.",
+            );
+          }
+        },
+      );
+    } else {
+      // eslint-disable-next-line no-alert
+      window.alert("Geolocation is not supported by this browser.");
     }
-  }, [onSuccess, onError, options]);
-
+  };
   const { cityName } = useCityNameFetch({ lat, lon });
   useEffect(() => {
-    if (cityName) {
-      setSearchCity(cityName);
-    }
-  }, [cityName, setSearchCity]);
+    handlelocation();
+  }, []);
 
   useEffect(() => {
-    handleLocation();
-  }, [handleLocation]);
-  useEffect(() => {
+    if (cityName && isCurrentLocation) {
+      setSearchCity(cityName);
+    }
     dispatch({ type: "SET_CITY", payload: searchCity });
-  }, [searchCity]);
+  }, [cityName, isCurrentLocation, searchCity, setSearchCity]);
 
   return (
     <div
@@ -135,8 +141,11 @@ const Searchbar: React.FC = () => {
             testid="location_btn"
             description=""
             className=""
-            onClick={handleLocation}
-            icon={<CiLocationOn size={26} className="text-white" />}
+            onClick={() => {
+              dispatch({ type: "USE_CURRENTLOCATION", payload: true });
+              handlelocation();
+            }}
+            icon={<GoLocation size={26} className="text-white" />}
           />
           <span className="text-white z-10 text-2xl w-80 capitalize ml-2">
             {city}
@@ -188,8 +197,8 @@ const Searchbar: React.FC = () => {
           testid="searchcity_input"
           description=""
           onClick={handleInput}
-          icon={<BiSearch size={28} className="text-white" />}
-          className="bg-white z-10 p-2 bg-opacity-40 rounded-lg"
+          icon={<PiMagnifyingGlassBold size={24} className="text-white" />}
+          className="bg-bgSearch border-l  backdrop-blur-xl z-10 p-3 rounded-2xl"
         />
         <WeatherAlert />
       </div>

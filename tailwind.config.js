@@ -11,6 +11,10 @@ export default {
           "linear-gradient(45deg, rgba(240,181,206,1) 0%, rgba(140,107,174,1) 100%)",
         DarklinearBg:
           "linear-gradient(45deg, rgba(72,53,91,1) 100%, rgba(145,190,243,1) 0%)",
+        bgSearch:
+          "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 100%)",
+        SearchBarBorder:
+          "linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%)",
       },
       inset: {
         "custom-super": "-3rem",
