@@ -85,7 +85,7 @@ export const WeatherContext = createContext<WeatherContextProps | undefined>(
 );
 
 const WeatherContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [searchCity, setSearchCity] = useState<string>("");
+  const [searchCity, setSearchCity] = useState<string>("Karachi");
   const [timeStamp, settimeStamp] = useState<string>("");
   const [currentWeatherData, setCurrentWeatherData] =
     useState<WeatherData | null>(null);

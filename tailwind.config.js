@@ -36,21 +36,6 @@ export default {
         TemperaturShadow: "4.51px 2.26px 0.75px rgba(0, 0, 0, 0.15)",
         CustomShadow: "-1.51px 2.26px 0.75px rgba(0, 0, 0, 0.10)",
       },
-      keyframes: {
-        glow: {
-          "0%, 100%": {
-            textShadow:
-              "0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 0, 0, 0.6), 0 0 50px rgba(255, 0, 0, 0.5), 0 0 60px rgba(255, 0, 0, 0.4), 0 0 70px rgba(255, 0, 0, 0.3)",
-          },
-          "50%": {
-            textShadow:
-              "0 0 20px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 0, 0, 0.6), 0 0 60px rgba(255, 0, 0, 0.5), 0 0 70px rgba(255, 0, 0, 0.4), 0 0 80px rgba(255, 0, 0, 0.3)",
-          },
-        },
-      },
-      animation: {
-        glow: "glow 1s infinite alternate",
-      },
     },
   },
   plugins: [require("tailwindcss-textshadow")],
