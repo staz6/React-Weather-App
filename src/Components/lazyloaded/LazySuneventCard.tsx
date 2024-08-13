@@ -3,7 +3,7 @@ import React from "react";
 const LazySuneventCard: React.FC = () => {
   const array = ["Sunset", "Golden Hour", "Sunrise"];
   return (
-    <div className="flex justify-center gap-5 md:gap-10 mt-16  ">
+    <div className="flex animate-pulse justify-center gap-5 md:gap-10 mt-16  ">
       {array.map((item, index) => (
         <div
           key={index}
