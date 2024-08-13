@@ -14,20 +14,28 @@ const SunEvent: React.FC<Props> = ({ id, event }) => {
   return (
     <div
       data-testid="sunevent"
-      className={`relative text-center font-sans  text-white ${id === 1 ? "bottom-7" : ""}`}
+      className={`relative text-center font-light  text-white ${id === 1 ? "bottom-10" : ""}`}
     >
-      <h1 className={`${id === 1 ? "text-xl" : "text-lg"} font-light mb-8`}>
+      <h1 className="sm:text-2xl text-xl text-shadow-CustomShadow  mb-8">
         {event.name}
       </h1>
       <div
-        className={`dark:bg-linearSideDark bg-linearSide  ${id === 1 ? "h-56 px-0" : "h-52 px-3"}  rounded-[4rem] py-6`}
+        className={` bg-white bg-opacity-20 m-auto  ${id === 1 ? "h-56 px-0 w-[7.5rem]" : "h-52  px-3"}  rounded-[4rem] py-6`}
       >
-        <img className="h-10 m-auto  w-16" src={clockImg} alt="" />
-        <h2 className={`${id === 1 ? "mt-14" : "mt-12 "}`}>
-          <span className="sm:text-xl text-lg tracking-wider">{time} </span>
-          <span className="text-sm text-gray-200 sm:text-md">{period}</span>
+        <img
+          className={` m-auto ${id === 1 ? "w-20 h-12" : ""} `}
+          src={clockImg}
+          alt=""
+        />
+        <h2 className={`${id === 1 ? "mt-14 mb-2" : "mt-12 "}`}>
+          <span className="sm:text-[1.7rem] text-2xl tracking-wider">
+            {time}{" "}
+          </span>
+          <span className="text-sm text-gray-200 sm:text-md">
+            {id === 1 && period}
+          </span>
         </h2>
-        <h2 className="mt-2 sm:text-lg tracking-widest text-gray-200">
+        <h2 className="mt-1 sm:text-[1.3rem] text-xl tracking-widest text-gray-200">
           {event.militaryTime}
         </h2>
       </div>

@@ -7,7 +7,7 @@ const LazySuneventCard: React.FC = () => {
       {array.map((item, index) => (
         <div
           key={index}
-          className={`relative text-center font-sans  text-white ${index === 1 ? "bottom-7" : ""}`}
+          className={`relative text-center   text-white ${index === 1 ? "bottom-7" : ""}`}
         >
           <h1
             className={`${index === 1 ? "text-xl" : "text-lg"} font-light mb-8`}

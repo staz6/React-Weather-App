@@ -5,6 +5,7 @@ import { useWeatherContext } from "../../Context/WeatherContext";
 import LazyCurrentWeatherCard from "../lazyloaded/LazyCurrentWeatherCard";
 import LazyTemperatureChart from "../lazyloaded/LazyTemperatureChart";
 import ThemeChanger from "../Compound/ThemeChanger";
+import tip from "../../assets/tip.svg";
 
 const TemperatureChart = lazy(() => import("../Compound/TemperatureChart"));
 const CurrentWeatherCard = lazy(() => import("../Compound/CurrentWeatherCard"));
@@ -21,7 +22,7 @@ const Sidebar: React.FC = () => {
   const { searchCity } = useWeatherContext();
 
   return (
-    <div className="dark:bg-linearSideDark bg-linearSide  border-r border-custom-gray flex flex-col  pb-10 lg:pb-0  w-full lg:w-1/3 p-7 lg:p-4 xl:p-7 space-y-0 overflow-x-hidden">
+    <div className="bg-RadialSide Sidebar_gradient_border flex flex-col  pb-10 lg:pb-0 w-full lg:w-1/3 p-7 lg:p-4 xl:p-7 overflow-x-hidden">
       <Searchbar />
       <div className="flex justify-center gap flex-col sm:flex-row items-center lg:flex-col">
         <ErrorBoundary
@@ -39,6 +40,10 @@ const Sidebar: React.FC = () => {
             {searchCity ? (
               <>
                 <CurrentWeatherCard />
+                <div className="m-auto sm:hidden lg:flex flex  items-center w-11/12 -mt-8 gap-2">
+                  <hr className="text-white bg-white w-full h-[1px] " />
+                  <img src={tip} className="h-8 w-8 " alt="" />
+                </div>
                 <TemperatureChart />
               </>
             ) : (

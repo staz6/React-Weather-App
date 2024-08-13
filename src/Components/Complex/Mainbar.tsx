@@ -20,7 +20,7 @@ const FallbackComponent: React.FC = () => (
 const Mainbar: React.FC = () => {
   const { searchCity } = useWeatherContext();
   return (
-    <div className="dark:bg-linearMainDark bg-linearMain flex flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7 overflow-x-hidden">
+    <div className=" flex flex-col   min-h-screen  w-full lg:w-2/3 p-2 lg:p-4 xl:p-7 overflow-x-hidden">
       <div className="flex justify-end mr-5 mt-2">
         <FarenheitCelciusConverter />
       </div>
