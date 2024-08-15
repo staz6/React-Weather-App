@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", ".eslintrc.cjs", "cypress.config.ts", "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

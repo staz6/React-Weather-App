@@ -10,13 +10,51 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 body {
   margin: 0;
   padding: 0;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
 
+  to {
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
 
+  to {
+    transform: translateX(-120%);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.3s ease forwards;
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 1vw;
+  }
+}
+
+.Sidebar_gradient_border {
+  border-width: 2px;
+  border-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(238, 237, 237, 0.1) 100%
+  );
+  border-image-slice: 1;
+}

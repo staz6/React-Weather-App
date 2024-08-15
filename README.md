@@ -1,30 +1,94 @@
-# React + TypeScript + Vite
+# Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Weather App build on React and Typescript
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisite
 
-## Expanding the ESLint configuration
+- Node
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installing
 
-- Configure the top-level `parserOptions` property like this:
+- git clone the repository
+- cd in to repository folder and run `npm install`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+# To Start Project
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- run `npm start`
+
+# To Run Unit Tests and End-2-End Tests
+
+- run `npm run test` (for unit tests)
+- run `npx cypress open` (for end-2-end tests)
+
+# To Run Storybook
+
+- run `npm run storybook`
+
+## Features List
+
+- [x] Initial design
+- [x] Current location
+- [x] Current Weather and forecast
+- [x] Weather Alerts
+- [x] Theme Changer
+- [x] Add To Favorites and Quick Search
+- [x] Lazy Loading
+- [x] End-2-End Test
+- [x] Unit Tests
+- [x] Responsive
+
+## Authors
+
+Muhammad Aahad  
+[@Muhammad Aahad](https://www.linkedin.com/in/muhammad-aahad-568aaa179/)
+
+## Documentation for Custom Hooks
+
+### Custom Hook 1: `useCityNameFetch`
+
+- **Location:** `src/CustomeHooks/CurrentLocationHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Query** and takes latitude and longitude values as parameters.
+  - It provides the city name based on the lat and lon values.
+  - Additionally, the hook also provides a loading state.
+  - The query in the hook is disabled if lat and lon values are 0.
+  - This hook uses the **OpenWeatherMap API** for fetching data.
+- **Use Case:**
+  - Used in the **CurrentLocation** component located at `src/Components/Compound/CurrentLocation. tsx`
+
+### Custom Hook 2: `useCurrentWeather`
+
+- **Location:** `src/CustomeHooks/CurrentWeatherHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Suspense Query** and takes the city name as a parameter.
+  - It provides the current weather data based on the city.
+  - Additionally, it provides the loading, error, and success states.
+  - This hook uses the **OpenWeatherMap API** and **Axios** for fetching data.
+- **Use Case:**
+  - Used in the **CurrentWeatherCard** component located at `src/Components/Compound/CurrentWeatherCard.tsx`
+
+### Custom Hook 3: `useWeatherAlert`
+
+- **Location:** `src/CustomeHooks/WeatherAlertHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Query** and takes the city name as a parameter.
+  - It provides the weather alerts data based on the city.
+  - Additionally, it provides the loading and error states.
+  - This hook uses the **WeatherAPI** for fetching data.
+  - It is disabled if the city name is an empty string.
+- **Use Case:**
+  - Used in the **WeatherAlert** component located at `src/Components/Compound/WeatherAlert.tsx`
+
+### Custom Hook 4: `useWeatherForecast`
+
+- **Location:** `src/CustomeHooks/WeatherForecastHook.tsx`
+- **Description:**
+  - This hook uses **TanStack Suspense Query** and takes the city name as a parameter.
+  - It provides the complete forecast data and filtered data (which is used in weather forecast items).
+  - Additionally, it provides the loading, success, and error states.
+  - This hook uses **Axios** and the **OpenWeatherMap API**.
+- **Use Case:**
+  - Used in the **WeatherForecastCard** component located at `src/Components/Compound/ WeatherForecastCard.tsx`

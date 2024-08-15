@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ESLint cache
+.eslintcache
+
+# Jest Coverage 
+coverage/
+
+*storybook.log
