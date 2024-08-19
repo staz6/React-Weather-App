@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import SimpleSlider from "../Compound/Slider";
-import WeatherForecastItem from "../Compound/WeatherForecastItem";
+import SimpleSlider from "./Slider";
+import WeatherForecastItem from "./WeatherForecastItem";
 import { useWeatherContext } from "../../Context/WeatherContext";
 import useWeatherForecast from "../../CustomeHooks/WeatherForecastHook";
 

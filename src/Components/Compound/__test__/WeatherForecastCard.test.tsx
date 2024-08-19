@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext";
 import useWeatherForecast from "../../../CustomeHooks/WeatherForecastHook";
 import "@testing-library/jest-dom";
-import WeatherForecastCard from "../../Complex/WeatherForecastCard";
+import WeatherForecastCard from "../WeatherForecastCard";
 
 jest.mock("../../../CustomeHooks/WeatherForecastHook");
 jest.mock("react-slick", () => ({
