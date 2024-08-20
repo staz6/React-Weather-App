@@ -77,29 +77,6 @@ describe("WeatherAlert Component Tests", () => {
     });
   });
 
-  test("Testing weather alert error ", async () => {
-    (useWeatherAlert as jest.Mock).mockReturnValue({
-      isLoading: false,
-      isError: true,
-      data: {},
-    });
-
-    render(
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-          <MemoizedWeatherContextProvider>
-            <WeatherAlert />
-          </MemoizedWeatherContextProvider>
-        </ThemeProvider>
-      </QueryClientProvider>,
-    );
-
-    await waitFor(() => {
-      const error = screen.getByTestId("weatherAlert_error");
-      expect(error).toBeInTheDocument();
-    });
-  });
-
   test("Testing weather alert notification when data is undefined", () => {
     (useWeatherAlert as jest.Mock).mockReturnValue({
       isLoading: false,

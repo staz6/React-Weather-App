@@ -5,7 +5,7 @@ const meta: Meta<typeof SunEvent> = {
   component: SunEvent,
   decorators: [
     (Story) => (
-      <div className="bg-linearMainDark w-fit h-fit pt-10">
+      <div className="bg-linearBg w-fit px-10 h-fit pt-10">
         <Story />
       </div>
     ),

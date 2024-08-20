@@ -8,7 +8,7 @@ const meta: Meta<typeof ThemeChanger> = {
   decorators: [
     (Story) => (
       <ThemeProvider>
-        <div className="bg-linearMain dark:bg-linearMainDark p-4 min-h-screen flex justify-center items-center">
+        <div className="bg-linearBg h-screen">
           <Story />
         </div>
       </ThemeProvider>

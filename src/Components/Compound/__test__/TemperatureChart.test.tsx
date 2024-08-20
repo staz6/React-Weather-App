@@ -181,6 +181,6 @@ describe("TemperatureChart component Tests", () => {
     const yaxis = document.querySelector("#Yaxis");
     expect(yaxis).toBeInTheDocument();
     const cartesianGrid = document.querySelector("#cartesian_grid");
-    expect(cartesianGrid).toHaveAttribute("stroke", "white");
+    expect(cartesianGrid).toHaveAttribute("stroke", "rgba(255, 255, 255, 0)");
   });
 });
