@@ -6,7 +6,9 @@ import LazyWeatherMetrics from "../lazyloaded/LazyWeatherMetrics";
 import LazyWeatherForecastCard from "../lazyloaded/LazyWeatherForecastCard";
 import FarenheitCelciusConverter from "../Compound/FarenheitCelciusConverter";
 
-const WeatherForecastCard = lazy(() => import("./WeatherForecastCard"));
+const WeatherForecastCard = lazy(
+  () => import("../Compound/WeatherForecastCard"),
+);
 const DetailedWeatherCard = lazy(() => import("./DetailedWeatherCard"));
 
 const FallbackComponent: React.FC = () => (
