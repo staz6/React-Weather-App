@@ -6,9 +6,9 @@ import { MemoizedWeatherContextProvider } from "../../../Context/WeatherContext"
 jest.mock("../../../HelperFunctions/CalculateWeatherMetrics", () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => [
-    { Icon: () => <div>Icon1</div>, value: 25, unit: "km/h" },
-    { Icon: () => <div>Icon2</div>, value: 60, unit: "%" },
-    { Icon: () => <div>Icon3</div>, value: 0, unit: "mm" },
+    { value: 25, unit: "km/h" },
+    { value: 60, unit: "%" },
+    { value: 0, unit: "mm" },
   ]),
 }));
 
@@ -22,9 +22,9 @@ describe("WeatherMetricsCard component Tests", () => {
     expect(screen.getByText("25")).toBeInTheDocument();
     expect(screen.getByText("60")).toBeInTheDocument();
     expect(screen.getByText("NA")).toBeInTheDocument();
-    expect(screen.getByText("Icon1")).toBeInTheDocument();
-    expect(screen.getByText("Icon2")).toBeInTheDocument();
-    expect(screen.getByText("Icon3")).toBeInTheDocument();
+    expect(screen.getByText("Hum")).toBeInTheDocument();
+    expect(screen.getByText("Wind")).toBeInTheDocument();
+    expect(screen.getByText("Rain")).toBeInTheDocument();
     expect(screen.getByText("mm")).toBeInTheDocument();
     expect(screen.getByText("%")).toBeInTheDocument();
     expect(screen.getByText("km/h")).toBeInTheDocument();

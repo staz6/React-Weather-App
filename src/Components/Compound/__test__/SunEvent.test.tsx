@@ -25,12 +25,14 @@ describe("SunEvent Component Tests", () => {
     render(<SunEvent id={1} event={mockEvent} />);
     const event = screen.getByText("Golden Hour");
     expect(event).toBeInTheDocument();
-    expect(event).toHaveClass("text-xl");
+    const suneventwrapper = screen.getByTestId("sunevent");
+    expect(suneventwrapper).toHaveClass("bottom-10");
   });
   it("assign correct classes if is not equal to 1", () => {
     render(<SunEvent id={2} event={mockEvent} />);
     const event = screen.getByText("Golden Hour");
     expect(event).toBeInTheDocument();
-    expect(event).toHaveClass("text-lg");
+    const suneventwrapper = screen.getByTestId("sunevent");
+    expect(suneventwrapper).not.toHaveClass("bottom-10");
   });
 });

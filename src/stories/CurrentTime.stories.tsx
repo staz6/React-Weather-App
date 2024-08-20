@@ -10,6 +10,6 @@ type Story = StoryObj<typeof CurrentTime>;
 
 export const Currenttime: Story = {
   args: {
-    className: "bg-linearSide text-white",
+    className: "bg-DarklinearBg text-white",
   },
 };

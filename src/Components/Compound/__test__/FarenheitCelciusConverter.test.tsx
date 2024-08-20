@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import FarenheitCelciusConverter from "../FarenheitCelciusConverter";
 import { useWeatherContext } from "../../../Context/WeatherContext";
 
-// Mock the useWeatherContext hook
 jest.mock("../../../Context/WeatherContext", () => ({
   useWeatherContext: jest.fn(),
 }));
@@ -23,28 +22,30 @@ describe("FarenheitCelciusConverter Component Tests", () => {
   });
 
   it("renders correctly with Celsius selected", () => {
-    const mockSetIsKelvin = jest.fn();
+    const mockSetIsFarenheit = jest.fn();
     (useWeatherContext as jest.Mock).mockReturnValue({
-      isKelvin: false,
-      setIsKelvin: mockSetIsKelvin,
+      isFarenheit: false,
+      setIsFarenheit: mockSetIsFarenheit,
     });
 
     render(<FarenheitCelciusConverter />);
-    expect(screen.getByTestId("tempSlider")).toHaveClass("left-0");
+    expect(screen.getByTestId("tempSlider")).toHaveClass(
+      "left-[calc(100%-3.5rem)]",
+    );
   });
 
   it("calls setIsKelvin  when button is clicked", () => {
-    const mockSetIsKelvin = jest.fn();
+    const mockSetIsFarenheit = jest.fn();
     (useWeatherContext as jest.Mock).mockReturnValue({
-      isKelvin: true,
-      setIsKelvin: mockSetIsKelvin,
+      isFarenheit: true,
+      setIsFarenheit: mockSetIsFarenheit,
     });
     render(<FarenheitCelciusConverter />);
 
     const button = screen.getByTestId("TempConverter");
     fireEvent.click(button);
-    expect(mockSetIsKelvin).toHaveBeenCalledTimes(1);
+    expect(mockSetIsFarenheit).toHaveBeenCalledTimes(1);
     fireEvent.click(button);
-    expect(mockSetIsKelvin).toHaveBeenCalledTimes(2);
+    expect(mockSetIsFarenheit).toHaveBeenCalledTimes(2);
   });
 });

@@ -7,7 +7,7 @@ const FarenheitCelciusConverter: React.FC = () => {
     <div className="relative w-24 h-9">
       <div
         data-testid="tempSlider"
-        className={`transition-all duration-200 absolute w-[3rem] rounded-3xl bg-white bg-opacity-30 h-9 ${isFarenheit ? "left-0" : " left-[calc(100%-3.5rem)]"}`}
+        className={`transition-all duration-200 absolute w-[3rem] rounded-3xl bg-white bg-opacity-30 h-9 ${isFarenheit ? "left-0" : "left-[calc(100%-3.5rem)]"}`}
       />
       <Button
         description=""

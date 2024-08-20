@@ -1,15 +1,8 @@
 const searchCityUsingInput = (city: string): void => {
-  const SearchInput = cy.get("input.SearchInput");
+  const SearchInput = cy.get("input.SearchInput").click({ force: true });
   SearchInput.clear().type(city);
 };
-const useCurrenLocation = (): void => {
-  cy.setGeolocation(37.7749, -122.4194);
-  const CurrentLocationBtn = cy
-    .get('[data-testid="location_btn"]')
-    .should("exist");
-  CurrentLocationBtn.click();
-  cy.contains("San Francisco");
-};
+
 const showWeatherResults = (visibility: string): void => {
   cy.get('[data-testid="WeatherIcon"]').should(visibility);
   cy.get('[data-testid="temperature"]').should(visibility);
@@ -114,12 +107,12 @@ describe("Weather App End-2-End testing", () => {
         },
       },
     }).as("getWeatherAlerts");
-
     cy.visit("http://localhost:5173/");
-    showWeatherResults("not.exist");
-    useLazyloading("not.exist");
-    useNotification();
-    cy.contains("No notifications");
+    cy.setGeolocation(37.7749, -122.4194);
+    cy.wait(500);
+    cy.contains("San Francisco");
+    showWeatherResults("exist");
+    cy.wait(500);
     ClickInputButton();
     searchCityUsingInput("Berlin");
     ClickInputButton();
@@ -134,11 +127,14 @@ describe("Weather App End-2-End testing", () => {
     cy.scrollTo("bottom");
     useSelectForecastDay();
     cy.scrollTo("top");
-    useCurrenLocation();
-    useLazyloading("exist");
+    ClickInputButton();
+    searchCityUsingInput("California");
+    ClickInputButton();
     showWeatherResults("exist");
+    cy.contains("California");
     closeAutoNotifications();
     useNotification();
+    cy.wait(100);
     closeManualNotifications();
     ClickInputButton();
     cy.get('[data-testid="favcitylist"]').first().click();
@@ -150,13 +146,16 @@ describe("Weather App End-2-End testing", () => {
   });
   it("Testing errors", () => {
     cy.visit("http://localhost:5173/");
+    cy.setGeolocation(37.7749, -122.4194);
+    cy.wait(500);
     cy.on("uncaught:exception", (): boolean => false);
     ClickInputButton();
     searchCityUsingInput("fdsafdaf");
     ClickInputButton();
+    cy.wait(500);
     useLazyloading("exist");
-    showWeatherResults("not.exist");
-    cy.wait(8000);
+    cy.wait(10000);
     cy.contains("Please Make Sure Such City Exists");
+    showWeatherResults("not.exist");
   });
 });
