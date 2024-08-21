@@ -66,7 +66,7 @@ export default {
   decorators: [
     (Story) => (
       <CustomWeatherContextProvider>
-        <div className="bg-linearSideDark">
+        <div className="bg-DarklinearBg">
           <Story />
         </div>
       </CustomWeatherContextProvider>

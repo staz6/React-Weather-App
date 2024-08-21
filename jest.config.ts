@@ -150,6 +150,8 @@ const config: Config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(png|svg|jpg|jpeg|gif)$":
+      "<rootDir>/src/TestMockImages/TestMockImages.ts",
   },
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

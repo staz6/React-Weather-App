@@ -28,7 +28,7 @@ const useWeatherAlert = ({
     queryKey: ["WeatherAlerts", searchCity],
     queryFn: () =>
       fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${ALERT_API_KEY}&q=${searchCity}&alerts=yes`,
+        `https://api.weatherapi.com/v1/forecast.json?key=${ALERT_API_KEY}&q=${searchCity}&alerts=yes`,
       ).then((res) => res.json()),
     enabled: !!searchCity,
   });

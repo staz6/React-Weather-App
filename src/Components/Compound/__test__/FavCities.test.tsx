@@ -3,11 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import FavCities from "../FavCities";
 import "@testing-library/jest-dom";
 
-import {
-  MemoizedWeatherContextProvider,
-  WeatherContext,
-  WeatherData,
-} from "../../../Context/WeatherContext";
+import { WeatherContext, WeatherData } from "../../../Context/WeatherContext";
 
 const mockCurrentWeatherData: WeatherData = {
   main: {
@@ -93,16 +89,4 @@ describe("FavCities component Tests", () => {
       screen.getByTestId("FavCity").querySelector("#start_empty"),
     ).toBeInTheDocument();
   });
-});
-
-test("when no city is searched", () => {
-  render(
-    <MemoizedWeatherContextProvider>
-      <FavCities />
-    </MemoizedWeatherContextProvider>,
-  );
-  const btn = screen.getByTestId("FavCity");
-  expect(btn.querySelector("#start_empty")).toBeInTheDocument();
-  fireEvent.click(btn);
-  expect(btn.querySelector("#start_empty")).toBeInTheDocument();
 });

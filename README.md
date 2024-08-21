@@ -16,7 +16,7 @@ Weather App build on React and Typescript
 
 # To Start Project
 
-- run `npm start`
+- run `npm run dev`
 
 # To Run Unit Tests and End-2-End Tests
 
@@ -57,7 +57,7 @@ Muhammad Aahad
   - The query in the hook is disabled if lat and lon values are 0.
   - This hook uses the **OpenWeatherMap API** for fetching data.
 - **Use Case:**
-  - Used in the **CurrentLocation** component located at `src/Components/Compound/CurrentLocation. tsx`
+  - Used in the **CurrentLocation** component located at `src/Components/Compound/CurrentLocation.tsx`
 
 ### Custom Hook 2: `useCurrentWeather`
 
@@ -91,4 +91,4 @@ Muhammad Aahad
   - Additionally, it provides the loading, success, and error states.
   - This hook uses **Axios** and the **OpenWeatherMap API**.
 - **Use Case:**
-  - Used in the **WeatherForecastCard** component located at `src/Components/Compound/ WeatherForecastCard.tsx`
+  - Used in the **WeatherForecastCard** component located at `src/Components/Compound/WeatherForecastCard.tsx`
