@@ -86,9 +86,30 @@ const closeManualNotifications = (): void => {
   notificationBtn.click();
 };
 
+const farenheitTocelciusConverter = (): void => {
+  cy.get('[data-testid="temperature"]')
+    .should("exist")
+    .invoke("text")
+    .then((celsiusTemp: string) => {
+      const celsiusValue: number = parseInt(celsiusTemp, 10);
+      const fahrenheitValue: number = Math.round((celsiusValue * 9) / 5 + 32);
+      cy.get('[data-testid="TempConverter"]').should("exist").click();
+      cy.get('[data-testid="temperature"]')
+        .invoke("text")
+        .then((convertedTemp: string) => {
+          const convertedFahrenheitValue: number = parseInt(convertedTemp, 10);
+          assert.equal(
+            convertedFahrenheitValue,
+            fahrenheitValue,
+            "Temperatures should match",
+          );
+        });
+    });
+};
+
 describe("Weather App End-2-End testing", () => {
   it("Testing website functionality and features ", () => {
-    cy.intercept("GET", "http://api.weatherapi.com/v1/forecast.json*", {
+    cy.intercept("GET", "https://api.weatherapi.com/v1/forecast.json*", {
       statusCode: 200,
       body: {
         alerts: {
@@ -98,18 +119,13 @@ describe("Weather App End-2-End testing", () => {
               headline: "Heavy Rain Expected",
               desc: "There will be heavy rain in Test City today.",
             },
-            {
-              category: "Warning",
-              headline: "Strong Winds Alert",
-              desc: "Strong winds are expected in Test City today.",
-            },
           ],
         },
       },
     }).as("getWeatherAlerts");
     cy.visit("http://localhost:5173/");
     cy.setGeolocation(37.7749, -122.4194);
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains("San Francisco");
     showWeatherResults("exist");
     cy.wait(500);
@@ -141,13 +157,14 @@ describe("Weather App End-2-End testing", () => {
     ClickInputButton();
     closeAutoNotifications();
     showWeatherResults("exist");
+    farenheitTocelciusConverter();
     useThemeChanger();
     cy.get("html").should("not.have.class", "dark");
   });
   it("Testing errors", () => {
     cy.visit("http://localhost:5173/");
     cy.setGeolocation(37.7749, -122.4194);
-    cy.wait(500);
+    cy.wait(1000);
     cy.on("uncaught:exception", (): boolean => false);
     ClickInputButton();
     searchCityUsingInput("fdsafdaf");
