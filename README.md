@@ -45,6 +45,11 @@ Weather App build on React and Typescript
 Muhammad Aahad  
 [@Muhammad Aahad](https://www.linkedin.com/in/muhammad-aahad-568aaa179/)
 
+## URLs
+
+- **Production**: (https://react-weather-app-sigma-one.vercel.app/)
+- **Development**: (https://react-weather-app-git-develop-staz6s-projects.vercel.app/)
+
 ## Documentation for Custom Hooks
 
 ### Custom Hook 1: `useCityNameFetch`
